@@ -1,4 +1,4 @@
-import { ExternalLink, ShieldAlert, CheckCircle, BarChart, AlertTriangle } from 'lucide-react';
+import { ExternalLink, ShieldAlert, CheckCircle, BarChart, AlertTriangle, Fingerprint } from 'lucide-react';
 
 const resultsData = [
   { id: 101, sourceVideo: 'Formula 1 Lap 1 Crash', matchUrl: 'youtube.com/watch?v=dummy1', platform: 'YouTube', confidence: 98, date: '2026-04-14', status: 'Pending Takedown' },
@@ -64,7 +64,14 @@ export default function DetectionResults() {
             <tbody className="divide-y divide-[var(--border)]">
               {resultsData.map((result) => (
                 <tr key={result.id} className="hover:bg-[var(--background)]/50 transition-colors">
-                  <td className="px-6 py-4 text-sm font-medium text-[var(--text-primary)]">{result.sourceVideo}</td>
+                  <td className="px-6 py-4 text-sm font-medium text-[var(--text-primary)]">
+                    <div className="flex flex-col gap-1">
+                      <span>{result.sourceVideo}</span>
+                      <span className="flex items-center gap-1 text-[10px] text-indigo-400 bg-indigo-500/10 px-1.5 py-0.5 rounded w-max border border-indigo-500/20">
+                        <Fingerprint className="w-3 h-3" /> SynthID Verified
+                      </span>
+                    </div>
+                  </td>
                   <td className="px-6 py-4 text-sm text-[var(--text-secondary)] flex items-center gap-2">
                     {result.matchUrl}
                     <ExternalLink className="w-3 h-3 text-indigo-400 cursor-pointer hover:text-indigo-500" />

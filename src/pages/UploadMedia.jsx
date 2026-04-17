@@ -1,6 +1,31 @@
-import { UploadCloud, FileVideo, X } from 'lucide-react';
+import { useState, useEffect } from 'react';
+import { UploadCloud, FileVideo, X, CheckCircle, Loader2 } from 'lucide-react';
 
 export default function UploadMedia() {
+  const [isProcessing, setIsProcessing] = useState(false);
+  const [processingStep, setProcessingStep] = useState(-1);
+
+  const steps = [
+    "Injecting Invisible Watermark (Google SynthID)",
+    "Scanning for Deepfake Artifacts (Vertex AI)",
+    "Encrypting for Media CDN",
+    "Registering Metadata in BigQuery"
+  ];
+
+  const handleStartProcessing = () => {
+    setIsProcessing(true);
+    setProcessingStep(0);
+  };
+
+  useEffect(() => {
+    if (processingStep >= 0 && processingStep < steps.length) {
+      const timer = setTimeout(() => {
+        setProcessingStep(prev => prev + 1);
+      }, 1500); // simulate 1.5s per step
+      return () => clearTimeout(timer);
+    }
+  }, [processingStep]);
+
   return (
     <div className="max-w-4xl mx-auto space-y-6">
       <div>
@@ -55,11 +80,69 @@ export default function UploadMedia() {
           ))}
         </div>
         <div className="mt-6 flex justify-end">
-          <button className="px-6 py-2.5 bg-indigo-600 hover:bg-indigo-700 text-white font-medium rounded-lg transition-colors shadow-sm opacity-50 cursor-not-allowed">
+          <button 
+            onClick={handleStartProcessing}
+            className="px-6 py-2.5 bg-indigo-600 hover:bg-indigo-700 text-white font-medium rounded-lg transition-colors shadow-sm"
+          >
             Start Processing Uploads
           </button>
         </div>
       </div>
+
+      {isProcessing && (
+        <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-50 p-4">
+          <div className="bg-[var(--surface)] border border-[var(--border)] rounded-2xl shadow-2xl p-8 max-w-md w-full">
+            <h3 className="text-xl font-bold text-[var(--text-primary)] mb-6 flex items-center gap-2">
+              <Loader2 className="w-5 h-5 text-indigo-500 animate-spin" />
+              Processing Pipeline
+            </h3>
+            
+            <div className="space-y-4">
+              {steps.map((step, index) => {
+                const isCompleted = processingStep > index;
+                const isCurrent = processingStep === index;
+                const isPending = processingStep < index;
+
+                return (
+                  <div key={index} className="flex items-center gap-3">
+                    {isCompleted ? (
+                      <CheckCircle className="w-5 h-5 text-green-500 shrink-0" />
+                    ) : isCurrent ? (
+                      <div className="w-5 h-5 border-2 border-indigo-500 border-t-transparent rounded-full animate-spin shrink-0"></div>
+                    ) : (
+                      <div className="w-5 h-5 border-2 border-[var(--border)] rounded-full shrink-0"></div>
+                    )}
+                    <span 
+                      className={`text-sm font-medium ${
+                        isCompleted ? 'text-green-500' 
+                        : isCurrent ? 'text-[var(--text-primary)]' 
+                        : 'text-[var(--text-secondary)] opacity-50'
+                      }`}
+                    >
+                      {step}
+                    </span>
+                  </div>
+                );
+              })}
+            </div>
+
+            {processingStep >= steps.length && (
+              <div className="mt-8">
+                <div className="p-4 bg-green-500/10 border border-green-500/20 rounded-lg text-center">
+                  <p className="text-green-500 font-semibold mb-1">Processing Complete!</p>
+                  <p className="text-xs text-green-400">Assets are now protected and monitored.</p>
+                </div>
+                <button 
+                  onClick={() => setIsProcessing(false)}
+                  className="mt-4 w-full px-4 py-2 bg-[var(--background)] border border-[var(--border)] text-[var(--text-primary)] hover:bg-[var(--border)] rounded-lg font-medium transition-colors"
+                >
+                  Close
+                </button>
+              </div>
+            )}
+          </div>
+        </div>
+      )}
     </div>
   );
 }

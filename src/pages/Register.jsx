@@ -10,7 +10,7 @@ export default function Register() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-[var(--background)] px-4 py-12">
+    <div className="min-h-screen flex flex-col items-center justify-center bg-[var(--background)] px-4 py-12">
       <div className="w-full max-w-md p-8 bg-[var(--surface)] border border-[var(--border)] rounded-2xl shadow-xl">
         <div className="flex flex-col items-center mb-8">
           <Link to="/" className="flex items-center gap-2 text-indigo-500 font-bold text-3xl mb-6">
@@ -76,6 +76,11 @@ export default function Register() {
             Log in
           </Link>
         </p>
+      </div>
+
+      <div className="mt-8 flex items-center justify-center gap-2 text-xs text-[var(--text-secondary)]">
+        <Shield className="w-4 h-4 text-green-500" />
+        <span>Secured by Google Identity Platform & Firebase App Check</span>
       </div>
     </div>
   );

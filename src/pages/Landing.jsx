@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { Shield, Lock, Eye, Zap, ChevronRight } from 'lucide-react';
+import { Shield, Lock, Eye, Zap, ChevronRight, UploadCloud, BarChart2 } from 'lucide-react';
 
 export default function Landing() {
   return (
@@ -27,13 +27,13 @@ export default function Landing() {
           <span>Phase 1 Prototype Live</span>
         </div>
         <h1 className="text-5xl md:text-7xl font-extrabold text-[var(--text-primary)] tracking-tight max-w-4xl leading-tight mb-8">
-          Protect Your Sports Media <br />
+          End-to-End Digital Asset <br />
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-cyan-400">
-            With Advanced AI
+            Protection & Integrity
           </span>
         </h1>
         <p className="text-xl text-[var(--text-secondary)] max-w-2xl mb-12">
-          The ultimate digital asset protection system designed for sports broadcasters and media agencies. Detect copyright violations, monitor usage, and secure your content seamlessly.
+          The ultimate system designed for sports broadcasters. Detect copyright violations, watermark content, and secure distribution via Google Cloud.
         </p>
         <div className="flex flex-col sm:flex-row gap-4 w-full justify-center max-w-md">
           <Link to="/register" className="flex items-center justify-center gap-2 w-full px-8 py-4 bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl font-semibold transition-all hover:scale-105 shadow-lg shadow-indigo-500/25">
@@ -45,34 +45,82 @@ export default function Landing() {
           </Link>
         </div>
 
-        {/* Features Grid */}
-        <div className="grid md:grid-cols-3 gap-8 mt-24 max-w-5xl mx-auto text-left">
-          <div className="p-6 rounded-2xl bg-[var(--surface)] border border-[var(--border)] shadow-xl shadow-black/5 hover:-translate-y-1 transition-transform">
-            <div className="w-12 h-12 rounded-xl bg-blue-500/10 flex items-center justify-center text-blue-500 mb-6">
-              <Eye className="w-6 h-6" />
+        {/* Features Grid - The Three Pillars */}
+        <div className="mt-32">
+          <h2 className="text-3xl font-bold text-[var(--text-primary)] mb-12">The Three Pillars of Integrity</h2>
+          <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto text-left">
+            <div className="p-6 rounded-2xl bg-[var(--surface)] border border-[var(--border)] shadow-xl shadow-black/5 hover:-translate-y-1 transition-transform">
+              <div className="w-12 h-12 rounded-xl bg-blue-500/10 flex items-center justify-center text-blue-500 mb-6">
+                <Shield className="w-6 h-6" />
+              </div>
+              <h3 className="text-xl font-bold text-[var(--text-primary)] mb-3">Verification (SynthID)</h3>
+              <p className="text-[var(--text-secondary)] leading-relaxed">
+                Inject imperceptible digital watermarks and cryptographic signatures to guarantee asset origin and authenticity.
+              </p>
             </div>
-            <h3 className="text-xl font-bold text-[var(--text-primary)] mb-3">Continuous Monitoring</h3>
-            <p className="text-[var(--text-secondary)] leading-relaxed">
-              24/7 scanning of social platforms and video-sharing sites for unauthorized usage of your sports clips.
-            </p>
+            <div className="p-6 rounded-2xl bg-[var(--surface)] border border-[var(--border)] shadow-xl shadow-black/5 hover:-translate-y-1 transition-transform">
+              <div className="w-12 h-12 rounded-xl bg-indigo-500/10 flex items-center justify-center text-indigo-500 mb-6">
+                <Zap className="w-6 h-6" />
+              </div>
+              <h3 className="text-xl font-bold text-[var(--text-primary)] mb-3">Distribution (Media CDN)</h3>
+              <p className="text-[var(--text-secondary)] leading-relaxed">
+                Securely stream and distribute your protected assets globally with low latency using Google Cloud Media CDN.
+              </p>
+            </div>
+            <div className="p-6 rounded-2xl bg-[var(--surface)] border border-[var(--border)] shadow-xl shadow-black/5 hover:-translate-y-1 transition-transform">
+              <div className="w-12 h-12 rounded-xl bg-purple-500/10 flex items-center justify-center text-purple-500 mb-6">
+                <Eye className="w-6 h-6" />
+              </div>
+              <h3 className="text-xl font-bold text-[var(--text-primary)] mb-3">Monitoring (BigQuery)</h3>
+              <p className="text-[var(--text-secondary)] leading-relaxed">
+                Analyze violation events, track engagement, and aggregate piracy metrics using real-time BigQuery streams.
+              </p>
+            </div>
           </div>
-          <div className="p-6 rounded-2xl bg-[var(--surface)] border border-[var(--border)] shadow-xl shadow-black/5 hover:-translate-y-1 transition-transform">
-            <div className="w-12 h-12 rounded-xl bg-indigo-500/10 flex items-center justify-center text-indigo-500 mb-6">
-              <Zap className="w-6 h-6" />
+        </div>
+
+        {/* System Architecture Section */}
+        <div className="mt-32 w-full max-w-5xl mx-auto">
+          <h2 className="text-3xl font-bold text-[var(--text-primary)] mb-12">System Architecture</h2>
+          <div className="bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-8 shadow-xl">
+            <div className="flex flex-col md:flex-row items-center justify-between gap-8">
+              {/* Box 1 */}
+              <div className="flex-1 bg-[var(--background)] p-6 rounded-xl border border-[var(--border)] text-center relative z-10 w-full">
+                <div className="w-12 h-12 mx-auto bg-blue-500/10 rounded-full flex items-center justify-center text-blue-500 mb-3">
+                  <UploadCloud className="w-6 h-6" />
+                </div>
+                <h4 className="font-bold text-[var(--text-primary)]">Ingest</h4>
+                <p className="text-xs text-[var(--text-secondary)] mt-1">Cloud Storage & Vertex AI</p>
+              </div>
+              
+              {/* Arrow */}
+              <div className="hidden md:block w-8 h-0.5 bg-indigo-500/30 relative">
+                <div className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2 border-dashed border-4 border-transparent border-l-indigo-500/30"></div>
+              </div>
+
+              {/* Box 2 */}
+              <div className="flex-1 bg-indigo-500/5 p-6 rounded-xl border border-indigo-500/20 text-center relative z-10 w-full">
+                <div className="w-12 h-12 mx-auto bg-indigo-500/10 rounded-full flex items-center justify-center text-indigo-500 mb-3">
+                  <Shield className="w-6 h-6" />
+                </div>
+                <h4 className="font-bold text-indigo-400">SynthID Verification</h4>
+                <p className="text-xs text-indigo-400/70 mt-1">Watermarking & Metadata</p>
+              </div>
+
+              {/* Arrow */}
+              <div className="hidden md:block w-8 h-0.5 bg-indigo-500/30 relative">
+                <div className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2 border-dashed border-4 border-transparent border-l-indigo-500/30"></div>
+              </div>
+
+              {/* Box 3 */}
+              <div className="flex-1 bg-[var(--background)] p-6 rounded-xl border border-[var(--border)] text-center relative z-10 w-full">
+                <div className="w-12 h-12 mx-auto bg-purple-500/10 rounded-full flex items-center justify-center text-purple-500 mb-3">
+                  <BarChart2 className="w-6 h-6" />
+                </div>
+                <h4 className="font-bold text-[var(--text-primary)]">Distribution & Analytics</h4>
+                <p className="text-xs text-[var(--text-secondary)] mt-1">Media CDN & BigQuery</p>
+              </div>
             </div>
-            <h3 className="text-xl font-bold text-[var(--text-primary)] mb-3">AI-Powered Detection</h3>
-            <p className="text-[var(--text-secondary)] leading-relaxed">
-              High-accuracy video fingerprinting and matching algorithms to identify modified or cropped content.
-            </p>
-          </div>
-          <div className="p-6 rounded-2xl bg-[var(--surface)] border border-[var(--border)] shadow-xl shadow-black/5 hover:-translate-y-1 transition-transform">
-            <div className="w-12 h-12 rounded-xl bg-purple-500/10 flex items-center justify-center text-purple-500 mb-6">
-              <Lock className="w-6 h-6" />
-            </div>
-            <h3 className="text-xl font-bold text-[var(--text-primary)] mb-3">Instant Take-Downs</h3>
-            <p className="text-[var(--text-secondary)] leading-relaxed">
-              Automate DMCA notices and enforcement actions directly from your secure dashboard.
-            </p>
           </div>
         </div>
       </main>

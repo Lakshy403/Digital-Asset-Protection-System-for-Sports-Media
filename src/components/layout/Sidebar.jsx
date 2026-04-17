@@ -51,21 +51,33 @@ export default function Sidebar() {
           })}
         </nav>
         <div className="p-3 mt-auto border-t border-[var(--border)]">
-          <Link
-            to="/dashboard/settings"
-            className={clsx(
-              'flex items-center px-4 py-2.5 text-sm font-medium rounded-lg transition-colors group',
-              location.pathname === '/dashboard/settings'
-                ? 'bg-indigo-500/10 text-indigo-400'
-                : 'text-[var(--text-secondary)] hover:bg-[var(--background)] hover:text-[var(--text-primary)]'
-            )}
-          >
-            <Settings className={clsx(
-              "mr-3 flex-shrink-0 h-5 w-5 transition-colors",
-              location.pathname === '/dashboard/settings' ? 'text-indigo-400' : 'text-[var(--text-secondary)] group-hover:text-[var(--text-primary)]'
-            )} />
-            Settings
-          </Link>
+          <div className="flex flex-col gap-2">
+            <Link
+              to="/dashboard/settings"
+              className={clsx(
+                'flex items-center px-4 py-2.5 text-sm font-medium rounded-lg transition-colors group',
+                location.pathname === '/dashboard/settings'
+                  ? 'bg-indigo-500/10 text-indigo-400'
+                  : 'text-[var(--text-secondary)] hover:bg-[var(--background)] hover:text-[var(--text-primary)]'
+              )}
+            >
+              <Settings className={clsx(
+                "mr-3 flex-shrink-0 h-5 w-5 transition-colors",
+                location.pathname === '/dashboard/settings' ? 'text-indigo-400' : 'text-[var(--text-secondary)] group-hover:text-[var(--text-primary)]'
+              )} />
+              Settings
+            </Link>
+            
+            <div className="mt-2 flex items-center gap-2 px-4 py-2 bg-green-500/5 border border-green-500/20 rounded-lg">
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+              </span>
+              <span className="text-[10px] font-medium text-green-400 uppercase tracking-wider">
+                Firebase App Check: Active
+              </span>
+            </div>
+          </div>
         </div>
       </div>
     </div>
