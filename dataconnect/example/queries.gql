@@ -1,0 +1,44 @@
+query ListAllVaults @auth(level: USER, insecureReason: "This operation is safe to expose to all logged in users.") {
+  vaults(where: { userId: { eq_expr: "auth.uid" } }) {
+    id
+    createdAt
+    lastAccessedAt
+  }
+}
+
+mutation CreateFolderInVault($vaultId: UUID!, $folderName: String!) @auth(level: USER) {
+  folder_insert(
+    data: {
+      vaultId: $vaultId,
+      name: $folderName,
+      createdAt_expr: "request.time"
+    }
+  ) {
+    id
+  }
+}
+
+query GetAssetsInFolder($folderId: UUID!) @auth(level: USER) {
+  assets(where: { folderId: { eq: $folderId } }) {
+    id
+    name
+    assetType
+    contentType
+    createdAt
+  }
+}
+
+mutation AddTrustedContact($contactEmail: String!, $vaultId: UUID!, $displayName: String) @auth(level: USER) {
+  trustedContact_insert(
+    data: {
+      user: { id_expr: "auth.uid" },
+      vaultId: $vaultId,
+      contactEmail: $contactEmail,
+      status: "PENDING",
+      createdAt_expr: "request.time",
+      displayName: $displayName
+    }
+  ) {
+    id
+  }
+}

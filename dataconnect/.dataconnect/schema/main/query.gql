@@ -1,0 +1,320 @@
+extend type Query {
+  """
+  ✨ Look up a single `Asset` based on `id`, `key` or `first` and return selected fields (or `null` if not found).
+  """
+  asset(
+    """
+    The unique ID of the object.
+    """
+    id: UUID
+
+    """
+    The key used to identify the object.
+    """
+    key: Asset_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: Asset_FirstRow
+  ): Asset @fdc_generated(from: "Asset", purpose: QUERY_SINGLE)
+  """
+  ✨ Look up a single `Folder` based on `id`, `key` or `first` and return selected fields (or `null` if not found).
+  """
+  folder(
+    """
+    The unique ID of the object.
+    """
+    id: UUID
+
+    """
+    The key used to identify the object.
+    """
+    key: Folder_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: Folder_FirstRow
+  ): Folder @fdc_generated(from: "Folder", purpose: QUERY_SINGLE)
+  """
+  ✨ Look up a single `SharedAccess` based on `id`, `key` or `first` and return selected fields (or `null` if not found).
+  """
+  sharedAccess(
+    """
+    The unique ID of the object.
+    """
+    id: UUID
+
+    """
+    The key used to identify the object.
+    """
+    key: SharedAccess_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: SharedAccess_FirstRow
+  ): SharedAccess @fdc_generated(from: "SharedAccess", purpose: QUERY_SINGLE)
+  """
+  ✨ Look up a single `TrustedContact` based on `id`, `key` or `first` and return selected fields (or `null` if not found).
+  """
+  trustedContact(
+    """
+    The unique ID of the object.
+    """
+    id: UUID
+
+    """
+    The key used to identify the object.
+    """
+    key: TrustedContact_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: TrustedContact_FirstRow
+  ): TrustedContact @fdc_generated(from: "TrustedContact", purpose: QUERY_SINGLE)
+  """
+  ✨ Look up a single `User` based on `id`, `key` or `first` and return selected fields (or `null` if not found).
+  """
+  user(
+    """
+    The unique ID of the object.
+    """
+    id: UUID
+
+    """
+    The key used to identify the object.
+    """
+    key: User_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: User_FirstRow
+  ): User @fdc_generated(from: "User", purpose: QUERY_SINGLE)
+  """
+  ✨ Look up a single `Vault` based on `id`, `key` or `first` and return selected fields (or `null` if not found).
+  """
+  vault(
+    """
+    The unique ID of the object.
+    """
+    id: UUID
+
+    """
+    The key used to identify the object.
+    """
+    key: Vault_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: Vault_FirstRow
+  ): Vault @fdc_generated(from: "Vault", purpose: QUERY_SINGLE)
+  """
+  ✨ List `Asset` objects in the table and return selected fields, optionally filtered by `where` conditions
+  """
+  assets(
+    """
+    Filter condition to narrow down the query results.
+    """
+    where: Asset_Filter
+
+    """
+    Order the query results by specific fields.
+    """
+    orderBy: [Asset_Order!]
+
+    """
+    Number of rows to skip before starting to return the results.
+    """
+    offset: Int
+
+    """
+    Maximum number of rows to return (defaults to 100 rows).
+    """
+    limit: Int = 100
+
+    """
+    Set to true to return distinct results.
+    """
+    distinct: Boolean = false
+
+    """
+    Filter condition to apply to the groups of aggregate queries.
+    """
+    having: Asset_Having
+  ): [Asset!]! @fdc_generated(from: "Asset", purpose: QUERY_MULTIPLE)
+  """
+  ✨ List `Folder` objects in the table and return selected fields, optionally filtered by `where` conditions
+  """
+  folders(
+    """
+    Filter condition to narrow down the query results.
+    """
+    where: Folder_Filter
+
+    """
+    Order the query results by specific fields.
+    """
+    orderBy: [Folder_Order!]
+
+    """
+    Number of rows to skip before starting to return the results.
+    """
+    offset: Int
+
+    """
+    Maximum number of rows to return (defaults to 100 rows).
+    """
+    limit: Int = 100
+
+    """
+    Set to true to return distinct results.
+    """
+    distinct: Boolean = false
+
+    """
+    Filter condition to apply to the groups of aggregate queries.
+    """
+    having: Folder_Having
+  ): [Folder!]! @fdc_generated(from: "Folder", purpose: QUERY_MULTIPLE)
+  """
+  ✨ List `SharedAccess` objects in the table and return selected fields, optionally filtered by `where` conditions
+  """
+  sharedAccesses(
+    """
+    Filter condition to narrow down the query results.
+    """
+    where: SharedAccess_Filter
+
+    """
+    Order the query results by specific fields.
+    """
+    orderBy: [SharedAccess_Order!]
+
+    """
+    Number of rows to skip before starting to return the results.
+    """
+    offset: Int
+
+    """
+    Maximum number of rows to return (defaults to 100 rows).
+    """
+    limit: Int = 100
+
+    """
+    Set to true to return distinct results.
+    """
+    distinct: Boolean = false
+
+    """
+    Filter condition to apply to the groups of aggregate queries.
+    """
+    having: SharedAccess_Having
+  ): [SharedAccess!]! @fdc_generated(from: "SharedAccess", purpose: QUERY_MULTIPLE)
+  """
+  ✨ List `TrustedContact` objects in the table and return selected fields, optionally filtered by `where` conditions
+  """
+  trustedContacts(
+    """
+    Filter condition to narrow down the query results.
+    """
+    where: TrustedContact_Filter
+
+    """
+    Order the query results by specific fields.
+    """
+    orderBy: [TrustedContact_Order!]
+
+    """
+    Number of rows to skip before starting to return the results.
+    """
+    offset: Int
+
+    """
+    Maximum number of rows to return (defaults to 100 rows).
+    """
+    limit: Int = 100
+
+    """
+    Set to true to return distinct results.
+    """
+    distinct: Boolean = false
+
+    """
+    Filter condition to apply to the groups of aggregate queries.
+    """
+    having: TrustedContact_Having
+  ): [TrustedContact!]! @fdc_generated(from: "TrustedContact", purpose: QUERY_MULTIPLE)
+  """
+  ✨ List `User` objects in the table and return selected fields, optionally filtered by `where` conditions
+  """
+  users(
+    """
+    Filter condition to narrow down the query results.
+    """
+    where: User_Filter
+
+    """
+    Order the query results by specific fields.
+    """
+    orderBy: [User_Order!]
+
+    """
+    Number of rows to skip before starting to return the results.
+    """
+    offset: Int
+
+    """
+    Maximum number of rows to return (defaults to 100 rows).
+    """
+    limit: Int = 100
+
+    """
+    Set to true to return distinct results.
+    """
+    distinct: Boolean = false
+
+    """
+    Filter condition to apply to the groups of aggregate queries.
+    """
+    having: User_Having
+  ): [User!]! @fdc_generated(from: "User", purpose: QUERY_MULTIPLE)
+  """
+  ✨ List `Vault` objects in the table and return selected fields, optionally filtered by `where` conditions
+  """
+  vaults(
+    """
+    Filter condition to narrow down the query results.
+    """
+    where: Vault_Filter
+
+    """
+    Order the query results by specific fields.
+    """
+    orderBy: [Vault_Order!]
+
+    """
+    Number of rows to skip before starting to return the results.
+    """
+    offset: Int
+
+    """
+    Maximum number of rows to return (defaults to 100 rows).
+    """
+    limit: Int = 100
+
+    """
+    Set to true to return distinct results.
+    """
+    distinct: Boolean = false
+
+    """
+    Filter condition to apply to the groups of aggregate queries.
+    """
+    having: Vault_Having
+  ): [Vault!]! @fdc_generated(from: "Vault", purpose: QUERY_MULTIPLE)
+}

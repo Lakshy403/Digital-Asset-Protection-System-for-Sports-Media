@@ -1,0 +1,674 @@
+extend type Mutation {
+  """
+  ✨ Insert a single `Asset` into the table and return its key. Columns not specified in `data` will receive defaults (e.g. `null`).
+  """
+  asset_insert(
+    """
+    Data object to insert into the table.
+    """
+    data: Asset_Data!
+  ): Asset_KeyOutput! @fdc_generated(from: "Asset", purpose: INSERT_SINGLE)
+  """
+  ✨ Insert a single `Folder` into the table and return its key. Columns not specified in `data` will receive defaults (e.g. `null`).
+  """
+  folder_insert(
+    """
+    Data object to insert into the table.
+    """
+    data: Folder_Data!
+  ): Folder_KeyOutput! @fdc_generated(from: "Folder", purpose: INSERT_SINGLE)
+  """
+  ✨ Insert a single `SharedAccess` into the table and return its key. Columns not specified in `data` will receive defaults (e.g. `null`).
+  """
+  sharedAccess_insert(
+    """
+    Data object to insert into the table.
+    """
+    data: SharedAccess_Data!
+  ): SharedAccess_KeyOutput! @fdc_generated(from: "SharedAccess", purpose: INSERT_SINGLE)
+  """
+  ✨ Insert a single `TrustedContact` into the table and return its key. Columns not specified in `data` will receive defaults (e.g. `null`).
+  """
+  trustedContact_insert(
+    """
+    Data object to insert into the table.
+    """
+    data: TrustedContact_Data!
+  ): TrustedContact_KeyOutput! @fdc_generated(from: "TrustedContact", purpose: INSERT_SINGLE)
+  """
+  ✨ Insert a single `User` into the table and return its key. Columns not specified in `data` will receive defaults (e.g. `null`).
+  """
+  user_insert(
+    """
+    Data object to insert into the table.
+    """
+    data: User_Data!
+  ): User_KeyOutput! @fdc_generated(from: "User", purpose: INSERT_SINGLE)
+  """
+  ✨ Insert a single `Vault` into the table and return its key. Columns not specified in `data` will receive defaults (e.g. `null`).
+  """
+  vault_insert(
+    """
+    Data object to insert into the table.
+    """
+    data: Vault_Data!
+  ): Vault_KeyOutput! @fdc_generated(from: "Vault", purpose: INSERT_SINGLE)
+  """
+  ✨ Insert `Asset` objects into the table and return their keys. Columns not specified in `data` will receive defaults (e.g. `null`).
+  """
+  asset_insertMany(
+    """
+    List of data objects to insert into the table.
+    """
+    data: [Asset_Data!]!
+  ): [Asset_KeyOutput!]! @fdc_generated(from: "Asset", purpose: INSERT_MULTIPLE)
+  """
+  ✨ Insert `Folder` objects into the table and return their keys. Columns not specified in `data` will receive defaults (e.g. `null`).
+  """
+  folder_insertMany(
+    """
+    List of data objects to insert into the table.
+    """
+    data: [Folder_Data!]!
+  ): [Folder_KeyOutput!]! @fdc_generated(from: "Folder", purpose: INSERT_MULTIPLE)
+  """
+  ✨ Insert `SharedAccess` objects into the table and return their keys. Columns not specified in `data` will receive defaults (e.g. `null`).
+  """
+  sharedAccess_insertMany(
+    """
+    List of data objects to insert into the table.
+    """
+    data: [SharedAccess_Data!]!
+  ): [SharedAccess_KeyOutput!]! @fdc_generated(from: "SharedAccess", purpose: INSERT_MULTIPLE)
+  """
+  ✨ Insert `TrustedContact` objects into the table and return their keys. Columns not specified in `data` will receive defaults (e.g. `null`).
+  """
+  trustedContact_insertMany(
+    """
+    List of data objects to insert into the table.
+    """
+    data: [TrustedContact_Data!]!
+  ): [TrustedContact_KeyOutput!]! @fdc_generated(from: "TrustedContact", purpose: INSERT_MULTIPLE)
+  """
+  ✨ Insert `User` objects into the table and return their keys. Columns not specified in `data` will receive defaults (e.g. `null`).
+  """
+  user_insertMany(
+    """
+    List of data objects to insert into the table.
+    """
+    data: [User_Data!]!
+  ): [User_KeyOutput!]! @fdc_generated(from: "User", purpose: INSERT_MULTIPLE)
+  """
+  ✨ Insert `Vault` objects into the table and return their keys. Columns not specified in `data` will receive defaults (e.g. `null`).
+  """
+  vault_insertMany(
+    """
+    List of data objects to insert into the table.
+    """
+    data: [Vault_Data!]!
+  ): [Vault_KeyOutput!]! @fdc_generated(from: "Vault", purpose: INSERT_MULTIPLE)
+  """
+  ✨ Insert or update a single `Asset` into the table, based on the primary key. Returns the key of the newly inserted or existing updated `Asset`.
+  """
+  asset_upsert(
+    """
+    Data object to insert or update if it already exists.
+    """
+    data: Asset_Data!
+  ): Asset_KeyOutput! @fdc_generated(from: "Asset", purpose: UPSERT_SINGLE)
+  """
+  ✨ Insert or update a single `Folder` into the table, based on the primary key. Returns the key of the newly inserted or existing updated `Folder`.
+  """
+  folder_upsert(
+    """
+    Data object to insert or update if it already exists.
+    """
+    data: Folder_Data!
+  ): Folder_KeyOutput! @fdc_generated(from: "Folder", purpose: UPSERT_SINGLE)
+  """
+  ✨ Insert or update a single `SharedAccess` into the table, based on the primary key. Returns the key of the newly inserted or existing updated `SharedAccess`.
+  """
+  sharedAccess_upsert(
+    """
+    Data object to insert or update if it already exists.
+    """
+    data: SharedAccess_Data!
+  ): SharedAccess_KeyOutput! @fdc_generated(from: "SharedAccess", purpose: UPSERT_SINGLE)
+  """
+  ✨ Insert or update a single `TrustedContact` into the table, based on the primary key. Returns the key of the newly inserted or existing updated `TrustedContact`.
+  """
+  trustedContact_upsert(
+    """
+    Data object to insert or update if it already exists.
+    """
+    data: TrustedContact_Data!
+  ): TrustedContact_KeyOutput! @fdc_generated(from: "TrustedContact", purpose: UPSERT_SINGLE)
+  """
+  ✨ Insert or update a single `User` into the table, based on the primary key. Returns the key of the newly inserted or existing updated `User`.
+  """
+  user_upsert(
+    """
+    Data object to insert or update if it already exists.
+    """
+    data: User_Data!
+  ): User_KeyOutput! @fdc_generated(from: "User", purpose: UPSERT_SINGLE)
+  """
+  ✨ Insert or update a single `Vault` into the table, based on the primary key. Returns the key of the newly inserted or existing updated `Vault`.
+  """
+  vault_upsert(
+    """
+    Data object to insert or update if it already exists.
+    """
+    data: Vault_Data!
+  ): Vault_KeyOutput! @fdc_generated(from: "Vault", purpose: UPSERT_SINGLE)
+  """
+  ✨ Insert or update `Asset` objects into the table, based on the primary key. Returns the key of the newly inserted or existing updated `Asset`.
+  """
+  asset_upsertMany(
+    """
+    List of data objects to insert or update if it already exists.
+    """
+    data: [Asset_Data!]!
+  ): [Asset_KeyOutput!]! @fdc_generated(from: "Asset", purpose: UPSERT_MULTIPLE)
+  """
+  ✨ Insert or update `Folder` objects into the table, based on the primary key. Returns the key of the newly inserted or existing updated `Folder`.
+  """
+  folder_upsertMany(
+    """
+    List of data objects to insert or update if it already exists.
+    """
+    data: [Folder_Data!]!
+  ): [Folder_KeyOutput!]! @fdc_generated(from: "Folder", purpose: UPSERT_MULTIPLE)
+  """
+  ✨ Insert or update `SharedAccess` objects into the table, based on the primary key. Returns the key of the newly inserted or existing updated `SharedAccess`.
+  """
+  sharedAccess_upsertMany(
+    """
+    List of data objects to insert or update if it already exists.
+    """
+    data: [SharedAccess_Data!]!
+  ): [SharedAccess_KeyOutput!]! @fdc_generated(from: "SharedAccess", purpose: UPSERT_MULTIPLE)
+  """
+  ✨ Insert or update `TrustedContact` objects into the table, based on the primary key. Returns the key of the newly inserted or existing updated `TrustedContact`.
+  """
+  trustedContact_upsertMany(
+    """
+    List of data objects to insert or update if it already exists.
+    """
+    data: [TrustedContact_Data!]!
+  ): [TrustedContact_KeyOutput!]! @fdc_generated(from: "TrustedContact", purpose: UPSERT_MULTIPLE)
+  """
+  ✨ Insert or update `User` objects into the table, based on the primary key. Returns the key of the newly inserted or existing updated `User`.
+  """
+  user_upsertMany(
+    """
+    List of data objects to insert or update if it already exists.
+    """
+    data: [User_Data!]!
+  ): [User_KeyOutput!]! @fdc_generated(from: "User", purpose: UPSERT_MULTIPLE)
+  """
+  ✨ Insert or update `Vault` objects into the table, based on the primary key. Returns the key of the newly inserted or existing updated `Vault`.
+  """
+  vault_upsertMany(
+    """
+    List of data objects to insert or update if it already exists.
+    """
+    data: [Vault_Data!]!
+  ): [Vault_KeyOutput!]! @fdc_generated(from: "Vault", purpose: UPSERT_MULTIPLE)
+  """
+  ✨ Update a single `Asset` based on `id`, `key` or `first`, setting columns specified in `data`. Returns the key of the updated `Asset` or `null` if not found.
+  """
+  asset_update(
+    """
+    The unique ID of the object.
+    """
+    id: UUID
+
+    """
+    The key used to identify the object.
+    """
+    key: Asset_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: Asset_FirstRow
+
+    """
+    Data object containing fields to be updated.
+    """
+    data: Asset_Data!
+  ): Asset_KeyOutput @fdc_generated(from: "Asset", purpose: UPDATE_SINGLE)
+  """
+  ✨ Update a single `Folder` based on `id`, `key` or `first`, setting columns specified in `data`. Returns the key of the updated `Folder` or `null` if not found.
+  """
+  folder_update(
+    """
+    The unique ID of the object.
+    """
+    id: UUID
+
+    """
+    The key used to identify the object.
+    """
+    key: Folder_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: Folder_FirstRow
+
+    """
+    Data object containing fields to be updated.
+    """
+    data: Folder_Data!
+  ): Folder_KeyOutput @fdc_generated(from: "Folder", purpose: UPDATE_SINGLE)
+  """
+  ✨ Update a single `SharedAccess` based on `id`, `key` or `first`, setting columns specified in `data`. Returns the key of the updated `SharedAccess` or `null` if not found.
+  """
+  sharedAccess_update(
+    """
+    The unique ID of the object.
+    """
+    id: UUID
+
+    """
+    The key used to identify the object.
+    """
+    key: SharedAccess_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: SharedAccess_FirstRow
+
+    """
+    Data object containing fields to be updated.
+    """
+    data: SharedAccess_Data!
+  ): SharedAccess_KeyOutput @fdc_generated(from: "SharedAccess", purpose: UPDATE_SINGLE)
+  """
+  ✨ Update a single `TrustedContact` based on `id`, `key` or `first`, setting columns specified in `data`. Returns the key of the updated `TrustedContact` or `null` if not found.
+  """
+  trustedContact_update(
+    """
+    The unique ID of the object.
+    """
+    id: UUID
+
+    """
+    The key used to identify the object.
+    """
+    key: TrustedContact_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: TrustedContact_FirstRow
+
+    """
+    Data object containing fields to be updated.
+    """
+    data: TrustedContact_Data!
+  ): TrustedContact_KeyOutput @fdc_generated(from: "TrustedContact", purpose: UPDATE_SINGLE)
+  """
+  ✨ Update a single `User` based on `id`, `key` or `first`, setting columns specified in `data`. Returns the key of the updated `User` or `null` if not found.
+  """
+  user_update(
+    """
+    The unique ID of the object.
+    """
+    id: UUID
+
+    """
+    The key used to identify the object.
+    """
+    key: User_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: User_FirstRow
+
+    """
+    Data object containing fields to be updated.
+    """
+    data: User_Data!
+  ): User_KeyOutput @fdc_generated(from: "User", purpose: UPDATE_SINGLE)
+  """
+  ✨ Update a single `Vault` based on `id`, `key` or `first`, setting columns specified in `data`. Returns the key of the updated `Vault` or `null` if not found.
+  """
+  vault_update(
+    """
+    The unique ID of the object.
+    """
+    id: UUID
+
+    """
+    The key used to identify the object.
+    """
+    key: Vault_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: Vault_FirstRow
+
+    """
+    Data object containing fields to be updated.
+    """
+    data: Vault_Data!
+  ): Vault_KeyOutput @fdc_generated(from: "Vault", purpose: UPDATE_SINGLE)
+  """
+  ✨ Update `Asset` objects matching `where` conditions (or `all`, if true) according to `data`. Returns the number of rows updated.
+  """
+  asset_updateMany(
+    """
+    Filter condition to specify which rows to update.
+    """
+    where: Asset_Filter
+
+    """
+    Set to true to update all rows.
+    """
+    all: Boolean = false
+
+    """
+    Data object containing fields to update.
+    """
+    data: Asset_Data!
+  ): Int! @fdc_generated(from: "Asset", purpose: UPDATE_MULTIPLE)
+  """
+  ✨ Update `Folder` objects matching `where` conditions (or `all`, if true) according to `data`. Returns the number of rows updated.
+  """
+  folder_updateMany(
+    """
+    Filter condition to specify which rows to update.
+    """
+    where: Folder_Filter
+
+    """
+    Set to true to update all rows.
+    """
+    all: Boolean = false
+
+    """
+    Data object containing fields to update.
+    """
+    data: Folder_Data!
+  ): Int! @fdc_generated(from: "Folder", purpose: UPDATE_MULTIPLE)
+  """
+  ✨ Update `SharedAccess` objects matching `where` conditions (or `all`, if true) according to `data`. Returns the number of rows updated.
+  """
+  sharedAccess_updateMany(
+    """
+    Filter condition to specify which rows to update.
+    """
+    where: SharedAccess_Filter
+
+    """
+    Set to true to update all rows.
+    """
+    all: Boolean = false
+
+    """
+    Data object containing fields to update.
+    """
+    data: SharedAccess_Data!
+  ): Int! @fdc_generated(from: "SharedAccess", purpose: UPDATE_MULTIPLE)
+  """
+  ✨ Update `TrustedContact` objects matching `where` conditions (or `all`, if true) according to `data`. Returns the number of rows updated.
+  """
+  trustedContact_updateMany(
+    """
+    Filter condition to specify which rows to update.
+    """
+    where: TrustedContact_Filter
+
+    """
+    Set to true to update all rows.
+    """
+    all: Boolean = false
+
+    """
+    Data object containing fields to update.
+    """
+    data: TrustedContact_Data!
+  ): Int! @fdc_generated(from: "TrustedContact", purpose: UPDATE_MULTIPLE)
+  """
+  ✨ Update `User` objects matching `where` conditions (or `all`, if true) according to `data`. Returns the number of rows updated.
+  """
+  user_updateMany(
+    """
+    Filter condition to specify which rows to update.
+    """
+    where: User_Filter
+
+    """
+    Set to true to update all rows.
+    """
+    all: Boolean = false
+
+    """
+    Data object containing fields to update.
+    """
+    data: User_Data!
+  ): Int! @fdc_generated(from: "User", purpose: UPDATE_MULTIPLE)
+  """
+  ✨ Update `Vault` objects matching `where` conditions (or `all`, if true) according to `data`. Returns the number of rows updated.
+  """
+  vault_updateMany(
+    """
+    Filter condition to specify which rows to update.
+    """
+    where: Vault_Filter
+
+    """
+    Set to true to update all rows.
+    """
+    all: Boolean = false
+
+    """
+    Data object containing fields to update.
+    """
+    data: Vault_Data!
+  ): Int! @fdc_generated(from: "Vault", purpose: UPDATE_MULTIPLE)
+  """
+  ✨ Delete a single `Asset` based on `id`, `key` or `first` and return its key (or `null` if not found).
+  """
+  asset_delete(
+    """
+    The unique ID of the object.
+    """
+    id: UUID
+
+    """
+    The key used to identify the object.
+    """
+    key: Asset_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: Asset_FirstRow
+  ): Asset_KeyOutput @fdc_generated(from: "Asset", purpose: DELETE_SINGLE)
+  """
+  ✨ Delete a single `Folder` based on `id`, `key` or `first` and return its key (or `null` if not found).
+  """
+  folder_delete(
+    """
+    The unique ID of the object.
+    """
+    id: UUID
+
+    """
+    The key used to identify the object.
+    """
+    key: Folder_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: Folder_FirstRow
+  ): Folder_KeyOutput @fdc_generated(from: "Folder", purpose: DELETE_SINGLE)
+  """
+  ✨ Delete a single `SharedAccess` based on `id`, `key` or `first` and return its key (or `null` if not found).
+  """
+  sharedAccess_delete(
+    """
+    The unique ID of the object.
+    """
+    id: UUID
+
+    """
+    The key used to identify the object.
+    """
+    key: SharedAccess_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: SharedAccess_FirstRow
+  ): SharedAccess_KeyOutput @fdc_generated(from: "SharedAccess", purpose: DELETE_SINGLE)
+  """
+  ✨ Delete a single `TrustedContact` based on `id`, `key` or `first` and return its key (or `null` if not found).
+  """
+  trustedContact_delete(
+    """
+    The unique ID of the object.
+    """
+    id: UUID
+
+    """
+    The key used to identify the object.
+    """
+    key: TrustedContact_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: TrustedContact_FirstRow
+  ): TrustedContact_KeyOutput @fdc_generated(from: "TrustedContact", purpose: DELETE_SINGLE)
+  """
+  ✨ Delete a single `User` based on `id`, `key` or `first` and return its key (or `null` if not found).
+  """
+  user_delete(
+    """
+    The unique ID of the object.
+    """
+    id: UUID
+
+    """
+    The key used to identify the object.
+    """
+    key: User_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: User_FirstRow
+  ): User_KeyOutput @fdc_generated(from: "User", purpose: DELETE_SINGLE)
+  """
+  ✨ Delete a single `Vault` based on `id`, `key` or `first` and return its key (or `null` if not found).
+  """
+  vault_delete(
+    """
+    The unique ID of the object.
+    """
+    id: UUID
+
+    """
+    The key used to identify the object.
+    """
+    key: Vault_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: Vault_FirstRow
+  ): Vault_KeyOutput @fdc_generated(from: "Vault", purpose: DELETE_SINGLE)
+  """
+  ✨ Delete `Asset` objects matching `where` conditions (or `all`, if true). Returns the number of rows deleted.
+  """
+  asset_deleteMany(
+    """
+    Filter condition to specify which rows to delete.
+    """
+    where: Asset_Filter
+
+    """
+    Set to true to delete all rows.
+    """
+    all: Boolean = false
+  ): Int! @fdc_generated(from: "Asset", purpose: DELETE_MULTIPLE)
+  """
+  ✨ Delete `Folder` objects matching `where` conditions (or `all`, if true). Returns the number of rows deleted.
+  """
+  folder_deleteMany(
+    """
+    Filter condition to specify which rows to delete.
+    """
+    where: Folder_Filter
+
+    """
+    Set to true to delete all rows.
+    """
+    all: Boolean = false
+  ): Int! @fdc_generated(from: "Folder", purpose: DELETE_MULTIPLE)
+  """
+  ✨ Delete `SharedAccess` objects matching `where` conditions (or `all`, if true). Returns the number of rows deleted.
+  """
+  sharedAccess_deleteMany(
+    """
+    Filter condition to specify which rows to delete.
+    """
+    where: SharedAccess_Filter
+
+    """
+    Set to true to delete all rows.
+    """
+    all: Boolean = false
+  ): Int! @fdc_generated(from: "SharedAccess", purpose: DELETE_MULTIPLE)
+  """
+  ✨ Delete `TrustedContact` objects matching `where` conditions (or `all`, if true). Returns the number of rows deleted.
+  """
+  trustedContact_deleteMany(
+    """
+    Filter condition to specify which rows to delete.
+    """
+    where: TrustedContact_Filter
+
+    """
+    Set to true to delete all rows.
+    """
+    all: Boolean = false
+  ): Int! @fdc_generated(from: "TrustedContact", purpose: DELETE_MULTIPLE)
+  """
+  ✨ Delete `User` objects matching `where` conditions (or `all`, if true). Returns the number of rows deleted.
+  """
+  user_deleteMany(
+    """
+    Filter condition to specify which rows to delete.
+    """
+    where: User_Filter
+
+    """
+    Set to true to delete all rows.
+    """
+    all: Boolean = false
+  ): Int! @fdc_generated(from: "User", purpose: DELETE_MULTIPLE)
+  """
+  ✨ Delete `Vault` objects matching `where` conditions (or `all`, if true). Returns the number of rows deleted.
+  """
+  vault_deleteMany(
+    """
+    Filter condition to specify which rows to delete.
+    """
+    where: Vault_Filter
+
+    """
+    Set to true to delete all rows.
+    """
+    all: Boolean = false
+  ): Int! @fdc_generated(from: "Vault", purpose: DELETE_MULTIPLE)
+}

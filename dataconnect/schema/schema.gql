@@ -1,0 +1,53 @@
+type User @table {
+  email: String!
+  hashedPassword: String!
+  createdAt: Timestamp!
+  displayName: String
+  recoveryEmail: String
+  phoneNumber: String
+}
+
+type Vault @table {
+  user: User!
+  encryptionKeySalt: String!
+  createdAt: Timestamp!
+  lastAccessedAt: Timestamp
+}
+
+type Asset @table {
+  vault: Vault!
+  assetType: String!
+  encryptedContent: String!
+  createdAt: Timestamp!
+  updatedAt: Timestamp!
+  name: String
+  description: String
+  contentType: String
+  folder: Folder
+}
+
+type Folder @table {
+  vault: Vault!
+  name: String!
+  createdAt: Timestamp!
+  parentFolder: Folder
+}
+
+type TrustedContact @table {
+  user: User!
+  vault: Vault!
+  contactEmail: String!
+  status: String!
+  createdAt: Timestamp!
+  displayName: String
+  sharedUntil: Timestamp
+}
+
+type SharedAccess @table {
+  trustedContact: TrustedContact!
+  entityType: String!
+  entityId: UUID!
+  permissionLevel: String!
+  grantedAt: Timestamp
+  expiresAt: Timestamp
+}

@@ -1,0 +1,68 @@
+extend type Asset {
+  """
+  ✨ Implicit primary key field. It's a UUID column default to a generated new value. See `@table` for how to customize it.
+  """
+  id: UUID! @default(expr: "uuidV4()") @fdc_generated(from: "Asset", purpose: IMPLICIT_KEY_FIELD)
+  """
+  ✨ Implicit foreign key field based on `Asset`.`folder`. It must match the value of `Folder`.`id`. See `@ref` for how to customize it.
+  """
+  folderId: UUID @fdc_generated(from: "Asset.folder", purpose: IMPLICIT_REF_FIELD)
+  """
+  ✨ Implicit foreign key field based on `Asset`.`vault`. It must match the value of `Vault`.`id`. See `@ref` for how to customize it.
+  """
+  vaultId: UUID! @fdc_generated(from: "Asset.vault", purpose: IMPLICIT_REF_FIELD)
+}
+extend type Folder {
+  """
+  ✨ Implicit primary key field. It's a UUID column default to a generated new value. See `@table` for how to customize it.
+  """
+  id: UUID! @default(expr: "uuidV4()") @fdc_generated(from: "Folder", purpose: IMPLICIT_KEY_FIELD)
+  """
+  ✨ Implicit foreign key field based on `Folder`.`parentFolder`. It must match the value of `Folder`.`id`. See `@ref` for how to customize it.
+  """
+  parentFolderId: UUID @fdc_generated(from: "Folder.parentFolder", purpose: IMPLICIT_REF_FIELD)
+  """
+  ✨ Implicit foreign key field based on `Folder`.`vault`. It must match the value of `Vault`.`id`. See `@ref` for how to customize it.
+  """
+  vaultId: UUID! @fdc_generated(from: "Folder.vault", purpose: IMPLICIT_REF_FIELD)
+}
+extend type SharedAccess {
+  """
+  ✨ Implicit primary key field. It's a UUID column default to a generated new value. See `@table` for how to customize it.
+  """
+  id: UUID! @default(expr: "uuidV4()") @fdc_generated(from: "SharedAccess", purpose: IMPLICIT_KEY_FIELD)
+  """
+  ✨ Implicit foreign key field based on `SharedAccess`.`trustedContact`. It must match the value of `TrustedContact`.`id`. See `@ref` for how to customize it.
+  """
+  trustedContactId: UUID! @fdc_generated(from: "SharedAccess.trustedContact", purpose: IMPLICIT_REF_FIELD)
+}
+extend type TrustedContact {
+  """
+  ✨ Implicit primary key field. It's a UUID column default to a generated new value. See `@table` for how to customize it.
+  """
+  id: UUID! @default(expr: "uuidV4()") @fdc_generated(from: "TrustedContact", purpose: IMPLICIT_KEY_FIELD)
+  """
+  ✨ Implicit foreign key field based on `TrustedContact`.`user`. It must match the value of `User`.`id`. See `@ref` for how to customize it.
+  """
+  userId: UUID! @fdc_generated(from: "TrustedContact.user", purpose: IMPLICIT_REF_FIELD)
+  """
+  ✨ Implicit foreign key field based on `TrustedContact`.`vault`. It must match the value of `Vault`.`id`. See `@ref` for how to customize it.
+  """
+  vaultId: UUID! @fdc_generated(from: "TrustedContact.vault", purpose: IMPLICIT_REF_FIELD)
+}
+extend type User {
+  """
+  ✨ Implicit primary key field. It's a UUID column default to a generated new value. See `@table` for how to customize it.
+  """
+  id: UUID! @default(expr: "uuidV4()") @fdc_generated(from: "User", purpose: IMPLICIT_KEY_FIELD)
+}
+extend type Vault {
+  """
+  ✨ Implicit primary key field. It's a UUID column default to a generated new value. See `@table` for how to customize it.
+  """
+  id: UUID! @default(expr: "uuidV4()") @fdc_generated(from: "Vault", purpose: IMPLICIT_KEY_FIELD)
+  """
+  ✨ Implicit foreign key field based on `Vault`.`user`. It must match the value of `User`.`id`. See `@ref` for how to customize it.
+  """
+  userId: UUID! @fdc_generated(from: "Vault.user", purpose: IMPLICIT_REF_FIELD)
+}

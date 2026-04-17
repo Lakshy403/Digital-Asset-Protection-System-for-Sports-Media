@@ -4,15 +4,9 @@ export default function Navbar() {
   return (
     <header className="sticky top-0 z-10 flex items-center justify-between px-6 py-4 bg-[var(--surface)] border-b border-[var(--border)] shrink-0">
       <div className="flex items-center flex-1">
-        <div className="relative w-full max-w-md hidden sm:block">
-          <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-            <Search className="w-5 h-5 text-[var(--text-secondary)]" />
-          </div>
-          <input
-            type="text"
-            className="block w-full py-2 pl-10 pr-3 border border-[var(--border)] rounded-lg bg-[var(--background)] text-[var(--text-primary)] placeholder-[var(--text-secondary)] focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-colors sm:text-sm"
-            placeholder="Search media, alerts, or analytics..."
-          />
+        <div className="hidden sm:flex items-center gap-2 text-indigo-400 bg-indigo-500/10 px-3 py-1.5 rounded-full border border-indigo-500/20">
+          <span className="w-2 h-2 rounded-full bg-indigo-500 animate-pulse"></span>
+          <span className="text-xs font-semibold uppercase tracking-wider">Vertex AI Cloud Active</span>
         </div>
       </div>
       <div className="flex items-center gap-4 ml-4">

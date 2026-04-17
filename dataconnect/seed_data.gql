@@ -1,0 +1,53 @@
+mutation CreateDemoData @transaction @auth(level: PUBLIC, insecureReason: "Populating the database with seed data is safe to expose to the public.") {
+  user1: user_insert(data: {
+    email: "user1@example.com",
+    hashedPassword: "hashedpassword1",
+    createdAt: "2023-01-01T00:00:00Z",
+    displayName: "Demo User 1"
+  })
+  user2: user_insert(data: {
+    email: "user2@example.com",
+    hashedPassword: "hashedpassword2",
+    createdAt: "2023-01-01T00:00:00Z",
+    displayName: "Demo User 2"
+  })
+  vault1: vault_insert(data: {
+    userId: "550e8400-e29b-41d4-a716-446655440000", # This should be the ID of user1 from the previous insert
+    encryptionKeySalt: "salt1",
+    createdAt: "2023-01-01T00:00:00Z"
+  })
+  vault2: vault_insert(data: {
+    userId: "550e8400-e29b-41d4-a716-446655440001", # This should be the ID of user2 from the previous insert
+    encryptionKeySalt: "salt2",
+    createdAt: "2023-01-01T00:00:00Z"
+  })
+  folder1: folder_insert(data: {
+    vaultId: "550e8400-e29b-41d4-a716-446655440002", # This should be the ID of vault1
+    name: "Documents",
+    createdAt: "2023-01-01T00:00:00Z"
+  })
+  asset1: asset_insert(data: {
+    vaultId: "550e8400-e29b-41d4-a716-446655440002", # This should be the ID of vault1
+    folderId: "550e8400-e29b-41d4-a716-446655440004", # This should be the ID of folder1
+    assetType: "document",
+    encryptedContent: "encrypteddoc1",
+    createdAt: "2023-01-01T00:00:00Z",
+    updatedAt: "2023-01-01T00:00:00Z",
+    name: "Important Document"
+  })
+  trustedContact1: trustedContact_insert(data: {
+    userId: "550e8400-e29b-41d4-a716-446655440000", # This should be the ID of user1
+    vaultId: "550e8400-e29b-41d4-a716-446655440002", # This should be the ID of vault1
+    contactEmail: "trusted@example.com",
+    status: "active",
+    createdAt: "2023-01-01T00:00:00Z",
+    displayName: "Trusted Friend"
+  })
+  sharedAccess1: sharedAccess_insert(data: {
+    trustedContactId: "550e8400-e29b-41d4-a716-446655440006", # This should be the ID of trustedContact1
+    entityType: "asset",
+    entityId: "550e8400-e29b-41d4-a716-446655440005", # This should be the ID of asset1
+    permissionLevel: "read",
+    grantedAt: "2023-01-01T00:00:00Z"
+  })
+}
