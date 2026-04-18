@@ -1,12 +1,43 @@
+import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Shield, Mail, Lock, User } from 'lucide-react';
+import { useAuth } from '../context/AuthContext';
 
 export default function Register() {
   const navigate = useNavigate();
+  const { signup, normalizeAuthError } = useAuth();
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const [rememberMe, setRememberMe] = useState(true);
+  const [error, setError] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleRegister = (e) => {
-    e.preventDefault();
-    navigate('/dashboard');
+  const handleRegister = async (event) => {
+    event.preventDefault();
+    setError('');
+
+    if (password !== confirmPassword) {
+      setError('Password confirmation does not match.');
+      return;
+    }
+
+    setIsSubmitting(true);
+
+    try {
+      await signup({
+        name,
+        email: email.trim(),
+        password,
+        rememberMe,
+      });
+      navigate('/dashboard', { replace: true });
+    } catch (registerError) {
+      setError(normalizeAuthError(registerError));
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -30,6 +61,8 @@ export default function Register() {
               </div>
               <input
                 type="text"
+                value={name}
+                onChange={(event) => setName(event.target.value)}
                 required
                 className="block w-full pl-10 pr-3 py-2.5 border border-[var(--border)] rounded-lg bg-[var(--background)] text-[var(--text-primary)] focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-sm transition-colors"
                 placeholder="John Doe"
@@ -44,6 +77,8 @@ export default function Register() {
               </div>
               <input
                 type="email"
+                value={email}
+                onChange={(event) => setEmail(event.target.value)}
                 required
                 className="block w-full pl-10 pr-3 py-2.5 border border-[var(--border)] rounded-lg bg-[var(--background)] text-[var(--text-primary)] focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-sm transition-colors"
                 placeholder="you@company.com"
@@ -58,15 +93,54 @@ export default function Register() {
               </div>
               <input
                 type="password"
+                value={password}
+                onChange={(event) => setPassword(event.target.value)}
                 required
+                minLength={6}
                 className="block w-full pl-10 pr-3 py-2.5 border border-[var(--border)] rounded-lg bg-[var(--background)] text-[var(--text-primary)] focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-sm transition-colors"
-                placeholder="••••••••"
+                placeholder="Create a password"
               />
             </div>
           </div>
-          
-          <button type="submit" className="w-full flex justify-center py-2.5 px-4 border border-transparent rounded-lg shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 focus:ring-offset-[var(--surface)]">
-            Create Account
+          <div>
+            <label className="block text-sm font-medium text-[var(--text-secondary)] mb-1">Confirm Password</label>
+            <div className="relative">
+              <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                <Lock className="h-5 w-5 text-[var(--text-secondary)]" />
+              </div>
+              <input
+                type="password"
+                value={confirmPassword}
+                onChange={(event) => setConfirmPassword(event.target.value)}
+                required
+                minLength={6}
+                className="block w-full pl-10 pr-3 py-2.5 border border-[var(--border)] rounded-lg bg-[var(--background)] text-[var(--text-primary)] focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-sm transition-colors"
+                placeholder="Repeat your password"
+              />
+            </div>
+          </div>
+          <div className="flex items-center">
+            <input
+              type="checkbox"
+              checked={rememberMe}
+              onChange={(event) => setRememberMe(event.target.checked)}
+              className="h-4 w-4 bg-[var(--background)] border-[var(--border)] rounded text-indigo-600 focus:ring-indigo-500"
+            />
+            <label className="ml-2 block text-sm text-[var(--text-secondary)]">Remember me on this device</label>
+          </div>
+
+          {error ? (
+            <div className="rounded-lg border border-red-500/30 bg-red-500/10 px-4 py-3 text-sm text-red-300">
+              {error}
+            </div>
+          ) : null}
+
+          <button
+            type="submit"
+            disabled={isSubmitting}
+            className="w-full flex justify-center py-2.5 px-4 border border-transparent rounded-lg shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 disabled:opacity-60 disabled:cursor-not-allowed transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 focus:ring-offset-[var(--surface)]"
+          >
+            {isSubmitting ? 'Creating account...' : 'Create Account'}
           </button>
         </form>
 

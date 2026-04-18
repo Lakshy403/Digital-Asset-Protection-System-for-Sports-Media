@@ -1,40 +1,40 @@
 extend type Mutation {
   """
-  ✨ Insert a single `Asset` into the table and return its key. Columns not specified in `data` will receive defaults (e.g. `null`).
+  ✨ Insert a single `AccountInstruction` into the table and return its key. Columns not specified in `data` will receive defaults (e.g. `null`).
   """
-  asset_insert(
+  accountInstruction_insert(
     """
     Data object to insert into the table.
     """
-    data: Asset_Data!
-  ): Asset_KeyOutput! @fdc_generated(from: "Asset", purpose: INSERT_SINGLE)
+    data: AccountInstruction_Data!
+  ): AccountInstruction_KeyOutput! @fdc_generated(from: "AccountInstruction", purpose: INSERT_SINGLE)
   """
-  ✨ Insert a single `Folder` into the table and return its key. Columns not specified in `data` will receive defaults (e.g. `null`).
+  ✨ Insert a single `Beneficiary` into the table and return its key. Columns not specified in `data` will receive defaults (e.g. `null`).
   """
-  folder_insert(
+  beneficiary_insert(
     """
     Data object to insert into the table.
     """
-    data: Folder_Data!
-  ): Folder_KeyOutput! @fdc_generated(from: "Folder", purpose: INSERT_SINGLE)
+    data: Beneficiary_Data!
+  ): Beneficiary_KeyOutput! @fdc_generated(from: "Beneficiary", purpose: INSERT_SINGLE)
   """
-  ✨ Insert a single `SharedAccess` into the table and return its key. Columns not specified in `data` will receive defaults (e.g. `null`).
+  ✨ Insert a single `DigitalAccount` into the table and return its key. Columns not specified in `data` will receive defaults (e.g. `null`).
   """
-  sharedAccess_insert(
+  digitalAccount_insert(
     """
     Data object to insert into the table.
     """
-    data: SharedAccess_Data!
-  ): SharedAccess_KeyOutput! @fdc_generated(from: "SharedAccess", purpose: INSERT_SINGLE)
+    data: DigitalAccount_Data!
+  ): DigitalAccount_KeyOutput! @fdc_generated(from: "DigitalAccount", purpose: INSERT_SINGLE)
   """
-  ✨ Insert a single `TrustedContact` into the table and return its key. Columns not specified in `data` will receive defaults (e.g. `null`).
+  ✨ Insert a single `TrustedAgent` into the table and return its key. Columns not specified in `data` will receive defaults (e.g. `null`).
   """
-  trustedContact_insert(
+  trustedAgent_insert(
     """
     Data object to insert into the table.
     """
-    data: TrustedContact_Data!
-  ): TrustedContact_KeyOutput! @fdc_generated(from: "TrustedContact", purpose: INSERT_SINGLE)
+    data: TrustedAgent_Data!
+  ): TrustedAgent_KeyOutput! @fdc_generated(from: "TrustedAgent", purpose: INSERT_SINGLE)
   """
   ✨ Insert a single `User` into the table and return its key. Columns not specified in `data` will receive defaults (e.g. `null`).
   """
@@ -45,50 +45,41 @@ extend type Mutation {
     data: User_Data!
   ): User_KeyOutput! @fdc_generated(from: "User", purpose: INSERT_SINGLE)
   """
-  ✨ Insert a single `Vault` into the table and return its key. Columns not specified in `data` will receive defaults (e.g. `null`).
+  ✨ Insert `AccountInstruction` objects into the table and return their keys. Columns not specified in `data` will receive defaults (e.g. `null`).
   """
-  vault_insert(
-    """
-    Data object to insert into the table.
-    """
-    data: Vault_Data!
-  ): Vault_KeyOutput! @fdc_generated(from: "Vault", purpose: INSERT_SINGLE)
-  """
-  ✨ Insert `Asset` objects into the table and return their keys. Columns not specified in `data` will receive defaults (e.g. `null`).
-  """
-  asset_insertMany(
+  accountInstruction_insertMany(
     """
     List of data objects to insert into the table.
     """
-    data: [Asset_Data!]!
-  ): [Asset_KeyOutput!]! @fdc_generated(from: "Asset", purpose: INSERT_MULTIPLE)
+    data: [AccountInstruction_Data!]!
+  ): [AccountInstruction_KeyOutput!]! @fdc_generated(from: "AccountInstruction", purpose: INSERT_MULTIPLE)
   """
-  ✨ Insert `Folder` objects into the table and return their keys. Columns not specified in `data` will receive defaults (e.g. `null`).
+  ✨ Insert `Beneficiary` objects into the table and return their keys. Columns not specified in `data` will receive defaults (e.g. `null`).
   """
-  folder_insertMany(
+  beneficiary_insertMany(
     """
     List of data objects to insert into the table.
     """
-    data: [Folder_Data!]!
-  ): [Folder_KeyOutput!]! @fdc_generated(from: "Folder", purpose: INSERT_MULTIPLE)
+    data: [Beneficiary_Data!]!
+  ): [Beneficiary_KeyOutput!]! @fdc_generated(from: "Beneficiary", purpose: INSERT_MULTIPLE)
   """
-  ✨ Insert `SharedAccess` objects into the table and return their keys. Columns not specified in `data` will receive defaults (e.g. `null`).
+  ✨ Insert `DigitalAccount` objects into the table and return their keys. Columns not specified in `data` will receive defaults (e.g. `null`).
   """
-  sharedAccess_insertMany(
+  digitalAccount_insertMany(
     """
     List of data objects to insert into the table.
     """
-    data: [SharedAccess_Data!]!
-  ): [SharedAccess_KeyOutput!]! @fdc_generated(from: "SharedAccess", purpose: INSERT_MULTIPLE)
+    data: [DigitalAccount_Data!]!
+  ): [DigitalAccount_KeyOutput!]! @fdc_generated(from: "DigitalAccount", purpose: INSERT_MULTIPLE)
   """
-  ✨ Insert `TrustedContact` objects into the table and return their keys. Columns not specified in `data` will receive defaults (e.g. `null`).
+  ✨ Insert `TrustedAgent` objects into the table and return their keys. Columns not specified in `data` will receive defaults (e.g. `null`).
   """
-  trustedContact_insertMany(
+  trustedAgent_insertMany(
     """
     List of data objects to insert into the table.
     """
-    data: [TrustedContact_Data!]!
-  ): [TrustedContact_KeyOutput!]! @fdc_generated(from: "TrustedContact", purpose: INSERT_MULTIPLE)
+    data: [TrustedAgent_Data!]!
+  ): [TrustedAgent_KeyOutput!]! @fdc_generated(from: "TrustedAgent", purpose: INSERT_MULTIPLE)
   """
   ✨ Insert `User` objects into the table and return their keys. Columns not specified in `data` will receive defaults (e.g. `null`).
   """
@@ -99,50 +90,41 @@ extend type Mutation {
     data: [User_Data!]!
   ): [User_KeyOutput!]! @fdc_generated(from: "User", purpose: INSERT_MULTIPLE)
   """
-  ✨ Insert `Vault` objects into the table and return their keys. Columns not specified in `data` will receive defaults (e.g. `null`).
+  ✨ Insert or update a single `AccountInstruction` into the table, based on the primary key. Returns the key of the newly inserted or existing updated `AccountInstruction`.
   """
-  vault_insertMany(
-    """
-    List of data objects to insert into the table.
-    """
-    data: [Vault_Data!]!
-  ): [Vault_KeyOutput!]! @fdc_generated(from: "Vault", purpose: INSERT_MULTIPLE)
-  """
-  ✨ Insert or update a single `Asset` into the table, based on the primary key. Returns the key of the newly inserted or existing updated `Asset`.
-  """
-  asset_upsert(
+  accountInstruction_upsert(
     """
     Data object to insert or update if it already exists.
     """
-    data: Asset_Data!
-  ): Asset_KeyOutput! @fdc_generated(from: "Asset", purpose: UPSERT_SINGLE)
+    data: AccountInstruction_Data!
+  ): AccountInstruction_KeyOutput! @fdc_generated(from: "AccountInstruction", purpose: UPSERT_SINGLE)
   """
-  ✨ Insert or update a single `Folder` into the table, based on the primary key. Returns the key of the newly inserted or existing updated `Folder`.
+  ✨ Insert or update a single `Beneficiary` into the table, based on the primary key. Returns the key of the newly inserted or existing updated `Beneficiary`.
   """
-  folder_upsert(
+  beneficiary_upsert(
     """
     Data object to insert or update if it already exists.
     """
-    data: Folder_Data!
-  ): Folder_KeyOutput! @fdc_generated(from: "Folder", purpose: UPSERT_SINGLE)
+    data: Beneficiary_Data!
+  ): Beneficiary_KeyOutput! @fdc_generated(from: "Beneficiary", purpose: UPSERT_SINGLE)
   """
-  ✨ Insert or update a single `SharedAccess` into the table, based on the primary key. Returns the key of the newly inserted or existing updated `SharedAccess`.
+  ✨ Insert or update a single `DigitalAccount` into the table, based on the primary key. Returns the key of the newly inserted or existing updated `DigitalAccount`.
   """
-  sharedAccess_upsert(
+  digitalAccount_upsert(
     """
     Data object to insert or update if it already exists.
     """
-    data: SharedAccess_Data!
-  ): SharedAccess_KeyOutput! @fdc_generated(from: "SharedAccess", purpose: UPSERT_SINGLE)
+    data: DigitalAccount_Data!
+  ): DigitalAccount_KeyOutput! @fdc_generated(from: "DigitalAccount", purpose: UPSERT_SINGLE)
   """
-  ✨ Insert or update a single `TrustedContact` into the table, based on the primary key. Returns the key of the newly inserted or existing updated `TrustedContact`.
+  ✨ Insert or update a single `TrustedAgent` into the table, based on the primary key. Returns the key of the newly inserted or existing updated `TrustedAgent`.
   """
-  trustedContact_upsert(
+  trustedAgent_upsert(
     """
     Data object to insert or update if it already exists.
     """
-    data: TrustedContact_Data!
-  ): TrustedContact_KeyOutput! @fdc_generated(from: "TrustedContact", purpose: UPSERT_SINGLE)
+    data: TrustedAgent_Data!
+  ): TrustedAgent_KeyOutput! @fdc_generated(from: "TrustedAgent", purpose: UPSERT_SINGLE)
   """
   ✨ Insert or update a single `User` into the table, based on the primary key. Returns the key of the newly inserted or existing updated `User`.
   """
@@ -153,50 +135,41 @@ extend type Mutation {
     data: User_Data!
   ): User_KeyOutput! @fdc_generated(from: "User", purpose: UPSERT_SINGLE)
   """
-  ✨ Insert or update a single `Vault` into the table, based on the primary key. Returns the key of the newly inserted or existing updated `Vault`.
+  ✨ Insert or update `AccountInstruction` objects into the table, based on the primary key. Returns the key of the newly inserted or existing updated `AccountInstruction`.
   """
-  vault_upsert(
-    """
-    Data object to insert or update if it already exists.
-    """
-    data: Vault_Data!
-  ): Vault_KeyOutput! @fdc_generated(from: "Vault", purpose: UPSERT_SINGLE)
-  """
-  ✨ Insert or update `Asset` objects into the table, based on the primary key. Returns the key of the newly inserted or existing updated `Asset`.
-  """
-  asset_upsertMany(
+  accountInstruction_upsertMany(
     """
     List of data objects to insert or update if it already exists.
     """
-    data: [Asset_Data!]!
-  ): [Asset_KeyOutput!]! @fdc_generated(from: "Asset", purpose: UPSERT_MULTIPLE)
+    data: [AccountInstruction_Data!]!
+  ): [AccountInstruction_KeyOutput!]! @fdc_generated(from: "AccountInstruction", purpose: UPSERT_MULTIPLE)
   """
-  ✨ Insert or update `Folder` objects into the table, based on the primary key. Returns the key of the newly inserted or existing updated `Folder`.
+  ✨ Insert or update `Beneficiary` objects into the table, based on the primary key. Returns the key of the newly inserted or existing updated `Beneficiary`.
   """
-  folder_upsertMany(
+  beneficiary_upsertMany(
     """
     List of data objects to insert or update if it already exists.
     """
-    data: [Folder_Data!]!
-  ): [Folder_KeyOutput!]! @fdc_generated(from: "Folder", purpose: UPSERT_MULTIPLE)
+    data: [Beneficiary_Data!]!
+  ): [Beneficiary_KeyOutput!]! @fdc_generated(from: "Beneficiary", purpose: UPSERT_MULTIPLE)
   """
-  ✨ Insert or update `SharedAccess` objects into the table, based on the primary key. Returns the key of the newly inserted or existing updated `SharedAccess`.
+  ✨ Insert or update `DigitalAccount` objects into the table, based on the primary key. Returns the key of the newly inserted or existing updated `DigitalAccount`.
   """
-  sharedAccess_upsertMany(
+  digitalAccount_upsertMany(
     """
     List of data objects to insert or update if it already exists.
     """
-    data: [SharedAccess_Data!]!
-  ): [SharedAccess_KeyOutput!]! @fdc_generated(from: "SharedAccess", purpose: UPSERT_MULTIPLE)
+    data: [DigitalAccount_Data!]!
+  ): [DigitalAccount_KeyOutput!]! @fdc_generated(from: "DigitalAccount", purpose: UPSERT_MULTIPLE)
   """
-  ✨ Insert or update `TrustedContact` objects into the table, based on the primary key. Returns the key of the newly inserted or existing updated `TrustedContact`.
+  ✨ Insert or update `TrustedAgent` objects into the table, based on the primary key. Returns the key of the newly inserted or existing updated `TrustedAgent`.
   """
-  trustedContact_upsertMany(
+  trustedAgent_upsertMany(
     """
     List of data objects to insert or update if it already exists.
     """
-    data: [TrustedContact_Data!]!
-  ): [TrustedContact_KeyOutput!]! @fdc_generated(from: "TrustedContact", purpose: UPSERT_MULTIPLE)
+    data: [TrustedAgent_Data!]!
+  ): [TrustedAgent_KeyOutput!]! @fdc_generated(from: "TrustedAgent", purpose: UPSERT_MULTIPLE)
   """
   ✨ Insert or update `User` objects into the table, based on the primary key. Returns the key of the newly inserted or existing updated `User`.
   """
@@ -207,18 +180,9 @@ extend type Mutation {
     data: [User_Data!]!
   ): [User_KeyOutput!]! @fdc_generated(from: "User", purpose: UPSERT_MULTIPLE)
   """
-  ✨ Insert or update `Vault` objects into the table, based on the primary key. Returns the key of the newly inserted or existing updated `Vault`.
+  ✨ Update a single `AccountInstruction` based on `id`, `key` or `first`, setting columns specified in `data`. Returns the key of the updated `AccountInstruction` or `null` if not found.
   """
-  vault_upsertMany(
-    """
-    List of data objects to insert or update if it already exists.
-    """
-    data: [Vault_Data!]!
-  ): [Vault_KeyOutput!]! @fdc_generated(from: "Vault", purpose: UPSERT_MULTIPLE)
-  """
-  ✨ Update a single `Asset` based on `id`, `key` or `first`, setting columns specified in `data`. Returns the key of the updated `Asset` or `null` if not found.
-  """
-  asset_update(
+  accountInstruction_update(
     """
     The unique ID of the object.
     """
@@ -227,22 +191,22 @@ extend type Mutation {
     """
     The key used to identify the object.
     """
-    key: Asset_Key
+    key: AccountInstruction_Key
 
     """
     Fetch the first row based on the filters and ordering.
     """
-    first: Asset_FirstRow
+    first: AccountInstruction_FirstRow
 
     """
     Data object containing fields to be updated.
     """
-    data: Asset_Data!
-  ): Asset_KeyOutput @fdc_generated(from: "Asset", purpose: UPDATE_SINGLE)
+    data: AccountInstruction_Data!
+  ): AccountInstruction_KeyOutput @fdc_generated(from: "AccountInstruction", purpose: UPDATE_SINGLE)
   """
-  ✨ Update a single `Folder` based on `id`, `key` or `first`, setting columns specified in `data`. Returns the key of the updated `Folder` or `null` if not found.
+  ✨ Update a single `Beneficiary` based on `id`, `key` or `first`, setting columns specified in `data`. Returns the key of the updated `Beneficiary` or `null` if not found.
   """
-  folder_update(
+  beneficiary_update(
     """
     The unique ID of the object.
     """
@@ -251,22 +215,22 @@ extend type Mutation {
     """
     The key used to identify the object.
     """
-    key: Folder_Key
+    key: Beneficiary_Key
 
     """
     Fetch the first row based on the filters and ordering.
     """
-    first: Folder_FirstRow
+    first: Beneficiary_FirstRow
 
     """
     Data object containing fields to be updated.
     """
-    data: Folder_Data!
-  ): Folder_KeyOutput @fdc_generated(from: "Folder", purpose: UPDATE_SINGLE)
+    data: Beneficiary_Data!
+  ): Beneficiary_KeyOutput @fdc_generated(from: "Beneficiary", purpose: UPDATE_SINGLE)
   """
-  ✨ Update a single `SharedAccess` based on `id`, `key` or `first`, setting columns specified in `data`. Returns the key of the updated `SharedAccess` or `null` if not found.
+  ✨ Update a single `DigitalAccount` based on `id`, `key` or `first`, setting columns specified in `data`. Returns the key of the updated `DigitalAccount` or `null` if not found.
   """
-  sharedAccess_update(
+  digitalAccount_update(
     """
     The unique ID of the object.
     """
@@ -275,22 +239,22 @@ extend type Mutation {
     """
     The key used to identify the object.
     """
-    key: SharedAccess_Key
+    key: DigitalAccount_Key
 
     """
     Fetch the first row based on the filters and ordering.
     """
-    first: SharedAccess_FirstRow
+    first: DigitalAccount_FirstRow
 
     """
     Data object containing fields to be updated.
     """
-    data: SharedAccess_Data!
-  ): SharedAccess_KeyOutput @fdc_generated(from: "SharedAccess", purpose: UPDATE_SINGLE)
+    data: DigitalAccount_Data!
+  ): DigitalAccount_KeyOutput @fdc_generated(from: "DigitalAccount", purpose: UPDATE_SINGLE)
   """
-  ✨ Update a single `TrustedContact` based on `id`, `key` or `first`, setting columns specified in `data`. Returns the key of the updated `TrustedContact` or `null` if not found.
+  ✨ Update a single `TrustedAgent` based on `id`, `key` or `first`, setting columns specified in `data`. Returns the key of the updated `TrustedAgent` or `null` if not found.
   """
-  trustedContact_update(
+  trustedAgent_update(
     """
     The unique ID of the object.
     """
@@ -299,18 +263,18 @@ extend type Mutation {
     """
     The key used to identify the object.
     """
-    key: TrustedContact_Key
+    key: TrustedAgent_Key
 
     """
     Fetch the first row based on the filters and ordering.
     """
-    first: TrustedContact_FirstRow
+    first: TrustedAgent_FirstRow
 
     """
     Data object containing fields to be updated.
     """
-    data: TrustedContact_Data!
-  ): TrustedContact_KeyOutput @fdc_generated(from: "TrustedContact", purpose: UPDATE_SINGLE)
+    data: TrustedAgent_Data!
+  ): TrustedAgent_KeyOutput @fdc_generated(from: "TrustedAgent", purpose: UPDATE_SINGLE)
   """
   ✨ Update a single `User` based on `id`, `key` or `first`, setting columns specified in `data`. Returns the key of the updated `User` or `null` if not found.
   """
@@ -336,37 +300,13 @@ extend type Mutation {
     data: User_Data!
   ): User_KeyOutput @fdc_generated(from: "User", purpose: UPDATE_SINGLE)
   """
-  ✨ Update a single `Vault` based on `id`, `key` or `first`, setting columns specified in `data`. Returns the key of the updated `Vault` or `null` if not found.
+  ✨ Update `AccountInstruction` objects matching `where` conditions (or `all`, if true) according to `data`. Returns the number of rows updated.
   """
-  vault_update(
-    """
-    The unique ID of the object.
-    """
-    id: UUID
-
-    """
-    The key used to identify the object.
-    """
-    key: Vault_Key
-
-    """
-    Fetch the first row based on the filters and ordering.
-    """
-    first: Vault_FirstRow
-
-    """
-    Data object containing fields to be updated.
-    """
-    data: Vault_Data!
-  ): Vault_KeyOutput @fdc_generated(from: "Vault", purpose: UPDATE_SINGLE)
-  """
-  ✨ Update `Asset` objects matching `where` conditions (or `all`, if true) according to `data`. Returns the number of rows updated.
-  """
-  asset_updateMany(
+  accountInstruction_updateMany(
     """
     Filter condition to specify which rows to update.
     """
-    where: Asset_Filter
+    where: AccountInstruction_Filter
 
     """
     Set to true to update all rows.
@@ -376,16 +316,16 @@ extend type Mutation {
     """
     Data object containing fields to update.
     """
-    data: Asset_Data!
-  ): Int! @fdc_generated(from: "Asset", purpose: UPDATE_MULTIPLE)
+    data: AccountInstruction_Data!
+  ): Int! @fdc_generated(from: "AccountInstruction", purpose: UPDATE_MULTIPLE)
   """
-  ✨ Update `Folder` objects matching `where` conditions (or `all`, if true) according to `data`. Returns the number of rows updated.
+  ✨ Update `Beneficiary` objects matching `where` conditions (or `all`, if true) according to `data`. Returns the number of rows updated.
   """
-  folder_updateMany(
+  beneficiary_updateMany(
     """
     Filter condition to specify which rows to update.
     """
-    where: Folder_Filter
+    where: Beneficiary_Filter
 
     """
     Set to true to update all rows.
@@ -395,16 +335,16 @@ extend type Mutation {
     """
     Data object containing fields to update.
     """
-    data: Folder_Data!
-  ): Int! @fdc_generated(from: "Folder", purpose: UPDATE_MULTIPLE)
+    data: Beneficiary_Data!
+  ): Int! @fdc_generated(from: "Beneficiary", purpose: UPDATE_MULTIPLE)
   """
-  ✨ Update `SharedAccess` objects matching `where` conditions (or `all`, if true) according to `data`. Returns the number of rows updated.
+  ✨ Update `DigitalAccount` objects matching `where` conditions (or `all`, if true) according to `data`. Returns the number of rows updated.
   """
-  sharedAccess_updateMany(
+  digitalAccount_updateMany(
     """
     Filter condition to specify which rows to update.
     """
-    where: SharedAccess_Filter
+    where: DigitalAccount_Filter
 
     """
     Set to true to update all rows.
@@ -414,16 +354,16 @@ extend type Mutation {
     """
     Data object containing fields to update.
     """
-    data: SharedAccess_Data!
-  ): Int! @fdc_generated(from: "SharedAccess", purpose: UPDATE_MULTIPLE)
+    data: DigitalAccount_Data!
+  ): Int! @fdc_generated(from: "DigitalAccount", purpose: UPDATE_MULTIPLE)
   """
-  ✨ Update `TrustedContact` objects matching `where` conditions (or `all`, if true) according to `data`. Returns the number of rows updated.
+  ✨ Update `TrustedAgent` objects matching `where` conditions (or `all`, if true) according to `data`. Returns the number of rows updated.
   """
-  trustedContact_updateMany(
+  trustedAgent_updateMany(
     """
     Filter condition to specify which rows to update.
     """
-    where: TrustedContact_Filter
+    where: TrustedAgent_Filter
 
     """
     Set to true to update all rows.
@@ -433,8 +373,8 @@ extend type Mutation {
     """
     Data object containing fields to update.
     """
-    data: TrustedContact_Data!
-  ): Int! @fdc_generated(from: "TrustedContact", purpose: UPDATE_MULTIPLE)
+    data: TrustedAgent_Data!
+  ): Int! @fdc_generated(from: "TrustedAgent", purpose: UPDATE_MULTIPLE)
   """
   ✨ Update `User` objects matching `where` conditions (or `all`, if true) according to `data`. Returns the number of rows updated.
   """
@@ -455,28 +395,9 @@ extend type Mutation {
     data: User_Data!
   ): Int! @fdc_generated(from: "User", purpose: UPDATE_MULTIPLE)
   """
-  ✨ Update `Vault` objects matching `where` conditions (or `all`, if true) according to `data`. Returns the number of rows updated.
+  ✨ Delete a single `AccountInstruction` based on `id`, `key` or `first` and return its key (or `null` if not found).
   """
-  vault_updateMany(
-    """
-    Filter condition to specify which rows to update.
-    """
-    where: Vault_Filter
-
-    """
-    Set to true to update all rows.
-    """
-    all: Boolean = false
-
-    """
-    Data object containing fields to update.
-    """
-    data: Vault_Data!
-  ): Int! @fdc_generated(from: "Vault", purpose: UPDATE_MULTIPLE)
-  """
-  ✨ Delete a single `Asset` based on `id`, `key` or `first` and return its key (or `null` if not found).
-  """
-  asset_delete(
+  accountInstruction_delete(
     """
     The unique ID of the object.
     """
@@ -485,17 +406,17 @@ extend type Mutation {
     """
     The key used to identify the object.
     """
-    key: Asset_Key
+    key: AccountInstruction_Key
 
     """
     Fetch the first row based on the filters and ordering.
     """
-    first: Asset_FirstRow
-  ): Asset_KeyOutput @fdc_generated(from: "Asset", purpose: DELETE_SINGLE)
+    first: AccountInstruction_FirstRow
+  ): AccountInstruction_KeyOutput @fdc_generated(from: "AccountInstruction", purpose: DELETE_SINGLE)
   """
-  ✨ Delete a single `Folder` based on `id`, `key` or `first` and return its key (or `null` if not found).
+  ✨ Delete a single `Beneficiary` based on `id`, `key` or `first` and return its key (or `null` if not found).
   """
-  folder_delete(
+  beneficiary_delete(
     """
     The unique ID of the object.
     """
@@ -504,17 +425,17 @@ extend type Mutation {
     """
     The key used to identify the object.
     """
-    key: Folder_Key
+    key: Beneficiary_Key
 
     """
     Fetch the first row based on the filters and ordering.
     """
-    first: Folder_FirstRow
-  ): Folder_KeyOutput @fdc_generated(from: "Folder", purpose: DELETE_SINGLE)
+    first: Beneficiary_FirstRow
+  ): Beneficiary_KeyOutput @fdc_generated(from: "Beneficiary", purpose: DELETE_SINGLE)
   """
-  ✨ Delete a single `SharedAccess` based on `id`, `key` or `first` and return its key (or `null` if not found).
+  ✨ Delete a single `DigitalAccount` based on `id`, `key` or `first` and return its key (or `null` if not found).
   """
-  sharedAccess_delete(
+  digitalAccount_delete(
     """
     The unique ID of the object.
     """
@@ -523,17 +444,17 @@ extend type Mutation {
     """
     The key used to identify the object.
     """
-    key: SharedAccess_Key
+    key: DigitalAccount_Key
 
     """
     Fetch the first row based on the filters and ordering.
     """
-    first: SharedAccess_FirstRow
-  ): SharedAccess_KeyOutput @fdc_generated(from: "SharedAccess", purpose: DELETE_SINGLE)
+    first: DigitalAccount_FirstRow
+  ): DigitalAccount_KeyOutput @fdc_generated(from: "DigitalAccount", purpose: DELETE_SINGLE)
   """
-  ✨ Delete a single `TrustedContact` based on `id`, `key` or `first` and return its key (or `null` if not found).
+  ✨ Delete a single `TrustedAgent` based on `id`, `key` or `first` and return its key (or `null` if not found).
   """
-  trustedContact_delete(
+  trustedAgent_delete(
     """
     The unique ID of the object.
     """
@@ -542,13 +463,13 @@ extend type Mutation {
     """
     The key used to identify the object.
     """
-    key: TrustedContact_Key
+    key: TrustedAgent_Key
 
     """
     Fetch the first row based on the filters and ordering.
     """
-    first: TrustedContact_FirstRow
-  ): TrustedContact_KeyOutput @fdc_generated(from: "TrustedContact", purpose: DELETE_SINGLE)
+    first: TrustedAgent_FirstRow
+  ): TrustedAgent_KeyOutput @fdc_generated(from: "TrustedAgent", purpose: DELETE_SINGLE)
   """
   ✨ Delete a single `User` based on `id`, `key` or `first` and return its key (or `null` if not found).
   """
@@ -569,80 +490,61 @@ extend type Mutation {
     first: User_FirstRow
   ): User_KeyOutput @fdc_generated(from: "User", purpose: DELETE_SINGLE)
   """
-  ✨ Delete a single `Vault` based on `id`, `key` or `first` and return its key (or `null` if not found).
+  ✨ Delete `AccountInstruction` objects matching `where` conditions (or `all`, if true). Returns the number of rows deleted.
   """
-  vault_delete(
-    """
-    The unique ID of the object.
-    """
-    id: UUID
-
-    """
-    The key used to identify the object.
-    """
-    key: Vault_Key
-
-    """
-    Fetch the first row based on the filters and ordering.
-    """
-    first: Vault_FirstRow
-  ): Vault_KeyOutput @fdc_generated(from: "Vault", purpose: DELETE_SINGLE)
-  """
-  ✨ Delete `Asset` objects matching `where` conditions (or `all`, if true). Returns the number of rows deleted.
-  """
-  asset_deleteMany(
+  accountInstruction_deleteMany(
     """
     Filter condition to specify which rows to delete.
     """
-    where: Asset_Filter
+    where: AccountInstruction_Filter
 
     """
     Set to true to delete all rows.
     """
     all: Boolean = false
-  ): Int! @fdc_generated(from: "Asset", purpose: DELETE_MULTIPLE)
+  ): Int! @fdc_generated(from: "AccountInstruction", purpose: DELETE_MULTIPLE)
   """
-  ✨ Delete `Folder` objects matching `where` conditions (or `all`, if true). Returns the number of rows deleted.
+  ✨ Delete `Beneficiary` objects matching `where` conditions (or `all`, if true). Returns the number of rows deleted.
   """
-  folder_deleteMany(
+  beneficiary_deleteMany(
     """
     Filter condition to specify which rows to delete.
     """
-    where: Folder_Filter
+    where: Beneficiary_Filter
 
     """
     Set to true to delete all rows.
     """
     all: Boolean = false
-  ): Int! @fdc_generated(from: "Folder", purpose: DELETE_MULTIPLE)
+  ): Int! @fdc_generated(from: "Beneficiary", purpose: DELETE_MULTIPLE)
   """
-  ✨ Delete `SharedAccess` objects matching `where` conditions (or `all`, if true). Returns the number of rows deleted.
+  ✨ Delete `DigitalAccount` objects matching `where` conditions (or `all`, if true). Returns the number of rows deleted.
   """
-  sharedAccess_deleteMany(
+  digitalAccount_deleteMany(
     """
     Filter condition to specify which rows to delete.
     """
-    where: SharedAccess_Filter
+    where: DigitalAccount_Filter
 
     """
     Set to true to delete all rows.
     """
     all: Boolean = false
-  ): Int! @fdc_generated(from: "SharedAccess", purpose: DELETE_MULTIPLE)
+  ): Int! @fdc_generated(from: "DigitalAccount", purpose: DELETE_MULTIPLE)
   """
-  ✨ Delete `TrustedContact` objects matching `where` conditions (or `all`, if true). Returns the number of rows deleted.
+  ✨ Delete `TrustedAgent` objects matching `where` conditions (or `all`, if true). Returns the number of rows deleted.
   """
-  trustedContact_deleteMany(
+  trustedAgent_deleteMany(
     """
     Filter condition to specify which rows to delete.
     """
-    where: TrustedContact_Filter
+    where: TrustedAgent_Filter
 
     """
     Set to true to delete all rows.
     """
     all: Boolean = false
-  ): Int! @fdc_generated(from: "TrustedContact", purpose: DELETE_MULTIPLE)
+  ): Int! @fdc_generated(from: "TrustedAgent", purpose: DELETE_MULTIPLE)
   """
   ✨ Delete `User` objects matching `where` conditions (or `all`, if true). Returns the number of rows deleted.
   """
@@ -657,18 +559,4 @@ extend type Mutation {
     """
     all: Boolean = false
   ): Int! @fdc_generated(from: "User", purpose: DELETE_MULTIPLE)
-  """
-  ✨ Delete `Vault` objects matching `where` conditions (or `all`, if true). Returns the number of rows deleted.
-  """
-  vault_deleteMany(
-    """
-    Filter condition to specify which rows to delete.
-    """
-    where: Vault_Filter
-
-    """
-    Set to true to delete all rows.
-    """
-    all: Boolean = false
-  ): Int! @fdc_generated(from: "Vault", purpose: DELETE_MULTIPLE)
 }

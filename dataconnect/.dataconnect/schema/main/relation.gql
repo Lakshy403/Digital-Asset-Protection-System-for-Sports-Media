@@ -1,137 +1,111 @@
-extend type Asset {
+extend type AccountInstruction {
   """
   Implicit metadata field that cannot be written. It provides extra information about query results.
   """
-  _metadata: _Metadata @fdc_generated(from: "Asset", purpose: METADATA_FIELD)
+  _metadata: _Metadata @fdc_generated(from: "AccountInstruction", purpose: METADATA_FIELD)
   """
-  ✨ Count the number of rows in the `Asset` table.
+  ✨ Count the number of rows in the `AccountInstruction` table.
   """
-  _count: Int! @fdc_generated(from: "Asset.", purpose: QUERY_COUNT)
+  _count: Int! @fdc_generated(from: "AccountInstruction.", purpose: QUERY_COUNT)
   """
-  ✨ Count the number of rows in the `Asset` table where the `assetType` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  ✨ Count the number of rows in the `AccountInstruction` table where the `accessGrantDuration` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
   """
-  assetType_count(
+  accessGrantDuration_count(
     """
     Set to true to count the number of distinct values.
     """
     distinct: Boolean = false
-  ): Int! @fdc_generated(from: "Asset.assetType", purpose: QUERY_COUNT)
+  ): Int! @fdc_generated(from: "AccountInstruction.accessGrantDuration", purpose: QUERY_COUNT)
   """
-  ✨ Count the number of rows in the `Asset` table where the `contentType` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  ✨ Count the number of rows in the `AccountInstruction` table where the `beneficiaryId` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
   """
-  contentType_count(
+  beneficiaryId_count(
     """
     Set to true to count the number of distinct values.
     """
     distinct: Boolean = false
-  ): Int! @fdc_generated(from: "Asset.contentType", purpose: QUERY_COUNT)
+  ): Int! @fdc_generated(from: "AccountInstruction.beneficiaryId", purpose: QUERY_COUNT)
   """
-  ✨ Count the number of rows in the `Asset` table where the `createdAt` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  ✨ Count the number of rows in the `AccountInstruction` table where the `createdAt` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
   """
   createdAt_count(
     """
     Set to true to count the number of distinct values.
     """
     distinct: Boolean = false
-  ): Int! @fdc_generated(from: "Asset.createdAt", purpose: QUERY_COUNT)
+  ): Int! @fdc_generated(from: "AccountInstruction.createdAt", purpose: QUERY_COUNT)
   """
-  ✨ Count the number of rows in the `Asset` table where the `description` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  ✨ Count the number of rows in the `AccountInstruction` table where the `digitalAccountId` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
   """
-  description_count(
+  digitalAccountId_count(
     """
     Set to true to count the number of distinct values.
     """
     distinct: Boolean = false
-  ): Int! @fdc_generated(from: "Asset.description", purpose: QUERY_COUNT)
+  ): Int! @fdc_generated(from: "AccountInstruction.digitalAccountId", purpose: QUERY_COUNT)
   """
-  ✨ Count the number of rows in the `Asset` table where the `encryptedContent` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  ✨ Count the number of rows in the `AccountInstruction` table where the `eventTrigger` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
   """
-  encryptedContent_count(
+  eventTrigger_count(
     """
     Set to true to count the number of distinct values.
     """
     distinct: Boolean = false
-  ): Int! @fdc_generated(from: "Asset.encryptedContent", purpose: QUERY_COUNT)
+  ): Int! @fdc_generated(from: "AccountInstruction.eventTrigger", purpose: QUERY_COUNT)
   """
-  ✨ Count the number of rows in the `Asset` table where the `folderId` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
-  """
-  folderId_count(
-    """
-    Set to true to count the number of distinct values.
-    """
-    distinct: Boolean = false
-  ): Int! @fdc_generated(from: "Asset.folderId", purpose: QUERY_COUNT)
-  """
-  ✨ Count the number of rows in the `Asset` table where the `id` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  ✨ Count the number of rows in the `AccountInstruction` table where the `id` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
   """
   id_count(
     """
     Set to true to count the number of distinct values.
     """
     distinct: Boolean = false
-  ): Int! @fdc_generated(from: "Asset.id", purpose: QUERY_COUNT)
+  ): Int! @fdc_generated(from: "AccountInstruction.id", purpose: QUERY_COUNT)
   """
-  ✨ Count the number of rows in the `Asset` table where the `name` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  ✨ Count the number of rows in the `AccountInstruction` table where the `instructionType` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
   """
-  name_count(
+  instructionType_count(
     """
     Set to true to count the number of distinct values.
     """
     distinct: Boolean = false
-  ): Int! @fdc_generated(from: "Asset.name", purpose: QUERY_COUNT)
+  ): Int! @fdc_generated(from: "AccountInstruction.instructionType", purpose: QUERY_COUNT)
   """
-  ✨ Count the number of rows in the `Asset` table where the `updatedAt` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  ✨ Count the number of rows in the `AccountInstruction` table where the `specificInstructions` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
   """
-  updatedAt_count(
+  specificInstructions_count(
     """
     Set to true to count the number of distinct values.
     """
     distinct: Boolean = false
-  ): Int! @fdc_generated(from: "Asset.updatedAt", purpose: QUERY_COUNT)
+  ): Int! @fdc_generated(from: "AccountInstruction.specificInstructions", purpose: QUERY_COUNT)
   """
-  ✨ Count the number of rows in the `Asset` table where the `vaultId` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  ✨ Minimum of the `createdAt` field in the `AccountInstruction` table.
   """
-  vaultId_count(
-    """
-    Set to true to count the number of distinct values.
-    """
-    distinct: Boolean = false
-  ): Int! @fdc_generated(from: "Asset.vaultId", purpose: QUERY_COUNT)
+  createdAt_min: Timestamp @fdc_generated(from: "AccountInstruction.createdAt", purpose: QUERY_MIN)
   """
-  ✨ Minimum of the `createdAt` field in the `Asset` table.
+  ✨ Maximum of the `createdAt` field in the `AccountInstruction` table.
   """
-  createdAt_min: Timestamp @fdc_generated(from: "Asset.createdAt", purpose: QUERY_MIN)
-  """
-  ✨ Minimum of the `updatedAt` field in the `Asset` table.
-  """
-  updatedAt_min: Timestamp @fdc_generated(from: "Asset.updatedAt", purpose: QUERY_MIN)
-  """
-  ✨ Maximum of the `createdAt` field in the `Asset` table.
-  """
-  createdAt_max: Timestamp @fdc_generated(from: "Asset.createdAt", purpose: QUERY_MAX)
-  """
-  ✨ Maximum of the `updatedAt` field in the `Asset` table.
-  """
-  updatedAt_max: Timestamp @fdc_generated(from: "Asset.updatedAt", purpose: QUERY_MAX)
+  createdAt_max: Timestamp @fdc_generated(from: "AccountInstruction.createdAt", purpose: QUERY_MAX)
   """
   A generated field that is used for caching results in SDKs.
   """
-  _id: ID! @fdc_generated(from: "Asset.id", purpose: ENTITY_ID)
+  _id: ID! @fdc_generated(from: "AccountInstruction.id", purpose: ENTITY_ID)
 }
-extend type Folder {
+extend type Beneficiary {
   """
-  ✨ List `Asset` objects in a one-to-many relationship (where `Asset`.`folder` is this object).
+  ✨ List `AccountInstruction` objects in a one-to-many relationship (where `AccountInstruction`.`beneficiary` is this object).
   """
-  assets_on_folder(
+  accountInstructions_on_beneficiary(
     """
     Filter condition to narrow down the query results.
     """
-    where: Asset_Filter
+    where: AccountInstruction_Filter
 
     """
     Order the query results by specific fields.
     """
-    orderBy: [Asset_Order!]
+    orderBy: [AccountInstruction_Order!]
 
     """
     Number of rows to skip before starting to return the results.
@@ -151,351 +125,372 @@ extend type Folder {
     """
     Filter condition to apply to the groups of aggregate queries.
     """
-    having: Asset_Having
-  ): [Asset!]! @fdc_generated(from: "Asset.folder", purpose: QUERY_MULTIPLE_ONE_TO_MANY)
-  """
-  ✨ List `Folder` objects in a one-to-many relationship (where `Folder`.`parentFolder` is this object).
-  """
-  folders_on_parentFolder(
-    """
-    Filter condition to narrow down the query results.
-    """
-    where: Folder_Filter
-
-    """
-    Order the query results by specific fields.
-    """
-    orderBy: [Folder_Order!]
-
-    """
-    Number of rows to skip before starting to return the results.
-    """
-    offset: Int
-
-    """
-    Maximum number of rows to return (defaults to 100 rows).
-    """
-    limit: Int = 100
-
-    """
-    Set to true to return distinct results.
-    """
-    distinct: Boolean = false
-
-    """
-    Filter condition to apply to the groups of aggregate queries.
-    """
-    having: Folder_Having
-  ): [Folder!]! @fdc_generated(from: "Folder.parentFolder", purpose: QUERY_MULTIPLE_ONE_TO_MANY)
+    having: AccountInstruction_Having
+  ): [AccountInstruction!]! @fdc_generated(from: "AccountInstruction.beneficiary", purpose: QUERY_MULTIPLE_ONE_TO_MANY)
   """
   Implicit metadata field that cannot be written. It provides extra information about query results.
   """
-  _metadata: _Metadata @fdc_generated(from: "Folder", purpose: METADATA_FIELD)
+  _metadata: _Metadata @fdc_generated(from: "Beneficiary", purpose: METADATA_FIELD)
   """
-  ✨ Count the number of rows in the `Folder` table.
+  ✨ Count the number of rows in the `Beneficiary` table.
   """
-  _count: Int! @fdc_generated(from: "Folder.", purpose: QUERY_COUNT)
+  _count: Int! @fdc_generated(from: "Beneficiary.", purpose: QUERY_COUNT)
   """
-  ✨ Count the number of rows in the `Folder` table where the `createdAt` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  ✨ Count the number of rows in the `Beneficiary` table where the `createdAt` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
   """
   createdAt_count(
     """
     Set to true to count the number of distinct values.
     """
     distinct: Boolean = false
-  ): Int! @fdc_generated(from: "Folder.createdAt", purpose: QUERY_COUNT)
+  ): Int! @fdc_generated(from: "Beneficiary.createdAt", purpose: QUERY_COUNT)
   """
-  ✨ Count the number of rows in the `Folder` table where the `id` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  ✨ Count the number of rows in the `Beneficiary` table where the `email` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  email_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "Beneficiary.email", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `Beneficiary` table where the `firstName` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  firstName_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "Beneficiary.firstName", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `Beneficiary` table where the `id` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
   """
   id_count(
     """
     Set to true to count the number of distinct values.
     """
     distinct: Boolean = false
-  ): Int! @fdc_generated(from: "Folder.id", purpose: QUERY_COUNT)
+  ): Int! @fdc_generated(from: "Beneficiary.id", purpose: QUERY_COUNT)
   """
-  ✨ Count the number of rows in the `Folder` table where the `name` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  ✨ Count the number of rows in the `Beneficiary` table where the `lastName` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
   """
-  name_count(
+  lastName_count(
     """
     Set to true to count the number of distinct values.
     """
     distinct: Boolean = false
-  ): Int! @fdc_generated(from: "Folder.name", purpose: QUERY_COUNT)
+  ): Int! @fdc_generated(from: "Beneficiary.lastName", purpose: QUERY_COUNT)
   """
-  ✨ Count the number of rows in the `Folder` table where the `parentFolderId` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  ✨ Count the number of rows in the `Beneficiary` table where the `phone` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
   """
-  parentFolderId_count(
+  phone_count(
     """
     Set to true to count the number of distinct values.
     """
     distinct: Boolean = false
-  ): Int! @fdc_generated(from: "Folder.parentFolderId", purpose: QUERY_COUNT)
+  ): Int! @fdc_generated(from: "Beneficiary.phone", purpose: QUERY_COUNT)
   """
-  ✨ Count the number of rows in the `Folder` table where the `vaultId` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  ✨ Count the number of rows in the `Beneficiary` table where the `relationship` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
   """
-  vaultId_count(
+  relationship_count(
     """
     Set to true to count the number of distinct values.
     """
     distinct: Boolean = false
-  ): Int! @fdc_generated(from: "Folder.vaultId", purpose: QUERY_COUNT)
+  ): Int! @fdc_generated(from: "Beneficiary.relationship", purpose: QUERY_COUNT)
   """
-  ✨ Minimum of the `createdAt` field in the `Folder` table.
-  """
-  createdAt_min: Timestamp @fdc_generated(from: "Folder.createdAt", purpose: QUERY_MIN)
-  """
-  ✨ Maximum of the `createdAt` field in the `Folder` table.
-  """
-  createdAt_max: Timestamp @fdc_generated(from: "Folder.createdAt", purpose: QUERY_MAX)
-  """
-  A generated field that is used for caching results in SDKs.
-  """
-  _id: ID! @fdc_generated(from: "Folder.id", purpose: ENTITY_ID)
-}
-extend type SharedAccess {
-  """
-  Implicit metadata field that cannot be written. It provides extra information about query results.
-  """
-  _metadata: _Metadata @fdc_generated(from: "SharedAccess", purpose: METADATA_FIELD)
-  """
-  ✨ Count the number of rows in the `SharedAccess` table.
-  """
-  _count: Int! @fdc_generated(from: "SharedAccess.", purpose: QUERY_COUNT)
-  """
-  ✨ Count the number of rows in the `SharedAccess` table where the `entityId` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
-  """
-  entityId_count(
-    """
-    Set to true to count the number of distinct values.
-    """
-    distinct: Boolean = false
-  ): Int! @fdc_generated(from: "SharedAccess.entityId", purpose: QUERY_COUNT)
-  """
-  ✨ Count the number of rows in the `SharedAccess` table where the `entityType` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
-  """
-  entityType_count(
-    """
-    Set to true to count the number of distinct values.
-    """
-    distinct: Boolean = false
-  ): Int! @fdc_generated(from: "SharedAccess.entityType", purpose: QUERY_COUNT)
-  """
-  ✨ Count the number of rows in the `SharedAccess` table where the `expiresAt` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
-  """
-  expiresAt_count(
-    """
-    Set to true to count the number of distinct values.
-    """
-    distinct: Boolean = false
-  ): Int! @fdc_generated(from: "SharedAccess.expiresAt", purpose: QUERY_COUNT)
-  """
-  ✨ Count the number of rows in the `SharedAccess` table where the `grantedAt` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
-  """
-  grantedAt_count(
-    """
-    Set to true to count the number of distinct values.
-    """
-    distinct: Boolean = false
-  ): Int! @fdc_generated(from: "SharedAccess.grantedAt", purpose: QUERY_COUNT)
-  """
-  ✨ Count the number of rows in the `SharedAccess` table where the `id` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
-  """
-  id_count(
-    """
-    Set to true to count the number of distinct values.
-    """
-    distinct: Boolean = false
-  ): Int! @fdc_generated(from: "SharedAccess.id", purpose: QUERY_COUNT)
-  """
-  ✨ Count the number of rows in the `SharedAccess` table where the `permissionLevel` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
-  """
-  permissionLevel_count(
-    """
-    Set to true to count the number of distinct values.
-    """
-    distinct: Boolean = false
-  ): Int! @fdc_generated(from: "SharedAccess.permissionLevel", purpose: QUERY_COUNT)
-  """
-  ✨ Count the number of rows in the `SharedAccess` table where the `trustedContactId` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
-  """
-  trustedContactId_count(
-    """
-    Set to true to count the number of distinct values.
-    """
-    distinct: Boolean = false
-  ): Int! @fdc_generated(from: "SharedAccess.trustedContactId", purpose: QUERY_COUNT)
-  """
-  ✨ Minimum of the `expiresAt` field in the `SharedAccess` table.
-  """
-  expiresAt_min: Timestamp @fdc_generated(from: "SharedAccess.expiresAt", purpose: QUERY_MIN)
-  """
-  ✨ Minimum of the `grantedAt` field in the `SharedAccess` table.
-  """
-  grantedAt_min: Timestamp @fdc_generated(from: "SharedAccess.grantedAt", purpose: QUERY_MIN)
-  """
-  ✨ Maximum of the `expiresAt` field in the `SharedAccess` table.
-  """
-  expiresAt_max: Timestamp @fdc_generated(from: "SharedAccess.expiresAt", purpose: QUERY_MAX)
-  """
-  ✨ Maximum of the `grantedAt` field in the `SharedAccess` table.
-  """
-  grantedAt_max: Timestamp @fdc_generated(from: "SharedAccess.grantedAt", purpose: QUERY_MAX)
-  """
-  A generated field that is used for caching results in SDKs.
-  """
-  _id: ID! @fdc_generated(from: "SharedAccess.id", purpose: ENTITY_ID)
-}
-extend type TrustedContact {
-  """
-  ✨ List `SharedAccess` objects in a one-to-many relationship (where `SharedAccess`.`trustedContact` is this object).
-  """
-  sharedAccesses_on_trustedContact(
-    """
-    Filter condition to narrow down the query results.
-    """
-    where: SharedAccess_Filter
-
-    """
-    Order the query results by specific fields.
-    """
-    orderBy: [SharedAccess_Order!]
-
-    """
-    Number of rows to skip before starting to return the results.
-    """
-    offset: Int
-
-    """
-    Maximum number of rows to return (defaults to 100 rows).
-    """
-    limit: Int = 100
-
-    """
-    Set to true to return distinct results.
-    """
-    distinct: Boolean = false
-
-    """
-    Filter condition to apply to the groups of aggregate queries.
-    """
-    having: SharedAccess_Having
-  ): [SharedAccess!]! @fdc_generated(from: "SharedAccess.trustedContact", purpose: QUERY_MULTIPLE_ONE_TO_MANY)
-  """
-  Implicit metadata field that cannot be written. It provides extra information about query results.
-  """
-  _metadata: _Metadata @fdc_generated(from: "TrustedContact", purpose: METADATA_FIELD)
-  """
-  ✨ Count the number of rows in the `TrustedContact` table.
-  """
-  _count: Int! @fdc_generated(from: "TrustedContact.", purpose: QUERY_COUNT)
-  """
-  ✨ Count the number of rows in the `TrustedContact` table where the `contactEmail` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
-  """
-  contactEmail_count(
-    """
-    Set to true to count the number of distinct values.
-    """
-    distinct: Boolean = false
-  ): Int! @fdc_generated(from: "TrustedContact.contactEmail", purpose: QUERY_COUNT)
-  """
-  ✨ Count the number of rows in the `TrustedContact` table where the `createdAt` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
-  """
-  createdAt_count(
-    """
-    Set to true to count the number of distinct values.
-    """
-    distinct: Boolean = false
-  ): Int! @fdc_generated(from: "TrustedContact.createdAt", purpose: QUERY_COUNT)
-  """
-  ✨ Count the number of rows in the `TrustedContact` table where the `displayName` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
-  """
-  displayName_count(
-    """
-    Set to true to count the number of distinct values.
-    """
-    distinct: Boolean = false
-  ): Int! @fdc_generated(from: "TrustedContact.displayName", purpose: QUERY_COUNT)
-  """
-  ✨ Count the number of rows in the `TrustedContact` table where the `id` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
-  """
-  id_count(
-    """
-    Set to true to count the number of distinct values.
-    """
-    distinct: Boolean = false
-  ): Int! @fdc_generated(from: "TrustedContact.id", purpose: QUERY_COUNT)
-  """
-  ✨ Count the number of rows in the `TrustedContact` table where the `sharedUntil` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
-  """
-  sharedUntil_count(
-    """
-    Set to true to count the number of distinct values.
-    """
-    distinct: Boolean = false
-  ): Int! @fdc_generated(from: "TrustedContact.sharedUntil", purpose: QUERY_COUNT)
-  """
-  ✨ Count the number of rows in the `TrustedContact` table where the `status` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
-  """
-  status_count(
-    """
-    Set to true to count the number of distinct values.
-    """
-    distinct: Boolean = false
-  ): Int! @fdc_generated(from: "TrustedContact.status", purpose: QUERY_COUNT)
-  """
-  ✨ Count the number of rows in the `TrustedContact` table where the `userId` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  ✨ Count the number of rows in the `Beneficiary` table where the `userId` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
   """
   userId_count(
     """
     Set to true to count the number of distinct values.
     """
     distinct: Boolean = false
-  ): Int! @fdc_generated(from: "TrustedContact.userId", purpose: QUERY_COUNT)
+  ): Int! @fdc_generated(from: "Beneficiary.userId", purpose: QUERY_COUNT)
   """
-  ✨ Count the number of rows in the `TrustedContact` table where the `vaultId` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  ✨ Minimum of the `createdAt` field in the `Beneficiary` table.
   """
-  vaultId_count(
+  createdAt_min: Timestamp @fdc_generated(from: "Beneficiary.createdAt", purpose: QUERY_MIN)
+  """
+  ✨ Maximum of the `createdAt` field in the `Beneficiary` table.
+  """
+  createdAt_max: Timestamp @fdc_generated(from: "Beneficiary.createdAt", purpose: QUERY_MAX)
+  """
+  A generated field that is used for caching results in SDKs.
+  """
+  _id: ID! @fdc_generated(from: "Beneficiary.id", purpose: ENTITY_ID)
+}
+extend type DigitalAccount {
+  """
+  ✨ List `AccountInstruction` objects in a one-to-many relationship (where `AccountInstruction`.`digitalAccount` is this object).
+  """
+  accountInstructions_on_digitalAccount(
+    """
+    Filter condition to narrow down the query results.
+    """
+    where: AccountInstruction_Filter
+
+    """
+    Order the query results by specific fields.
+    """
+    orderBy: [AccountInstruction_Order!]
+
+    """
+    Number of rows to skip before starting to return the results.
+    """
+    offset: Int
+
+    """
+    Maximum number of rows to return (defaults to 100 rows).
+    """
+    limit: Int = 100
+
+    """
+    Set to true to return distinct results.
+    """
+    distinct: Boolean = false
+
+    """
+    Filter condition to apply to the groups of aggregate queries.
+    """
+    having: AccountInstruction_Having
+  ): [AccountInstruction!]! @fdc_generated(from: "AccountInstruction.digitalAccount", purpose: QUERY_MULTIPLE_ONE_TO_MANY)
+  """
+  Implicit metadata field that cannot be written. It provides extra information about query results.
+  """
+  _metadata: _Metadata @fdc_generated(from: "DigitalAccount", purpose: METADATA_FIELD)
+  """
+  ✨ Count the number of rows in the `DigitalAccount` table.
+  """
+  _count: Int! @fdc_generated(from: "DigitalAccount.", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `DigitalAccount` table where the `accountType` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  accountType_count(
     """
     Set to true to count the number of distinct values.
     """
     distinct: Boolean = false
-  ): Int! @fdc_generated(from: "TrustedContact.vaultId", purpose: QUERY_COUNT)
+  ): Int! @fdc_generated(from: "DigitalAccount.accountType", purpose: QUERY_COUNT)
   """
-  ✨ Minimum of the `createdAt` field in the `TrustedContact` table.
+  ✨ Count the number of rows in the `DigitalAccount` table where the `createdAt` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
   """
-  createdAt_min: Timestamp @fdc_generated(from: "TrustedContact.createdAt", purpose: QUERY_MIN)
+  createdAt_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "DigitalAccount.createdAt", purpose: QUERY_COUNT)
   """
-  ✨ Minimum of the `sharedUntil` field in the `TrustedContact` table.
+  ✨ Count the number of rows in the `DigitalAccount` table where the `id` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
   """
-  sharedUntil_min: Timestamp @fdc_generated(from: "TrustedContact.sharedUntil", purpose: QUERY_MIN)
+  id_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "DigitalAccount.id", purpose: QUERY_COUNT)
   """
-  ✨ Maximum of the `createdAt` field in the `TrustedContact` table.
+  ✨ Count the number of rows in the `DigitalAccount` table where the `name` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
   """
-  createdAt_max: Timestamp @fdc_generated(from: "TrustedContact.createdAt", purpose: QUERY_MAX)
+  name_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "DigitalAccount.name", purpose: QUERY_COUNT)
   """
-  ✨ Maximum of the `sharedUntil` field in the `TrustedContact` table.
+  ✨ Count the number of rows in the `DigitalAccount` table where the `notes` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
   """
-  sharedUntil_max: Timestamp @fdc_generated(from: "TrustedContact.sharedUntil", purpose: QUERY_MAX)
+  notes_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "DigitalAccount.notes", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `DigitalAccount` table where the `passwordHint` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  passwordHint_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "DigitalAccount.passwordHint", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `DigitalAccount` table where the `recoveryEmail` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  recoveryEmail_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "DigitalAccount.recoveryEmail", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `DigitalAccount` table where the `url` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  url_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "DigitalAccount.url", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `DigitalAccount` table where the `userId` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  userId_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "DigitalAccount.userId", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `DigitalAccount` table where the `username` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  username_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "DigitalAccount.username", purpose: QUERY_COUNT)
+  """
+  ✨ Minimum of the `createdAt` field in the `DigitalAccount` table.
+  """
+  createdAt_min: Timestamp @fdc_generated(from: "DigitalAccount.createdAt", purpose: QUERY_MIN)
+  """
+  ✨ Maximum of the `createdAt` field in the `DigitalAccount` table.
+  """
+  createdAt_max: Timestamp @fdc_generated(from: "DigitalAccount.createdAt", purpose: QUERY_MAX)
   """
   A generated field that is used for caching results in SDKs.
   """
-  _id: ID! @fdc_generated(from: "TrustedContact.id", purpose: ENTITY_ID)
+  _id: ID! @fdc_generated(from: "DigitalAccount.id", purpose: ENTITY_ID)
+}
+extend type TrustedAgent {
+  """
+  Implicit metadata field that cannot be written. It provides extra information about query results.
+  """
+  _metadata: _Metadata @fdc_generated(from: "TrustedAgent", purpose: METADATA_FIELD)
+  """
+  ✨ Count the number of rows in the `TrustedAgent` table.
+  """
+  _count: Int! @fdc_generated(from: "TrustedAgent.", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `TrustedAgent` table where the `accessLevel` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  accessLevel_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "TrustedAgent.accessLevel", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `TrustedAgent` table where the `createdAt` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  createdAt_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "TrustedAgent.createdAt", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `TrustedAgent` table where the `designationDate` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  designationDate_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "TrustedAgent.designationDate", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `TrustedAgent` table where the `email` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  email_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "TrustedAgent.email", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `TrustedAgent` table where the `firstName` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  firstName_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "TrustedAgent.firstName", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `TrustedAgent` table where the `id` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  id_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "TrustedAgent.id", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `TrustedAgent` table where the `lastName` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  lastName_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "TrustedAgent.lastName", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `TrustedAgent` table where the `phone` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  phone_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "TrustedAgent.phone", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `TrustedAgent` table where the `userId` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  userId_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "TrustedAgent.userId", purpose: QUERY_COUNT)
+  """
+  ✨ Minimum of the `createdAt` field in the `TrustedAgent` table.
+  """
+  createdAt_min: Timestamp @fdc_generated(from: "TrustedAgent.createdAt", purpose: QUERY_MIN)
+  """
+  ✨ Minimum of the `designationDate` field in the `TrustedAgent` table.
+  """
+  designationDate_min: Timestamp @fdc_generated(from: "TrustedAgent.designationDate", purpose: QUERY_MIN)
+  """
+  ✨ Maximum of the `createdAt` field in the `TrustedAgent` table.
+  """
+  createdAt_max: Timestamp @fdc_generated(from: "TrustedAgent.createdAt", purpose: QUERY_MAX)
+  """
+  ✨ Maximum of the `designationDate` field in the `TrustedAgent` table.
+  """
+  designationDate_max: Timestamp @fdc_generated(from: "TrustedAgent.designationDate", purpose: QUERY_MAX)
+  """
+  A generated field that is used for caching results in SDKs.
+  """
+  _id: ID! @fdc_generated(from: "TrustedAgent.id", purpose: ENTITY_ID)
 }
 extend type User {
   """
-  ✨ List `TrustedContact` objects in a one-to-many relationship (where `TrustedContact`.`user` is this object).
+  ✨ List `Beneficiary` objects in a one-to-many relationship (where `Beneficiary`.`user` is this object).
   """
-  trustedContacts_on_user(
+  beneficiaries_on_user(
     """
     Filter condition to narrow down the query results.
     """
-    where: TrustedContact_Filter
+    where: Beneficiary_Filter
 
     """
     Order the query results by specific fields.
     """
-    orderBy: [TrustedContact_Order!]
+    orderBy: [Beneficiary_Order!]
 
     """
     Number of rows to skip before starting to return the results.
@@ -515,21 +510,21 @@ extend type User {
     """
     Filter condition to apply to the groups of aggregate queries.
     """
-    having: TrustedContact_Having
-  ): [TrustedContact!]! @fdc_generated(from: "TrustedContact.user", purpose: QUERY_MULTIPLE_ONE_TO_MANY)
+    having: Beneficiary_Having
+  ): [Beneficiary!]! @fdc_generated(from: "Beneficiary.user", purpose: QUERY_MULTIPLE_ONE_TO_MANY)
   """
-  ✨ List `Vault` objects in a one-to-many relationship (where `Vault`.`user` is this object).
+  ✨ List `DigitalAccount` objects in a one-to-many relationship (where `DigitalAccount`.`user` is this object).
   """
-  vaults_on_user(
+  digitalAccounts_on_user(
     """
     Filter condition to narrow down the query results.
     """
-    where: Vault_Filter
+    where: DigitalAccount_Filter
 
     """
     Order the query results by specific fields.
     """
-    orderBy: [Vault_Order!]
+    orderBy: [DigitalAccount_Order!]
 
     """
     Number of rows to skip before starting to return the results.
@@ -549,8 +544,42 @@ extend type User {
     """
     Filter condition to apply to the groups of aggregate queries.
     """
-    having: Vault_Having
-  ): [Vault!]! @fdc_generated(from: "Vault.user", purpose: QUERY_MULTIPLE_ONE_TO_MANY)
+    having: DigitalAccount_Having
+  ): [DigitalAccount!]! @fdc_generated(from: "DigitalAccount.user", purpose: QUERY_MULTIPLE_ONE_TO_MANY)
+  """
+  ✨ List `TrustedAgent` objects in a one-to-many relationship (where `TrustedAgent`.`user` is this object).
+  """
+  trustedAgents_on_user(
+    """
+    Filter condition to narrow down the query results.
+    """
+    where: TrustedAgent_Filter
+
+    """
+    Order the query results by specific fields.
+    """
+    orderBy: [TrustedAgent_Order!]
+
+    """
+    Number of rows to skip before starting to return the results.
+    """
+    offset: Int
+
+    """
+    Maximum number of rows to return (defaults to 100 rows).
+    """
+    limit: Int = 100
+
+    """
+    Set to true to return distinct results.
+    """
+    distinct: Boolean = false
+
+    """
+    Filter condition to apply to the groups of aggregate queries.
+    """
+    having: TrustedAgent_Having
+  ): [TrustedAgent!]! @fdc_generated(from: "TrustedAgent.user", purpose: QUERY_MULTIPLE_ONE_TO_MANY)
   """
   Implicit metadata field that cannot be written. It provides extra information about query results.
   """
@@ -587,14 +616,32 @@ extend type User {
     distinct: Boolean = false
   ): Int! @fdc_generated(from: "User.email", purpose: QUERY_COUNT)
   """
-  ✨ Count the number of rows in the `User` table where the `hashedPassword` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  ✨ Count the number of rows in the `User` table where the `emergencyContactEmail` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
   """
-  hashedPassword_count(
+  emergencyContactEmail_count(
     """
     Set to true to count the number of distinct values.
     """
     distinct: Boolean = false
-  ): Int! @fdc_generated(from: "User.hashedPassword", purpose: QUERY_COUNT)
+  ): Int! @fdc_generated(from: "User.emergencyContactEmail", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `User` table where the `emergencyContactName` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  emergencyContactName_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "User.emergencyContactName", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `User` table where the `emergencyContactPhone` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  emergencyContactPhone_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "User.emergencyContactPhone", purpose: QUERY_COUNT)
   """
   ✨ Count the number of rows in the `User` table where the `id` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
   """
@@ -605,23 +652,14 @@ extend type User {
     distinct: Boolean = false
   ): Int! @fdc_generated(from: "User.id", purpose: QUERY_COUNT)
   """
-  ✨ Count the number of rows in the `User` table where the `phoneNumber` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  ✨ Count the number of rows in the `User` table where the `photoUrl` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
   """
-  phoneNumber_count(
+  photoUrl_count(
     """
     Set to true to count the number of distinct values.
     """
     distinct: Boolean = false
-  ): Int! @fdc_generated(from: "User.phoneNumber", purpose: QUERY_COUNT)
-  """
-  ✨ Count the number of rows in the `User` table where the `recoveryEmail` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
-  """
-  recoveryEmail_count(
-    """
-    Set to true to count the number of distinct values.
-    """
-    distinct: Boolean = false
-  ): Int! @fdc_generated(from: "User.recoveryEmail", purpose: QUERY_COUNT)
+  ): Int! @fdc_generated(from: "User.photoUrl", purpose: QUERY_COUNT)
   """
   ✨ Minimum of the `createdAt` field in the `User` table.
   """
@@ -634,181 +672,4 @@ extend type User {
   A generated field that is used for caching results in SDKs.
   """
   _id: ID! @fdc_generated(from: "User.id", purpose: ENTITY_ID)
-}
-extend type Vault {
-  """
-  ✨ List `Asset` objects in a one-to-many relationship (where `Asset`.`vault` is this object).
-  """
-  assets_on_vault(
-    """
-    Filter condition to narrow down the query results.
-    """
-    where: Asset_Filter
-
-    """
-    Order the query results by specific fields.
-    """
-    orderBy: [Asset_Order!]
-
-    """
-    Number of rows to skip before starting to return the results.
-    """
-    offset: Int
-
-    """
-    Maximum number of rows to return (defaults to 100 rows).
-    """
-    limit: Int = 100
-
-    """
-    Set to true to return distinct results.
-    """
-    distinct: Boolean = false
-
-    """
-    Filter condition to apply to the groups of aggregate queries.
-    """
-    having: Asset_Having
-  ): [Asset!]! @fdc_generated(from: "Asset.vault", purpose: QUERY_MULTIPLE_ONE_TO_MANY)
-  """
-  ✨ List `Folder` objects in a one-to-many relationship (where `Folder`.`vault` is this object).
-  """
-  folders_on_vault(
-    """
-    Filter condition to narrow down the query results.
-    """
-    where: Folder_Filter
-
-    """
-    Order the query results by specific fields.
-    """
-    orderBy: [Folder_Order!]
-
-    """
-    Number of rows to skip before starting to return the results.
-    """
-    offset: Int
-
-    """
-    Maximum number of rows to return (defaults to 100 rows).
-    """
-    limit: Int = 100
-
-    """
-    Set to true to return distinct results.
-    """
-    distinct: Boolean = false
-
-    """
-    Filter condition to apply to the groups of aggregate queries.
-    """
-    having: Folder_Having
-  ): [Folder!]! @fdc_generated(from: "Folder.vault", purpose: QUERY_MULTIPLE_ONE_TO_MANY)
-  """
-  ✨ List `TrustedContact` objects in a one-to-many relationship (where `TrustedContact`.`vault` is this object).
-  """
-  trustedContacts_on_vault(
-    """
-    Filter condition to narrow down the query results.
-    """
-    where: TrustedContact_Filter
-
-    """
-    Order the query results by specific fields.
-    """
-    orderBy: [TrustedContact_Order!]
-
-    """
-    Number of rows to skip before starting to return the results.
-    """
-    offset: Int
-
-    """
-    Maximum number of rows to return (defaults to 100 rows).
-    """
-    limit: Int = 100
-
-    """
-    Set to true to return distinct results.
-    """
-    distinct: Boolean = false
-
-    """
-    Filter condition to apply to the groups of aggregate queries.
-    """
-    having: TrustedContact_Having
-  ): [TrustedContact!]! @fdc_generated(from: "TrustedContact.vault", purpose: QUERY_MULTIPLE_ONE_TO_MANY)
-  """
-  Implicit metadata field that cannot be written. It provides extra information about query results.
-  """
-  _metadata: _Metadata @fdc_generated(from: "Vault", purpose: METADATA_FIELD)
-  """
-  ✨ Count the number of rows in the `Vault` table.
-  """
-  _count: Int! @fdc_generated(from: "Vault.", purpose: QUERY_COUNT)
-  """
-  ✨ Count the number of rows in the `Vault` table where the `createdAt` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
-  """
-  createdAt_count(
-    """
-    Set to true to count the number of distinct values.
-    """
-    distinct: Boolean = false
-  ): Int! @fdc_generated(from: "Vault.createdAt", purpose: QUERY_COUNT)
-  """
-  ✨ Count the number of rows in the `Vault` table where the `encryptionKeySalt` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
-  """
-  encryptionKeySalt_count(
-    """
-    Set to true to count the number of distinct values.
-    """
-    distinct: Boolean = false
-  ): Int! @fdc_generated(from: "Vault.encryptionKeySalt", purpose: QUERY_COUNT)
-  """
-  ✨ Count the number of rows in the `Vault` table where the `id` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
-  """
-  id_count(
-    """
-    Set to true to count the number of distinct values.
-    """
-    distinct: Boolean = false
-  ): Int! @fdc_generated(from: "Vault.id", purpose: QUERY_COUNT)
-  """
-  ✨ Count the number of rows in the `Vault` table where the `lastAccessedAt` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
-  """
-  lastAccessedAt_count(
-    """
-    Set to true to count the number of distinct values.
-    """
-    distinct: Boolean = false
-  ): Int! @fdc_generated(from: "Vault.lastAccessedAt", purpose: QUERY_COUNT)
-  """
-  ✨ Count the number of rows in the `Vault` table where the `userId` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
-  """
-  userId_count(
-    """
-    Set to true to count the number of distinct values.
-    """
-    distinct: Boolean = false
-  ): Int! @fdc_generated(from: "Vault.userId", purpose: QUERY_COUNT)
-  """
-  ✨ Minimum of the `createdAt` field in the `Vault` table.
-  """
-  createdAt_min: Timestamp @fdc_generated(from: "Vault.createdAt", purpose: QUERY_MIN)
-  """
-  ✨ Minimum of the `lastAccessedAt` field in the `Vault` table.
-  """
-  lastAccessedAt_min: Timestamp @fdc_generated(from: "Vault.lastAccessedAt", purpose: QUERY_MIN)
-  """
-  ✨ Maximum of the `createdAt` field in the `Vault` table.
-  """
-  createdAt_max: Timestamp @fdc_generated(from: "Vault.createdAt", purpose: QUERY_MAX)
-  """
-  ✨ Maximum of the `lastAccessedAt` field in the `Vault` table.
-  """
-  lastAccessedAt_max: Timestamp @fdc_generated(from: "Vault.lastAccessedAt", purpose: QUERY_MAX)
-  """
-  A generated field that is used for caching results in SDKs.
-  """
-  _id: ID! @fdc_generated(from: "Vault.id", purpose: ENTITY_ID)
 }

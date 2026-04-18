@@ -1,27 +1,27 @@
 """
-✨ `Asset_KeyOutput` returns the primary key fields of table type `Asset`.
+✨ `AccountInstruction_KeyOutput` returns the primary key fields of table type `AccountInstruction`.
 
-It has the same format as `Asset_Key`, but is only used as mutation return value.
+It has the same format as `AccountInstruction_Key`, but is only used as mutation return value.
 """
-scalar Asset_KeyOutput
+scalar AccountInstruction_KeyOutput
 """
-✨ `Folder_KeyOutput` returns the primary key fields of table type `Folder`.
+✨ `Beneficiary_KeyOutput` returns the primary key fields of table type `Beneficiary`.
 
-It has the same format as `Folder_Key`, but is only used as mutation return value.
+It has the same format as `Beneficiary_Key`, but is only used as mutation return value.
 """
-scalar Folder_KeyOutput
+scalar Beneficiary_KeyOutput
 """
-✨ `SharedAccess_KeyOutput` returns the primary key fields of table type `SharedAccess`.
+✨ `DigitalAccount_KeyOutput` returns the primary key fields of table type `DigitalAccount`.
 
-It has the same format as `SharedAccess_Key`, but is only used as mutation return value.
+It has the same format as `DigitalAccount_Key`, but is only used as mutation return value.
 """
-scalar SharedAccess_KeyOutput
+scalar DigitalAccount_KeyOutput
 """
-✨ `TrustedContact_KeyOutput` returns the primary key fields of table type `TrustedContact`.
+✨ `TrustedAgent_KeyOutput` returns the primary key fields of table type `TrustedAgent`.
 
-It has the same format as `TrustedContact_Key`, but is only used as mutation return value.
+It has the same format as `TrustedAgent_Key`, but is only used as mutation return value.
 """
-scalar TrustedContact_KeyOutput
+scalar TrustedAgent_KeyOutput
 """
 ✨ `User_KeyOutput` returns the primary key fields of table type `User`.
 
@@ -29,206 +29,168 @@ It has the same format as `User_Key`, but is only used as mutation return value.
 """
 scalar User_KeyOutput
 """
-✨ `Vault_KeyOutput` returns the primary key fields of table type `Vault`.
-
-It has the same format as `Vault_Key`, but is only used as mutation return value.
+✨ Generated data input type for table 'AccountInstruction'. It includes all necessary fields for creating or upserting rows into table.
 """
-scalar Vault_KeyOutput
-"""
-✨ Generated data input type for table 'Asset'. It includes all necessary fields for creating or upserting rows into table.
-"""
-input Asset_Data {
+input AccountInstruction_Data {
   """
-  ✨ Generated from Field `Asset`.`id` of type `UUID!`
+  ✨ Generated from Field `AccountInstruction`.`id` of type `UUID!`
   """
   id: UUID
   """
-  ✨ `_expr` server value variant of `id` (✨ Generated from Field `Asset`.`id` of type `UUID!`)
+  ✨ `_expr` server value variant of `id` (✨ Generated from Field `AccountInstruction`.`id` of type `UUID!`)
   """
   id_expr: UUID_Expr @fdc_forbiddenInVariables
   """
-  ✨ Generated from Field `Asset`.`folderId` of type `UUID`
+  ✨ Generated from Field `AccountInstruction`.`beneficiaryId` of type `UUID`
   """
-  folderId: UUID
+  beneficiaryId: UUID
   """
-  ✨ `_expr` server value variant of `folderId` (✨ Generated from Field `Asset`.`folderId` of type `UUID`)
+  ✨ `_expr` server value variant of `beneficiaryId` (✨ Generated from Field `AccountInstruction`.`beneficiaryId` of type `UUID`)
   """
-  folderId_expr: UUID_Expr @fdc_forbiddenInVariables
+  beneficiaryId_expr: UUID_Expr @fdc_forbiddenInVariables
   """
-  ✨ Generated from Field `Asset`.`vaultId` of type `UUID!`
+  ✨ Generated from Field `AccountInstruction`.`digitalAccountId` of type `UUID!`
   """
-  vaultId: UUID
+  digitalAccountId: UUID
   """
-  ✨ `_expr` server value variant of `vaultId` (✨ Generated from Field `Asset`.`vaultId` of type `UUID!`)
+  ✨ `_expr` server value variant of `digitalAccountId` (✨ Generated from Field `AccountInstruction`.`digitalAccountId` of type `UUID!`)
   """
-  vaultId_expr: UUID_Expr @fdc_forbiddenInVariables
+  digitalAccountId_expr: UUID_Expr @fdc_forbiddenInVariables
   """
-  ✨ Generated from Field `Asset`.`folder` of type `Folder`
+  ✨ Generated from Field `AccountInstruction`.`beneficiary` of type `Beneficiary`
   """
-  folder: Folder_Key @fdc_forbiddenInVariables
+  beneficiary: Beneficiary_Key @fdc_forbiddenInVariables
   """
-  ✨ Generated from Field `Asset`.`vault` of type `Vault!`
+  ✨ Generated from Field `AccountInstruction`.`digitalAccount` of type `DigitalAccount!`
   """
-  vault: Vault_Key @fdc_forbiddenInVariables
+  digitalAccount: DigitalAccount_Key @fdc_forbiddenInVariables
   """
-  ✨ Generated from Field `Asset`.`assetType` of type `String!`
+  ✨ Generated from Field `AccountInstruction`.`accessGrantDuration` of type `String`
   """
-  assetType: String
+  accessGrantDuration: String
   """
-  ✨ `_expr` server value variant of `assetType` (✨ Generated from Field `Asset`.`assetType` of type `String!`)
+  ✨ `_expr` server value variant of `accessGrantDuration` (✨ Generated from Field `AccountInstruction`.`accessGrantDuration` of type `String`)
   """
-  assetType_expr: String_Expr @fdc_forbiddenInVariables
+  accessGrantDuration_expr: String_Expr @fdc_forbiddenInVariables
   """
-  ✨ Generated from Field `Asset`.`contentType` of type `String`
-  """
-  contentType: String
-  """
-  ✨ `_expr` server value variant of `contentType` (✨ Generated from Field `Asset`.`contentType` of type `String`)
-  """
-  contentType_expr: String_Expr @fdc_forbiddenInVariables
-  """
-  ✨ Generated from Field `Asset`.`createdAt` of type `Timestamp!`
+  ✨ Generated from Field `AccountInstruction`.`createdAt` of type `Timestamp!`
   """
   createdAt: Timestamp
   """
-  ✨ `_expr` server value variant of `createdAt` (✨ Generated from Field `Asset`.`createdAt` of type `Timestamp!`)
+  ✨ `_expr` server value variant of `createdAt` (✨ Generated from Field `AccountInstruction`.`createdAt` of type `Timestamp!`)
   """
   createdAt_expr: Timestamp_Expr @fdc_forbiddenInVariables
   """
-  ✨ `_time` server value variant of `createdAt` (✨ Generated from Field `Asset`.`createdAt` of type `Timestamp!`)
+  ✨ `_time` server value variant of `createdAt` (✨ Generated from Field `AccountInstruction`.`createdAt` of type `Timestamp!`)
   """
   createdAt_time: Timestamp_Relative @fdc_forbiddenInVariables
   """
-  ✨ `_update` server value variant of `createdAt` (✨ Generated from Field `Asset`.`createdAt` of type `Timestamp!`)
+  ✨ `_update` server value variant of `createdAt` (✨ Generated from Field `AccountInstruction`.`createdAt` of type `Timestamp!`)
   """
   createdAt_update: [Timestamp_Update!] @fdc_forbiddenInVariables
   """
-  ✨ Generated from Field `Asset`.`description` of type `String`
+  ✨ Generated from Field `AccountInstruction`.`eventTrigger` of type `String!`
   """
-  description: String
+  eventTrigger: String
   """
-  ✨ `_expr` server value variant of `description` (✨ Generated from Field `Asset`.`description` of type `String`)
+  ✨ `_expr` server value variant of `eventTrigger` (✨ Generated from Field `AccountInstruction`.`eventTrigger` of type `String!`)
   """
-  description_expr: String_Expr @fdc_forbiddenInVariables
+  eventTrigger_expr: String_Expr @fdc_forbiddenInVariables
   """
-  ✨ Generated from Field `Asset`.`encryptedContent` of type `String!`
+  ✨ Generated from Field `AccountInstruction`.`instructionType` of type `String!`
   """
-  encryptedContent: String
+  instructionType: String
   """
-  ✨ `_expr` server value variant of `encryptedContent` (✨ Generated from Field `Asset`.`encryptedContent` of type `String!`)
+  ✨ `_expr` server value variant of `instructionType` (✨ Generated from Field `AccountInstruction`.`instructionType` of type `String!`)
   """
-  encryptedContent_expr: String_Expr @fdc_forbiddenInVariables
+  instructionType_expr: String_Expr @fdc_forbiddenInVariables
   """
-  ✨ Generated from Field `Asset`.`name` of type `String`
+  ✨ Generated from Field `AccountInstruction`.`specificInstructions` of type `String`
   """
-  name: String
+  specificInstructions: String
   """
-  ✨ `_expr` server value variant of `name` (✨ Generated from Field `Asset`.`name` of type `String`)
+  ✨ `_expr` server value variant of `specificInstructions` (✨ Generated from Field `AccountInstruction`.`specificInstructions` of type `String`)
   """
-  name_expr: String_Expr @fdc_forbiddenInVariables
-  """
-  ✨ Generated from Field `Asset`.`updatedAt` of type `Timestamp!`
-  """
-  updatedAt: Timestamp
-  """
-  ✨ `_expr` server value variant of `updatedAt` (✨ Generated from Field `Asset`.`updatedAt` of type `Timestamp!`)
-  """
-  updatedAt_expr: Timestamp_Expr @fdc_forbiddenInVariables
-  """
-  ✨ `_time` server value variant of `updatedAt` (✨ Generated from Field `Asset`.`updatedAt` of type `Timestamp!`)
-  """
-  updatedAt_time: Timestamp_Relative @fdc_forbiddenInVariables
-  """
-  ✨ `_update` server value variant of `updatedAt` (✨ Generated from Field `Asset`.`updatedAt` of type `Timestamp!`)
-  """
-  updatedAt_update: [Timestamp_Update!] @fdc_forbiddenInVariables
+  specificInstructions_expr: String_Expr @fdc_forbiddenInVariables
 }
 """
-✨ Generated filter input type for table 'Asset'. This input allows filtering objects using various conditions. Use `_or`, `_and`, and `_not` to compose complex filters.
+✨ Generated filter input type for table 'AccountInstruction'. This input allows filtering objects using various conditions. Use `_or`, `_and`, and `_not` to compose complex filters.
 """
-input Asset_Filter {
+input AccountInstruction_Filter {
   """
   Apply multiple filter conditions using `AND` logic.
   """
-  _and: [Asset_Filter!]
+  _and: [AccountInstruction_Filter!]
   """
   Negate the result of the provided filter condition.
   """
-  _not: Asset_Filter
+  _not: AccountInstruction_Filter
   """
   Apply multiple filter conditions using `OR` logic.
   """
-  _or: [Asset_Filter!]
+  _or: [AccountInstruction_Filter!]
   """
-  ✨ Generated from Field `Asset`.`id` of type `UUID!`
+  ✨ Generated from Field `AccountInstruction`.`id` of type `UUID!`
   """
   id: UUID_Filter
   """
-  ✨ Generated from Field `Asset`.`folderId` of type `UUID`
+  ✨ Generated from Field `AccountInstruction`.`beneficiaryId` of type `UUID`
   """
-  folderId: UUID_Filter
+  beneficiaryId: UUID_Filter
   """
-  ✨ Generated from Field `Asset`.`vaultId` of type `UUID!`
+  ✨ Generated from Field `AccountInstruction`.`digitalAccountId` of type `UUID!`
   """
-  vaultId: UUID_Filter
+  digitalAccountId: UUID_Filter
   """
-  ✨ Generated from Field `Asset`.`folder` of type `Folder`
+  ✨ Generated from Field `AccountInstruction`.`beneficiary` of type `Beneficiary`
   """
-  folder: Folder_Filter
+  beneficiary: Beneficiary_Filter
   """
-  ✨ Generated from Field `Asset`.`vault` of type `Vault!`
+  ✨ Generated from Field `AccountInstruction`.`digitalAccount` of type `DigitalAccount!`
   """
-  vault: Vault_Filter
+  digitalAccount: DigitalAccount_Filter
   """
-  ✨ Generated from Field `Asset`.`assetType` of type `String!`
+  ✨ Generated from Field `AccountInstruction`.`accessGrantDuration` of type `String`
   """
-  assetType: String_Filter
+  accessGrantDuration: String_Filter
   """
-  ✨ Generated from Field `Asset`.`contentType` of type `String`
-  """
-  contentType: String_Filter
-  """
-  ✨ Generated from Field `Asset`.`createdAt` of type `Timestamp!`
+  ✨ Generated from Field `AccountInstruction`.`createdAt` of type `Timestamp!`
   """
   createdAt: Timestamp_Filter
   """
-  ✨ Generated from Field `Asset`.`description` of type `String`
+  ✨ Generated from Field `AccountInstruction`.`eventTrigger` of type `String!`
   """
-  description: String_Filter
+  eventTrigger: String_Filter
   """
-  ✨ Generated from Field `Asset`.`encryptedContent` of type `String!`
+  ✨ Generated from Field `AccountInstruction`.`instructionType` of type `String!`
   """
-  encryptedContent: String_Filter
+  instructionType: String_Filter
   """
-  ✨ Generated from Field `Asset`.`name` of type `String`
+  ✨ Generated from Field `AccountInstruction`.`specificInstructions` of type `String`
   """
-  name: String_Filter
-  """
-  ✨ Generated from Field `Asset`.`updatedAt` of type `Timestamp!`
-  """
-  updatedAt: Timestamp_Filter
+  specificInstructions: String_Filter
 }
 """
-✨ Generated first-row input type for table 'Asset'. This input selects the first row matching the filter criteria, ordered according to the specified conditions.
+✨ Generated first-row input type for table 'AccountInstruction'. This input selects the first row matching the filter criteria, ordered according to the specified conditions.
 """
-input Asset_FirstRow {
+input AccountInstruction_FirstRow {
   """
   Order the result by the specified fields.
   """
-  orderBy: [Asset_Order!]
+  orderBy: [AccountInstruction_Order!]
   """
   Filters rows based on the specified conditions.
   """
-  where: Asset_Filter
+  where: AccountInstruction_Filter
 }
 """
-✨ Generated having input type for table 'Asset'. This input allows you to filter groups during aggregate queries using various conditions. Use `_or`, `_and`, and `_not` to compose complex filters.
+✨ Generated having input type for table 'AccountInstruction'. This input allows you to filter groups during aggregate queries using various conditions. Use `_or`, `_and`, and `_not` to compose complex filters.
 """
-input Asset_Having {
+input AccountInstruction_Having {
   """
   Apply multiple Having conditions using `AND` logic.
   """
-  _and: [Asset_Having!]
+  _and: [AccountInstruction_Having!]
   """
   Whether to apply DISTINCT to the aggregate function.
   """
@@ -236,408 +198,73 @@ input Asset_Having {
   """
   Negate the result of the provided Having condition.
   """
-  _not: Asset_Having
+  _not: AccountInstruction_Having
   """
   Apply multiple Having conditions using `OR` logic.
   """
-  _or: [Asset_Having!]
+  _or: [AccountInstruction_Having!]
   """
-  ✨ Generated from Field `Asset`.`_count` of type `Int!`
+  ✨ Generated from Field `AccountInstruction`.`_count` of type `Int!`
   """
   _count: Int_Filter
   """
-  ✨ Generated from Field `Asset`.`assetType_count` of type `Int!`
+  ✨ Generated from Field `AccountInstruction`.`accessGrantDuration_count` of type `Int!`
   """
-  assetType_count: Int_Filter
+  accessGrantDuration_count: Int_Filter
   """
-  ✨ Generated from Field `Asset`.`contentType_count` of type `Int!`
+  ✨ Generated from Field `AccountInstruction`.`beneficiaryId_count` of type `Int!`
   """
-  contentType_count: Int_Filter
+  beneficiaryId_count: Int_Filter
   """
-  ✨ Generated from Field `Asset`.`createdAt_count` of type `Int!`
+  ✨ Generated from Field `AccountInstruction`.`createdAt_count` of type `Int!`
   """
   createdAt_count: Int_Filter
   """
-  ✨ Generated from Field `Asset`.`description_count` of type `Int!`
+  ✨ Generated from Field `AccountInstruction`.`digitalAccountId_count` of type `Int!`
   """
-  description_count: Int_Filter
+  digitalAccountId_count: Int_Filter
   """
-  ✨ Generated from Field `Asset`.`encryptedContent_count` of type `Int!`
+  ✨ Generated from Field `AccountInstruction`.`eventTrigger_count` of type `Int!`
   """
-  encryptedContent_count: Int_Filter
+  eventTrigger_count: Int_Filter
   """
-  ✨ Generated from Field `Asset`.`folderId_count` of type `Int!`
-  """
-  folderId_count: Int_Filter
-  """
-  ✨ Generated from Field `Asset`.`id_count` of type `Int!`
+  ✨ Generated from Field `AccountInstruction`.`id_count` of type `Int!`
   """
   id_count: Int_Filter
   """
-  ✨ Generated from Field `Asset`.`name_count` of type `Int!`
+  ✨ Generated from Field `AccountInstruction`.`instructionType_count` of type `Int!`
   """
-  name_count: Int_Filter
+  instructionType_count: Int_Filter
   """
-  ✨ Generated from Field `Asset`.`updatedAt_count` of type `Int!`
+  ✨ Generated from Field `AccountInstruction`.`specificInstructions_count` of type `Int!`
   """
-  updatedAt_count: Int_Filter
+  specificInstructions_count: Int_Filter
   """
-  ✨ Generated from Field `Asset`.`vaultId_count` of type `Int!`
-  """
-  vaultId_count: Int_Filter
-  """
-  ✨ Generated from Field `Asset`.`createdAt_min` of type `Timestamp`
+  ✨ Generated from Field `AccountInstruction`.`createdAt_min` of type `Timestamp`
   """
   createdAt_min: Timestamp_Filter
   """
-  ✨ Generated from Field `Asset`.`updatedAt_min` of type `Timestamp`
-  """
-  updatedAt_min: Timestamp_Filter
-  """
-  ✨ Generated from Field `Asset`.`createdAt_max` of type `Timestamp`
-  """
-  createdAt_max: Timestamp_Filter
-  """
-  ✨ Generated from Field `Asset`.`updatedAt_max` of type `Timestamp`
-  """
-  updatedAt_max: Timestamp_Filter
-}
-"""
-✨ Generated key input type for table 'Asset'. It represents the primary key fields used to uniquely identify a row in the table.
-"""
-input Asset_Key {
-  """
-  ✨ Generated from Field `Asset`.`id` of type `UUID!`
-  """
-  id: UUID
-  """
-  ✨ `_expr` server value variant of `id` (✨ Generated from Field `Asset`.`id` of type `UUID!`)
-  """
-  id_expr: UUID_Expr @fdc_forbiddenInVariables
-}
-"""
-✨ Generated list filter input type for table 'Asset'. This input applies filtering logic based on the count or existence of related objects that matches certain criteria.
-"""
-input Asset_ListFilter {
-  """
-  The desired number of objects that match the condition (defaults to at least one).
-  """
-  count: Int_Filter = {gt:0}
-  """
-  Condition of the related objects to filter for.
-  """
-  exist: Asset_Filter
-}
-"""
-✨ Generated order input type for table 'Asset'. This input defines the sorting order of rows in query results based on one or more fields.
-"""
-input Asset_Order {
-  """
-  ✨ Generated from Field `Asset`.`id` of type `UUID!`
-  """
-  id: OrderDirection
-  """
-  ✨ Generated from Field `Asset`.`folderId` of type `UUID`
-  """
-  folderId: OrderDirection
-  """
-  ✨ Generated from Field `Asset`.`vaultId` of type `UUID!`
-  """
-  vaultId: OrderDirection
-  """
-  ✨ Generated from Field `Asset`.`folder` of type `Folder`
-  """
-  folder: Folder_Order
-  """
-  ✨ Generated from Field `Asset`.`vault` of type `Vault!`
-  """
-  vault: Vault_Order
-  """
-  ✨ Generated from Field `Asset`.`assetType` of type `String!`
-  """
-  assetType: OrderDirection
-  """
-  ✨ Generated from Field `Asset`.`contentType` of type `String`
-  """
-  contentType: OrderDirection
-  """
-  ✨ Generated from Field `Asset`.`createdAt` of type `Timestamp!`
-  """
-  createdAt: OrderDirection
-  """
-  ✨ Generated from Field `Asset`.`description` of type `String`
-  """
-  description: OrderDirection
-  """
-  ✨ Generated from Field `Asset`.`encryptedContent` of type `String!`
-  """
-  encryptedContent: OrderDirection
-  """
-  ✨ Generated from Field `Asset`.`name` of type `String`
-  """
-  name: OrderDirection
-  """
-  ✨ Generated from Field `Asset`.`updatedAt` of type `Timestamp!`
-  """
-  updatedAt: OrderDirection
-  """
-  ✨ Generated from Field `Asset`.`_count` of type `Int!`
-  """
-  _count: OrderDirection
-  """
-  ✨ Generated from Field `Asset`.`assetType_count` of type `Int!`
-  """
-  assetType_count: OrderDirection
-  """
-  ✨ Generated from Field `Asset`.`contentType_count` of type `Int!`
-  """
-  contentType_count: OrderDirection
-  """
-  ✨ Generated from Field `Asset`.`createdAt_count` of type `Int!`
-  """
-  createdAt_count: OrderDirection
-  """
-  ✨ Generated from Field `Asset`.`description_count` of type `Int!`
-  """
-  description_count: OrderDirection
-  """
-  ✨ Generated from Field `Asset`.`encryptedContent_count` of type `Int!`
-  """
-  encryptedContent_count: OrderDirection
-  """
-  ✨ Generated from Field `Asset`.`folderId_count` of type `Int!`
-  """
-  folderId_count: OrderDirection
-  """
-  ✨ Generated from Field `Asset`.`id_count` of type `Int!`
-  """
-  id_count: OrderDirection
-  """
-  ✨ Generated from Field `Asset`.`name_count` of type `Int!`
-  """
-  name_count: OrderDirection
-  """
-  ✨ Generated from Field `Asset`.`updatedAt_count` of type `Int!`
-  """
-  updatedAt_count: OrderDirection
-  """
-  ✨ Generated from Field `Asset`.`vaultId_count` of type `Int!`
-  """
-  vaultId_count: OrderDirection
-  """
-  ✨ Generated from Field `Asset`.`createdAt_min` of type `Timestamp`
-  """
-  createdAt_min: OrderDirection
-  """
-  ✨ Generated from Field `Asset`.`updatedAt_min` of type `Timestamp`
-  """
-  updatedAt_min: OrderDirection
-  """
-  ✨ Generated from Field `Asset`.`createdAt_max` of type `Timestamp`
-  """
-  createdAt_max: OrderDirection
-  """
-  ✨ Generated from Field `Asset`.`updatedAt_max` of type `Timestamp`
-  """
-  updatedAt_max: OrderDirection
-}
-"""
-✨ Generated data input type for table 'Folder'. It includes all necessary fields for creating or upserting rows into table.
-"""
-input Folder_Data {
-  """
-  ✨ Generated from Field `Folder`.`id` of type `UUID!`
-  """
-  id: UUID
-  """
-  ✨ `_expr` server value variant of `id` (✨ Generated from Field `Folder`.`id` of type `UUID!`)
-  """
-  id_expr: UUID_Expr @fdc_forbiddenInVariables
-  """
-  ✨ Generated from Field `Folder`.`parentFolderId` of type `UUID`
-  """
-  parentFolderId: UUID
-  """
-  ✨ `_expr` server value variant of `parentFolderId` (✨ Generated from Field `Folder`.`parentFolderId` of type `UUID`)
-  """
-  parentFolderId_expr: UUID_Expr @fdc_forbiddenInVariables
-  """
-  ✨ Generated from Field `Folder`.`vaultId` of type `UUID!`
-  """
-  vaultId: UUID
-  """
-  ✨ `_expr` server value variant of `vaultId` (✨ Generated from Field `Folder`.`vaultId` of type `UUID!`)
-  """
-  vaultId_expr: UUID_Expr @fdc_forbiddenInVariables
-  """
-  ✨ Generated from Field `Folder`.`parentFolder` of type `Folder`
-  """
-  parentFolder: Folder_Key @fdc_forbiddenInVariables
-  """
-  ✨ Generated from Field `Folder`.`vault` of type `Vault!`
-  """
-  vault: Vault_Key @fdc_forbiddenInVariables
-  """
-  ✨ Generated from Field `Folder`.`createdAt` of type `Timestamp!`
-  """
-  createdAt: Timestamp
-  """
-  ✨ `_expr` server value variant of `createdAt` (✨ Generated from Field `Folder`.`createdAt` of type `Timestamp!`)
-  """
-  createdAt_expr: Timestamp_Expr @fdc_forbiddenInVariables
-  """
-  ✨ `_time` server value variant of `createdAt` (✨ Generated from Field `Folder`.`createdAt` of type `Timestamp!`)
-  """
-  createdAt_time: Timestamp_Relative @fdc_forbiddenInVariables
-  """
-  ✨ `_update` server value variant of `createdAt` (✨ Generated from Field `Folder`.`createdAt` of type `Timestamp!`)
-  """
-  createdAt_update: [Timestamp_Update!] @fdc_forbiddenInVariables
-  """
-  ✨ Generated from Field `Folder`.`name` of type `String!`
-  """
-  name: String
-  """
-  ✨ `_expr` server value variant of `name` (✨ Generated from Field `Folder`.`name` of type `String!`)
-  """
-  name_expr: String_Expr @fdc_forbiddenInVariables
-}
-"""
-✨ Generated filter input type for table 'Folder'. This input allows filtering objects using various conditions. Use `_or`, `_and`, and `_not` to compose complex filters.
-"""
-input Folder_Filter {
-  """
-  Apply multiple filter conditions using `AND` logic.
-  """
-  _and: [Folder_Filter!]
-  """
-  Negate the result of the provided filter condition.
-  """
-  _not: Folder_Filter
-  """
-  Apply multiple filter conditions using `OR` logic.
-  """
-  _or: [Folder_Filter!]
-  """
-  ✨ Generated from Field `Folder`.`id` of type `UUID!`
-  """
-  id: UUID_Filter
-  """
-  ✨ Generated from Field `Folder`.`parentFolderId` of type `UUID`
-  """
-  parentFolderId: UUID_Filter
-  """
-  ✨ Generated from Field `Folder`.`vaultId` of type `UUID!`
-  """
-  vaultId: UUID_Filter
-  """
-  ✨ Generated from Field `Folder`.`parentFolder` of type `Folder`
-  """
-  parentFolder: Folder_Filter
-  """
-  ✨ Generated from Field `Folder`.`vault` of type `Vault!`
-  """
-  vault: Vault_Filter
-  """
-  ✨ Generated from Field `Folder`.`createdAt` of type `Timestamp!`
-  """
-  createdAt: Timestamp_Filter
-  """
-  ✨ Generated from Field `Folder`.`name` of type `String!`
-  """
-  name: String_Filter
-  """
-  ✨ Generated from Field `Folder`.`assets_on_folder` of type `[Asset!]!`
-  """
-  assets_on_folder: Asset_ListFilter
-  """
-  ✨ Generated from Field `Folder`.`folders_on_parentFolder` of type `[Folder!]!`
-  """
-  folders_on_parentFolder: Folder_ListFilter
-}
-"""
-✨ Generated first-row input type for table 'Folder'. This input selects the first row matching the filter criteria, ordered according to the specified conditions.
-"""
-input Folder_FirstRow {
-  """
-  Order the result by the specified fields.
-  """
-  orderBy: [Folder_Order!]
-  """
-  Filters rows based on the specified conditions.
-  """
-  where: Folder_Filter
-}
-"""
-✨ Generated having input type for table 'Folder'. This input allows you to filter groups during aggregate queries using various conditions. Use `_or`, `_and`, and `_not` to compose complex filters.
-"""
-input Folder_Having {
-  """
-  Apply multiple Having conditions using `AND` logic.
-  """
-  _and: [Folder_Having!]
-  """
-  Whether to apply DISTINCT to the aggregate function.
-  """
-  _distinct: Boolean
-  """
-  Negate the result of the provided Having condition.
-  """
-  _not: Folder_Having
-  """
-  Apply multiple Having conditions using `OR` logic.
-  """
-  _or: [Folder_Having!]
-  """
-  ✨ Generated from Field `Folder`.`_count` of type `Int!`
-  """
-  _count: Int_Filter
-  """
-  ✨ Generated from Field `Folder`.`createdAt_count` of type `Int!`
-  """
-  createdAt_count: Int_Filter
-  """
-  ✨ Generated from Field `Folder`.`id_count` of type `Int!`
-  """
-  id_count: Int_Filter
-  """
-  ✨ Generated from Field `Folder`.`name_count` of type `Int!`
-  """
-  name_count: Int_Filter
-  """
-  ✨ Generated from Field `Folder`.`parentFolderId_count` of type `Int!`
-  """
-  parentFolderId_count: Int_Filter
-  """
-  ✨ Generated from Field `Folder`.`vaultId_count` of type `Int!`
-  """
-  vaultId_count: Int_Filter
-  """
-  ✨ Generated from Field `Folder`.`createdAt_min` of type `Timestamp`
-  """
-  createdAt_min: Timestamp_Filter
-  """
-  ✨ Generated from Field `Folder`.`createdAt_max` of type `Timestamp`
+  ✨ Generated from Field `AccountInstruction`.`createdAt_max` of type `Timestamp`
   """
   createdAt_max: Timestamp_Filter
 }
 """
-✨ Generated key input type for table 'Folder'. It represents the primary key fields used to uniquely identify a row in the table.
+✨ Generated key input type for table 'AccountInstruction'. It represents the primary key fields used to uniquely identify a row in the table.
 """
-input Folder_Key {
+input AccountInstruction_Key {
   """
-  ✨ Generated from Field `Folder`.`id` of type `UUID!`
+  ✨ Generated from Field `AccountInstruction`.`id` of type `UUID!`
   """
   id: UUID
   """
-  ✨ `_expr` server value variant of `id` (✨ Generated from Field `Folder`.`id` of type `UUID!`)
+  ✨ `_expr` server value variant of `id` (✨ Generated from Field `AccountInstruction`.`id` of type `UUID!`)
   """
   id_expr: UUID_Expr @fdc_forbiddenInVariables
 }
 """
-✨ Generated list filter input type for table 'Folder'. This input applies filtering logic based on the count or existence of related objects that matches certain criteria.
+✨ Generated list filter input type for table 'AccountInstruction'. This input applies filtering logic based on the count or existence of related objects that matches certain criteria.
 """
-input Folder_ListFilter {
+input AccountInstruction_ListFilter {
   """
   The desired number of objects that match the condition (defaults to at least one).
   """
@@ -645,571 +272,256 @@ input Folder_ListFilter {
   """
   Condition of the related objects to filter for.
   """
-  exist: Folder_Filter
+  exist: AccountInstruction_Filter
 }
 """
-✨ Generated order input type for table 'Folder'. This input defines the sorting order of rows in query results based on one or more fields.
+✨ Generated order input type for table 'AccountInstruction'. This input defines the sorting order of rows in query results based on one or more fields.
 """
-input Folder_Order {
+input AccountInstruction_Order {
   """
-  ✨ Generated from Field `Folder`.`id` of type `UUID!`
+  ✨ Generated from Field `AccountInstruction`.`id` of type `UUID!`
   """
   id: OrderDirection
   """
-  ✨ Generated from Field `Folder`.`parentFolderId` of type `UUID`
+  ✨ Generated from Field `AccountInstruction`.`beneficiaryId` of type `UUID`
   """
-  parentFolderId: OrderDirection
+  beneficiaryId: OrderDirection
   """
-  ✨ Generated from Field `Folder`.`vaultId` of type `UUID!`
+  ✨ Generated from Field `AccountInstruction`.`digitalAccountId` of type `UUID!`
   """
-  vaultId: OrderDirection
+  digitalAccountId: OrderDirection
   """
-  ✨ Generated from Field `Folder`.`parentFolder` of type `Folder`
+  ✨ Generated from Field `AccountInstruction`.`beneficiary` of type `Beneficiary`
   """
-  parentFolder: Folder_Order
+  beneficiary: Beneficiary_Order
   """
-  ✨ Generated from Field `Folder`.`vault` of type `Vault!`
+  ✨ Generated from Field `AccountInstruction`.`digitalAccount` of type `DigitalAccount!`
   """
-  vault: Vault_Order
+  digitalAccount: DigitalAccount_Order
   """
-  ✨ Generated from Field `Folder`.`createdAt` of type `Timestamp!`
+  ✨ Generated from Field `AccountInstruction`.`accessGrantDuration` of type `String`
+  """
+  accessGrantDuration: OrderDirection
+  """
+  ✨ Generated from Field `AccountInstruction`.`createdAt` of type `Timestamp!`
   """
   createdAt: OrderDirection
   """
-  ✨ Generated from Field `Folder`.`name` of type `String!`
+  ✨ Generated from Field `AccountInstruction`.`eventTrigger` of type `String!`
   """
-  name: OrderDirection
+  eventTrigger: OrderDirection
   """
-  ✨ Generated from Field `Folder`.`_count` of type `Int!`
+  ✨ Generated from Field `AccountInstruction`.`instructionType` of type `String!`
+  """
+  instructionType: OrderDirection
+  """
+  ✨ Generated from Field `AccountInstruction`.`specificInstructions` of type `String`
+  """
+  specificInstructions: OrderDirection
+  """
+  ✨ Generated from Field `AccountInstruction`.`_count` of type `Int!`
   """
   _count: OrderDirection
   """
-  ✨ Generated from Field `Folder`.`createdAt_count` of type `Int!`
+  ✨ Generated from Field `AccountInstruction`.`accessGrantDuration_count` of type `Int!`
+  """
+  accessGrantDuration_count: OrderDirection
+  """
+  ✨ Generated from Field `AccountInstruction`.`beneficiaryId_count` of type `Int!`
+  """
+  beneficiaryId_count: OrderDirection
+  """
+  ✨ Generated from Field `AccountInstruction`.`createdAt_count` of type `Int!`
   """
   createdAt_count: OrderDirection
   """
-  ✨ Generated from Field `Folder`.`id_count` of type `Int!`
+  ✨ Generated from Field `AccountInstruction`.`digitalAccountId_count` of type `Int!`
+  """
+  digitalAccountId_count: OrderDirection
+  """
+  ✨ Generated from Field `AccountInstruction`.`eventTrigger_count` of type `Int!`
+  """
+  eventTrigger_count: OrderDirection
+  """
+  ✨ Generated from Field `AccountInstruction`.`id_count` of type `Int!`
   """
   id_count: OrderDirection
   """
-  ✨ Generated from Field `Folder`.`name_count` of type `Int!`
+  ✨ Generated from Field `AccountInstruction`.`instructionType_count` of type `Int!`
   """
-  name_count: OrderDirection
+  instructionType_count: OrderDirection
   """
-  ✨ Generated from Field `Folder`.`parentFolderId_count` of type `Int!`
+  ✨ Generated from Field `AccountInstruction`.`specificInstructions_count` of type `Int!`
   """
-  parentFolderId_count: OrderDirection
+  specificInstructions_count: OrderDirection
   """
-  ✨ Generated from Field `Folder`.`vaultId_count` of type `Int!`
-  """
-  vaultId_count: OrderDirection
-  """
-  ✨ Generated from Field `Folder`.`createdAt_min` of type `Timestamp`
+  ✨ Generated from Field `AccountInstruction`.`createdAt_min` of type `Timestamp`
   """
   createdAt_min: OrderDirection
   """
-  ✨ Generated from Field `Folder`.`createdAt_max` of type `Timestamp`
+  ✨ Generated from Field `AccountInstruction`.`createdAt_max` of type `Timestamp`
   """
   createdAt_max: OrderDirection
 }
 """
-✨ Generated data input type for table 'SharedAccess'. It includes all necessary fields for creating or upserting rows into table.
+✨ Generated data input type for table 'Beneficiary'. It includes all necessary fields for creating or upserting rows into table.
 """
-input SharedAccess_Data {
+input Beneficiary_Data {
   """
-  ✨ Generated from Field `SharedAccess`.`id` of type `UUID!`
+  ✨ Generated from Field `Beneficiary`.`id` of type `UUID!`
   """
   id: UUID
   """
-  ✨ `_expr` server value variant of `id` (✨ Generated from Field `SharedAccess`.`id` of type `UUID!`)
+  ✨ `_expr` server value variant of `id` (✨ Generated from Field `Beneficiary`.`id` of type `UUID!`)
   """
   id_expr: UUID_Expr @fdc_forbiddenInVariables
   """
-  ✨ Generated from Field `SharedAccess`.`trustedContactId` of type `UUID!`
-  """
-  trustedContactId: UUID
-  """
-  ✨ `_expr` server value variant of `trustedContactId` (✨ Generated from Field `SharedAccess`.`trustedContactId` of type `UUID!`)
-  """
-  trustedContactId_expr: UUID_Expr @fdc_forbiddenInVariables
-  """
-  ✨ Generated from Field `SharedAccess`.`trustedContact` of type `TrustedContact!`
-  """
-  trustedContact: TrustedContact_Key @fdc_forbiddenInVariables
-  """
-  ✨ Generated from Field `SharedAccess`.`entityId` of type `UUID!`
-  """
-  entityId: UUID
-  """
-  ✨ `_expr` server value variant of `entityId` (✨ Generated from Field `SharedAccess`.`entityId` of type `UUID!`)
-  """
-  entityId_expr: UUID_Expr @fdc_forbiddenInVariables
-  """
-  ✨ Generated from Field `SharedAccess`.`entityType` of type `String!`
-  """
-  entityType: String
-  """
-  ✨ `_expr` server value variant of `entityType` (✨ Generated from Field `SharedAccess`.`entityType` of type `String!`)
-  """
-  entityType_expr: String_Expr @fdc_forbiddenInVariables
-  """
-  ✨ Generated from Field `SharedAccess`.`expiresAt` of type `Timestamp`
-  """
-  expiresAt: Timestamp
-  """
-  ✨ `_expr` server value variant of `expiresAt` (✨ Generated from Field `SharedAccess`.`expiresAt` of type `Timestamp`)
-  """
-  expiresAt_expr: Timestamp_Expr @fdc_forbiddenInVariables
-  """
-  ✨ `_time` server value variant of `expiresAt` (✨ Generated from Field `SharedAccess`.`expiresAt` of type `Timestamp`)
-  """
-  expiresAt_time: Timestamp_Relative @fdc_forbiddenInVariables
-  """
-  ✨ `_update` server value variant of `expiresAt` (✨ Generated from Field `SharedAccess`.`expiresAt` of type `Timestamp`)
-  """
-  expiresAt_update: [Timestamp_Update!] @fdc_forbiddenInVariables
-  """
-  ✨ Generated from Field `SharedAccess`.`grantedAt` of type `Timestamp`
-  """
-  grantedAt: Timestamp
-  """
-  ✨ `_expr` server value variant of `grantedAt` (✨ Generated from Field `SharedAccess`.`grantedAt` of type `Timestamp`)
-  """
-  grantedAt_expr: Timestamp_Expr @fdc_forbiddenInVariables
-  """
-  ✨ `_time` server value variant of `grantedAt` (✨ Generated from Field `SharedAccess`.`grantedAt` of type `Timestamp`)
-  """
-  grantedAt_time: Timestamp_Relative @fdc_forbiddenInVariables
-  """
-  ✨ `_update` server value variant of `grantedAt` (✨ Generated from Field `SharedAccess`.`grantedAt` of type `Timestamp`)
-  """
-  grantedAt_update: [Timestamp_Update!] @fdc_forbiddenInVariables
-  """
-  ✨ Generated from Field `SharedAccess`.`permissionLevel` of type `String!`
-  """
-  permissionLevel: String
-  """
-  ✨ `_expr` server value variant of `permissionLevel` (✨ Generated from Field `SharedAccess`.`permissionLevel` of type `String!`)
-  """
-  permissionLevel_expr: String_Expr @fdc_forbiddenInVariables
-}
-"""
-✨ Generated filter input type for table 'SharedAccess'. This input allows filtering objects using various conditions. Use `_or`, `_and`, and `_not` to compose complex filters.
-"""
-input SharedAccess_Filter {
-  """
-  Apply multiple filter conditions using `AND` logic.
-  """
-  _and: [SharedAccess_Filter!]
-  """
-  Negate the result of the provided filter condition.
-  """
-  _not: SharedAccess_Filter
-  """
-  Apply multiple filter conditions using `OR` logic.
-  """
-  _or: [SharedAccess_Filter!]
-  """
-  ✨ Generated from Field `SharedAccess`.`id` of type `UUID!`
-  """
-  id: UUID_Filter
-  """
-  ✨ Generated from Field `SharedAccess`.`trustedContactId` of type `UUID!`
-  """
-  trustedContactId: UUID_Filter
-  """
-  ✨ Generated from Field `SharedAccess`.`trustedContact` of type `TrustedContact!`
-  """
-  trustedContact: TrustedContact_Filter
-  """
-  ✨ Generated from Field `SharedAccess`.`entityId` of type `UUID!`
-  """
-  entityId: UUID_Filter
-  """
-  ✨ Generated from Field `SharedAccess`.`entityType` of type `String!`
-  """
-  entityType: String_Filter
-  """
-  ✨ Generated from Field `SharedAccess`.`expiresAt` of type `Timestamp`
-  """
-  expiresAt: Timestamp_Filter
-  """
-  ✨ Generated from Field `SharedAccess`.`grantedAt` of type `Timestamp`
-  """
-  grantedAt: Timestamp_Filter
-  """
-  ✨ Generated from Field `SharedAccess`.`permissionLevel` of type `String!`
-  """
-  permissionLevel: String_Filter
-}
-"""
-✨ Generated first-row input type for table 'SharedAccess'. This input selects the first row matching the filter criteria, ordered according to the specified conditions.
-"""
-input SharedAccess_FirstRow {
-  """
-  Order the result by the specified fields.
-  """
-  orderBy: [SharedAccess_Order!]
-  """
-  Filters rows based on the specified conditions.
-  """
-  where: SharedAccess_Filter
-}
-"""
-✨ Generated having input type for table 'SharedAccess'. This input allows you to filter groups during aggregate queries using various conditions. Use `_or`, `_and`, and `_not` to compose complex filters.
-"""
-input SharedAccess_Having {
-  """
-  Apply multiple Having conditions using `AND` logic.
-  """
-  _and: [SharedAccess_Having!]
-  """
-  Whether to apply DISTINCT to the aggregate function.
-  """
-  _distinct: Boolean
-  """
-  Negate the result of the provided Having condition.
-  """
-  _not: SharedAccess_Having
-  """
-  Apply multiple Having conditions using `OR` logic.
-  """
-  _or: [SharedAccess_Having!]
-  """
-  ✨ Generated from Field `SharedAccess`.`_count` of type `Int!`
-  """
-  _count: Int_Filter
-  """
-  ✨ Generated from Field `SharedAccess`.`entityId_count` of type `Int!`
-  """
-  entityId_count: Int_Filter
-  """
-  ✨ Generated from Field `SharedAccess`.`entityType_count` of type `Int!`
-  """
-  entityType_count: Int_Filter
-  """
-  ✨ Generated from Field `SharedAccess`.`expiresAt_count` of type `Int!`
-  """
-  expiresAt_count: Int_Filter
-  """
-  ✨ Generated from Field `SharedAccess`.`grantedAt_count` of type `Int!`
-  """
-  grantedAt_count: Int_Filter
-  """
-  ✨ Generated from Field `SharedAccess`.`id_count` of type `Int!`
-  """
-  id_count: Int_Filter
-  """
-  ✨ Generated from Field `SharedAccess`.`permissionLevel_count` of type `Int!`
-  """
-  permissionLevel_count: Int_Filter
-  """
-  ✨ Generated from Field `SharedAccess`.`trustedContactId_count` of type `Int!`
-  """
-  trustedContactId_count: Int_Filter
-  """
-  ✨ Generated from Field `SharedAccess`.`expiresAt_min` of type `Timestamp`
-  """
-  expiresAt_min: Timestamp_Filter
-  """
-  ✨ Generated from Field `SharedAccess`.`grantedAt_min` of type `Timestamp`
-  """
-  grantedAt_min: Timestamp_Filter
-  """
-  ✨ Generated from Field `SharedAccess`.`expiresAt_max` of type `Timestamp`
-  """
-  expiresAt_max: Timestamp_Filter
-  """
-  ✨ Generated from Field `SharedAccess`.`grantedAt_max` of type `Timestamp`
-  """
-  grantedAt_max: Timestamp_Filter
-}
-"""
-✨ Generated key input type for table 'SharedAccess'. It represents the primary key fields used to uniquely identify a row in the table.
-"""
-input SharedAccess_Key {
-  """
-  ✨ Generated from Field `SharedAccess`.`id` of type `UUID!`
-  """
-  id: UUID
-  """
-  ✨ `_expr` server value variant of `id` (✨ Generated from Field `SharedAccess`.`id` of type `UUID!`)
-  """
-  id_expr: UUID_Expr @fdc_forbiddenInVariables
-}
-"""
-✨ Generated list filter input type for table 'SharedAccess'. This input applies filtering logic based on the count or existence of related objects that matches certain criteria.
-"""
-input SharedAccess_ListFilter {
-  """
-  The desired number of objects that match the condition (defaults to at least one).
-  """
-  count: Int_Filter = {gt:0}
-  """
-  Condition of the related objects to filter for.
-  """
-  exist: SharedAccess_Filter
-}
-"""
-✨ Generated order input type for table 'SharedAccess'. This input defines the sorting order of rows in query results based on one or more fields.
-"""
-input SharedAccess_Order {
-  """
-  ✨ Generated from Field `SharedAccess`.`id` of type `UUID!`
-  """
-  id: OrderDirection
-  """
-  ✨ Generated from Field `SharedAccess`.`trustedContactId` of type `UUID!`
-  """
-  trustedContactId: OrderDirection
-  """
-  ✨ Generated from Field `SharedAccess`.`trustedContact` of type `TrustedContact!`
-  """
-  trustedContact: TrustedContact_Order
-  """
-  ✨ Generated from Field `SharedAccess`.`entityId` of type `UUID!`
-  """
-  entityId: OrderDirection
-  """
-  ✨ Generated from Field `SharedAccess`.`entityType` of type `String!`
-  """
-  entityType: OrderDirection
-  """
-  ✨ Generated from Field `SharedAccess`.`expiresAt` of type `Timestamp`
-  """
-  expiresAt: OrderDirection
-  """
-  ✨ Generated from Field `SharedAccess`.`grantedAt` of type `Timestamp`
-  """
-  grantedAt: OrderDirection
-  """
-  ✨ Generated from Field `SharedAccess`.`permissionLevel` of type `String!`
-  """
-  permissionLevel: OrderDirection
-  """
-  ✨ Generated from Field `SharedAccess`.`_count` of type `Int!`
-  """
-  _count: OrderDirection
-  """
-  ✨ Generated from Field `SharedAccess`.`entityId_count` of type `Int!`
-  """
-  entityId_count: OrderDirection
-  """
-  ✨ Generated from Field `SharedAccess`.`entityType_count` of type `Int!`
-  """
-  entityType_count: OrderDirection
-  """
-  ✨ Generated from Field `SharedAccess`.`expiresAt_count` of type `Int!`
-  """
-  expiresAt_count: OrderDirection
-  """
-  ✨ Generated from Field `SharedAccess`.`grantedAt_count` of type `Int!`
-  """
-  grantedAt_count: OrderDirection
-  """
-  ✨ Generated from Field `SharedAccess`.`id_count` of type `Int!`
-  """
-  id_count: OrderDirection
-  """
-  ✨ Generated from Field `SharedAccess`.`permissionLevel_count` of type `Int!`
-  """
-  permissionLevel_count: OrderDirection
-  """
-  ✨ Generated from Field `SharedAccess`.`trustedContactId_count` of type `Int!`
-  """
-  trustedContactId_count: OrderDirection
-  """
-  ✨ Generated from Field `SharedAccess`.`expiresAt_min` of type `Timestamp`
-  """
-  expiresAt_min: OrderDirection
-  """
-  ✨ Generated from Field `SharedAccess`.`grantedAt_min` of type `Timestamp`
-  """
-  grantedAt_min: OrderDirection
-  """
-  ✨ Generated from Field `SharedAccess`.`expiresAt_max` of type `Timestamp`
-  """
-  expiresAt_max: OrderDirection
-  """
-  ✨ Generated from Field `SharedAccess`.`grantedAt_max` of type `Timestamp`
-  """
-  grantedAt_max: OrderDirection
-}
-"""
-✨ Generated data input type for table 'TrustedContact'. It includes all necessary fields for creating or upserting rows into table.
-"""
-input TrustedContact_Data {
-  """
-  ✨ Generated from Field `TrustedContact`.`id` of type `UUID!`
-  """
-  id: UUID
-  """
-  ✨ `_expr` server value variant of `id` (✨ Generated from Field `TrustedContact`.`id` of type `UUID!`)
-  """
-  id_expr: UUID_Expr @fdc_forbiddenInVariables
-  """
-  ✨ Generated from Field `TrustedContact`.`userId` of type `UUID!`
+  ✨ Generated from Field `Beneficiary`.`userId` of type `UUID!`
   """
   userId: UUID
   """
-  ✨ `_expr` server value variant of `userId` (✨ Generated from Field `TrustedContact`.`userId` of type `UUID!`)
+  ✨ `_expr` server value variant of `userId` (✨ Generated from Field `Beneficiary`.`userId` of type `UUID!`)
   """
   userId_expr: UUID_Expr @fdc_forbiddenInVariables
   """
-  ✨ Generated from Field `TrustedContact`.`vaultId` of type `UUID!`
-  """
-  vaultId: UUID
-  """
-  ✨ `_expr` server value variant of `vaultId` (✨ Generated from Field `TrustedContact`.`vaultId` of type `UUID!`)
-  """
-  vaultId_expr: UUID_Expr @fdc_forbiddenInVariables
-  """
-  ✨ Generated from Field `TrustedContact`.`user` of type `User!`
+  ✨ Generated from Field `Beneficiary`.`user` of type `User!`
   """
   user: User_Key @fdc_forbiddenInVariables
   """
-  ✨ Generated from Field `TrustedContact`.`vault` of type `Vault!`
-  """
-  vault: Vault_Key @fdc_forbiddenInVariables
-  """
-  ✨ Generated from Field `TrustedContact`.`contactEmail` of type `String!`
-  """
-  contactEmail: String
-  """
-  ✨ `_expr` server value variant of `contactEmail` (✨ Generated from Field `TrustedContact`.`contactEmail` of type `String!`)
-  """
-  contactEmail_expr: String_Expr @fdc_forbiddenInVariables
-  """
-  ✨ Generated from Field `TrustedContact`.`createdAt` of type `Timestamp!`
+  ✨ Generated from Field `Beneficiary`.`createdAt` of type `Timestamp!`
   """
   createdAt: Timestamp
   """
-  ✨ `_expr` server value variant of `createdAt` (✨ Generated from Field `TrustedContact`.`createdAt` of type `Timestamp!`)
+  ✨ `_expr` server value variant of `createdAt` (✨ Generated from Field `Beneficiary`.`createdAt` of type `Timestamp!`)
   """
   createdAt_expr: Timestamp_Expr @fdc_forbiddenInVariables
   """
-  ✨ `_time` server value variant of `createdAt` (✨ Generated from Field `TrustedContact`.`createdAt` of type `Timestamp!`)
+  ✨ `_time` server value variant of `createdAt` (✨ Generated from Field `Beneficiary`.`createdAt` of type `Timestamp!`)
   """
   createdAt_time: Timestamp_Relative @fdc_forbiddenInVariables
   """
-  ✨ `_update` server value variant of `createdAt` (✨ Generated from Field `TrustedContact`.`createdAt` of type `Timestamp!`)
+  ✨ `_update` server value variant of `createdAt` (✨ Generated from Field `Beneficiary`.`createdAt` of type `Timestamp!`)
   """
   createdAt_update: [Timestamp_Update!] @fdc_forbiddenInVariables
   """
-  ✨ Generated from Field `TrustedContact`.`displayName` of type `String`
+  ✨ Generated from Field `Beneficiary`.`email` of type `String!`
   """
-  displayName: String
+  email: String
   """
-  ✨ `_expr` server value variant of `displayName` (✨ Generated from Field `TrustedContact`.`displayName` of type `String`)
+  ✨ `_expr` server value variant of `email` (✨ Generated from Field `Beneficiary`.`email` of type `String!`)
   """
-  displayName_expr: String_Expr @fdc_forbiddenInVariables
+  email_expr: String_Expr @fdc_forbiddenInVariables
   """
-  ✨ Generated from Field `TrustedContact`.`sharedUntil` of type `Timestamp`
+  ✨ Generated from Field `Beneficiary`.`firstName` of type `String!`
   """
-  sharedUntil: Timestamp
+  firstName: String
   """
-  ✨ `_expr` server value variant of `sharedUntil` (✨ Generated from Field `TrustedContact`.`sharedUntil` of type `Timestamp`)
+  ✨ `_expr` server value variant of `firstName` (✨ Generated from Field `Beneficiary`.`firstName` of type `String!`)
   """
-  sharedUntil_expr: Timestamp_Expr @fdc_forbiddenInVariables
+  firstName_expr: String_Expr @fdc_forbiddenInVariables
   """
-  ✨ `_time` server value variant of `sharedUntil` (✨ Generated from Field `TrustedContact`.`sharedUntil` of type `Timestamp`)
+  ✨ Generated from Field `Beneficiary`.`lastName` of type `String!`
   """
-  sharedUntil_time: Timestamp_Relative @fdc_forbiddenInVariables
+  lastName: String
   """
-  ✨ `_update` server value variant of `sharedUntil` (✨ Generated from Field `TrustedContact`.`sharedUntil` of type `Timestamp`)
+  ✨ `_expr` server value variant of `lastName` (✨ Generated from Field `Beneficiary`.`lastName` of type `String!`)
   """
-  sharedUntil_update: [Timestamp_Update!] @fdc_forbiddenInVariables
+  lastName_expr: String_Expr @fdc_forbiddenInVariables
   """
-  ✨ Generated from Field `TrustedContact`.`status` of type `String!`
+  ✨ Generated from Field `Beneficiary`.`phone` of type `String`
   """
-  status: String
+  phone: String
   """
-  ✨ `_expr` server value variant of `status` (✨ Generated from Field `TrustedContact`.`status` of type `String!`)
+  ✨ `_expr` server value variant of `phone` (✨ Generated from Field `Beneficiary`.`phone` of type `String`)
   """
-  status_expr: String_Expr @fdc_forbiddenInVariables
+  phone_expr: String_Expr @fdc_forbiddenInVariables
+  """
+  ✨ Generated from Field `Beneficiary`.`relationship` of type `String!`
+  """
+  relationship: String
+  """
+  ✨ `_expr` server value variant of `relationship` (✨ Generated from Field `Beneficiary`.`relationship` of type `String!`)
+  """
+  relationship_expr: String_Expr @fdc_forbiddenInVariables
 }
 """
-✨ Generated filter input type for table 'TrustedContact'. This input allows filtering objects using various conditions. Use `_or`, `_and`, and `_not` to compose complex filters.
+✨ Generated filter input type for table 'Beneficiary'. This input allows filtering objects using various conditions. Use `_or`, `_and`, and `_not` to compose complex filters.
 """
-input TrustedContact_Filter {
+input Beneficiary_Filter {
   """
   Apply multiple filter conditions using `AND` logic.
   """
-  _and: [TrustedContact_Filter!]
+  _and: [Beneficiary_Filter!]
   """
   Negate the result of the provided filter condition.
   """
-  _not: TrustedContact_Filter
+  _not: Beneficiary_Filter
   """
   Apply multiple filter conditions using `OR` logic.
   """
-  _or: [TrustedContact_Filter!]
+  _or: [Beneficiary_Filter!]
   """
-  ✨ Generated from Field `TrustedContact`.`id` of type `UUID!`
+  ✨ Generated from Field `Beneficiary`.`id` of type `UUID!`
   """
   id: UUID_Filter
   """
-  ✨ Generated from Field `TrustedContact`.`userId` of type `UUID!`
+  ✨ Generated from Field `Beneficiary`.`userId` of type `UUID!`
   """
   userId: UUID_Filter
   """
-  ✨ Generated from Field `TrustedContact`.`vaultId` of type `UUID!`
-  """
-  vaultId: UUID_Filter
-  """
-  ✨ Generated from Field `TrustedContact`.`user` of type `User!`
+  ✨ Generated from Field `Beneficiary`.`user` of type `User!`
   """
   user: User_Filter
   """
-  ✨ Generated from Field `TrustedContact`.`vault` of type `Vault!`
-  """
-  vault: Vault_Filter
-  """
-  ✨ Generated from Field `TrustedContact`.`contactEmail` of type `String!`
-  """
-  contactEmail: String_Filter
-  """
-  ✨ Generated from Field `TrustedContact`.`createdAt` of type `Timestamp!`
+  ✨ Generated from Field `Beneficiary`.`createdAt` of type `Timestamp!`
   """
   createdAt: Timestamp_Filter
   """
-  ✨ Generated from Field `TrustedContact`.`displayName` of type `String`
+  ✨ Generated from Field `Beneficiary`.`email` of type `String!`
   """
-  displayName: String_Filter
+  email: String_Filter
   """
-  ✨ Generated from Field `TrustedContact`.`sharedUntil` of type `Timestamp`
+  ✨ Generated from Field `Beneficiary`.`firstName` of type `String!`
   """
-  sharedUntil: Timestamp_Filter
+  firstName: String_Filter
   """
-  ✨ Generated from Field `TrustedContact`.`status` of type `String!`
+  ✨ Generated from Field `Beneficiary`.`lastName` of type `String!`
   """
-  status: String_Filter
+  lastName: String_Filter
   """
-  ✨ Generated from Field `TrustedContact`.`sharedAccesses_on_trustedContact` of type `[SharedAccess!]!`
+  ✨ Generated from Field `Beneficiary`.`phone` of type `String`
   """
-  sharedAccesses_on_trustedContact: SharedAccess_ListFilter
+  phone: String_Filter
+  """
+  ✨ Generated from Field `Beneficiary`.`relationship` of type `String!`
+  """
+  relationship: String_Filter
+  """
+  ✨ Generated from Field `Beneficiary`.`accountInstructions_on_beneficiary` of type `[AccountInstruction!]!`
+  """
+  accountInstructions_on_beneficiary: AccountInstruction_ListFilter
 }
 """
-✨ Generated first-row input type for table 'TrustedContact'. This input selects the first row matching the filter criteria, ordered according to the specified conditions.
+✨ Generated first-row input type for table 'Beneficiary'. This input selects the first row matching the filter criteria, ordered according to the specified conditions.
 """
-input TrustedContact_FirstRow {
+input Beneficiary_FirstRow {
   """
   Order the result by the specified fields.
   """
-  orderBy: [TrustedContact_Order!]
+  orderBy: [Beneficiary_Order!]
   """
   Filters rows based on the specified conditions.
   """
-  where: TrustedContact_Filter
+  where: Beneficiary_Filter
 }
 """
-✨ Generated having input type for table 'TrustedContact'. This input allows you to filter groups during aggregate queries using various conditions. Use `_or`, `_and`, and `_not` to compose complex filters.
+✨ Generated having input type for table 'Beneficiary'. This input allows you to filter groups during aggregate queries using various conditions. Use `_or`, `_and`, and `_not` to compose complex filters.
 """
-input TrustedContact_Having {
+input Beneficiary_Having {
   """
   Apply multiple Having conditions using `AND` logic.
   """
-  _and: [TrustedContact_Having!]
+  _and: [Beneficiary_Having!]
   """
   Whether to apply DISTINCT to the aggregate function.
   """
@@ -1217,81 +529,73 @@ input TrustedContact_Having {
   """
   Negate the result of the provided Having condition.
   """
-  _not: TrustedContact_Having
+  _not: Beneficiary_Having
   """
   Apply multiple Having conditions using `OR` logic.
   """
-  _or: [TrustedContact_Having!]
+  _or: [Beneficiary_Having!]
   """
-  ✨ Generated from Field `TrustedContact`.`_count` of type `Int!`
+  ✨ Generated from Field `Beneficiary`.`_count` of type `Int!`
   """
   _count: Int_Filter
   """
-  ✨ Generated from Field `TrustedContact`.`contactEmail_count` of type `Int!`
-  """
-  contactEmail_count: Int_Filter
-  """
-  ✨ Generated from Field `TrustedContact`.`createdAt_count` of type `Int!`
+  ✨ Generated from Field `Beneficiary`.`createdAt_count` of type `Int!`
   """
   createdAt_count: Int_Filter
   """
-  ✨ Generated from Field `TrustedContact`.`displayName_count` of type `Int!`
+  ✨ Generated from Field `Beneficiary`.`email_count` of type `Int!`
   """
-  displayName_count: Int_Filter
+  email_count: Int_Filter
   """
-  ✨ Generated from Field `TrustedContact`.`id_count` of type `Int!`
+  ✨ Generated from Field `Beneficiary`.`firstName_count` of type `Int!`
+  """
+  firstName_count: Int_Filter
+  """
+  ✨ Generated from Field `Beneficiary`.`id_count` of type `Int!`
   """
   id_count: Int_Filter
   """
-  ✨ Generated from Field `TrustedContact`.`sharedUntil_count` of type `Int!`
+  ✨ Generated from Field `Beneficiary`.`lastName_count` of type `Int!`
   """
-  sharedUntil_count: Int_Filter
+  lastName_count: Int_Filter
   """
-  ✨ Generated from Field `TrustedContact`.`status_count` of type `Int!`
+  ✨ Generated from Field `Beneficiary`.`phone_count` of type `Int!`
   """
-  status_count: Int_Filter
+  phone_count: Int_Filter
   """
-  ✨ Generated from Field `TrustedContact`.`userId_count` of type `Int!`
+  ✨ Generated from Field `Beneficiary`.`relationship_count` of type `Int!`
+  """
+  relationship_count: Int_Filter
+  """
+  ✨ Generated from Field `Beneficiary`.`userId_count` of type `Int!`
   """
   userId_count: Int_Filter
   """
-  ✨ Generated from Field `TrustedContact`.`vaultId_count` of type `Int!`
-  """
-  vaultId_count: Int_Filter
-  """
-  ✨ Generated from Field `TrustedContact`.`createdAt_min` of type `Timestamp`
+  ✨ Generated from Field `Beneficiary`.`createdAt_min` of type `Timestamp`
   """
   createdAt_min: Timestamp_Filter
   """
-  ✨ Generated from Field `TrustedContact`.`sharedUntil_min` of type `Timestamp`
-  """
-  sharedUntil_min: Timestamp_Filter
-  """
-  ✨ Generated from Field `TrustedContact`.`createdAt_max` of type `Timestamp`
+  ✨ Generated from Field `Beneficiary`.`createdAt_max` of type `Timestamp`
   """
   createdAt_max: Timestamp_Filter
-  """
-  ✨ Generated from Field `TrustedContact`.`sharedUntil_max` of type `Timestamp`
-  """
-  sharedUntil_max: Timestamp_Filter
 }
 """
-✨ Generated key input type for table 'TrustedContact'. It represents the primary key fields used to uniquely identify a row in the table.
+✨ Generated key input type for table 'Beneficiary'. It represents the primary key fields used to uniquely identify a row in the table.
 """
-input TrustedContact_Key {
+input Beneficiary_Key {
   """
-  ✨ Generated from Field `TrustedContact`.`id` of type `UUID!`
+  ✨ Generated from Field `Beneficiary`.`id` of type `UUID!`
   """
   id: UUID
   """
-  ✨ `_expr` server value variant of `id` (✨ Generated from Field `TrustedContact`.`id` of type `UUID!`)
+  ✨ `_expr` server value variant of `id` (✨ Generated from Field `Beneficiary`.`id` of type `UUID!`)
   """
   id_expr: UUID_Expr @fdc_forbiddenInVariables
 }
 """
-✨ Generated list filter input type for table 'TrustedContact'. This input applies filtering logic based on the count or existence of related objects that matches certain criteria.
+✨ Generated list filter input type for table 'Beneficiary'. This input applies filtering logic based on the count or existence of related objects that matches certain criteria.
 """
-input TrustedContact_ListFilter {
+input Beneficiary_ListFilter {
   """
   The desired number of objects that match the condition (defaults to at least one).
   """
@@ -1299,104 +603,838 @@ input TrustedContact_ListFilter {
   """
   Condition of the related objects to filter for.
   """
-  exist: TrustedContact_Filter
+  exist: Beneficiary_Filter
 }
 """
-✨ Generated order input type for table 'TrustedContact'. This input defines the sorting order of rows in query results based on one or more fields.
+✨ Generated order input type for table 'Beneficiary'. This input defines the sorting order of rows in query results based on one or more fields.
 """
-input TrustedContact_Order {
+input Beneficiary_Order {
   """
-  ✨ Generated from Field `TrustedContact`.`id` of type `UUID!`
+  ✨ Generated from Field `Beneficiary`.`id` of type `UUID!`
   """
   id: OrderDirection
   """
-  ✨ Generated from Field `TrustedContact`.`userId` of type `UUID!`
+  ✨ Generated from Field `Beneficiary`.`userId` of type `UUID!`
   """
   userId: OrderDirection
   """
-  ✨ Generated from Field `TrustedContact`.`vaultId` of type `UUID!`
-  """
-  vaultId: OrderDirection
-  """
-  ✨ Generated from Field `TrustedContact`.`user` of type `User!`
+  ✨ Generated from Field `Beneficiary`.`user` of type `User!`
   """
   user: User_Order
   """
-  ✨ Generated from Field `TrustedContact`.`vault` of type `Vault!`
-  """
-  vault: Vault_Order
-  """
-  ✨ Generated from Field `TrustedContact`.`contactEmail` of type `String!`
-  """
-  contactEmail: OrderDirection
-  """
-  ✨ Generated from Field `TrustedContact`.`createdAt` of type `Timestamp!`
+  ✨ Generated from Field `Beneficiary`.`createdAt` of type `Timestamp!`
   """
   createdAt: OrderDirection
   """
-  ✨ Generated from Field `TrustedContact`.`displayName` of type `String`
+  ✨ Generated from Field `Beneficiary`.`email` of type `String!`
   """
-  displayName: OrderDirection
+  email: OrderDirection
   """
-  ✨ Generated from Field `TrustedContact`.`sharedUntil` of type `Timestamp`
+  ✨ Generated from Field `Beneficiary`.`firstName` of type `String!`
   """
-  sharedUntil: OrderDirection
+  firstName: OrderDirection
   """
-  ✨ Generated from Field `TrustedContact`.`status` of type `String!`
+  ✨ Generated from Field `Beneficiary`.`lastName` of type `String!`
   """
-  status: OrderDirection
+  lastName: OrderDirection
   """
-  ✨ Generated from Field `TrustedContact`.`_count` of type `Int!`
+  ✨ Generated from Field `Beneficiary`.`phone` of type `String`
+  """
+  phone: OrderDirection
+  """
+  ✨ Generated from Field `Beneficiary`.`relationship` of type `String!`
+  """
+  relationship: OrderDirection
+  """
+  ✨ Generated from Field `Beneficiary`.`_count` of type `Int!`
   """
   _count: OrderDirection
   """
-  ✨ Generated from Field `TrustedContact`.`contactEmail_count` of type `Int!`
-  """
-  contactEmail_count: OrderDirection
-  """
-  ✨ Generated from Field `TrustedContact`.`createdAt_count` of type `Int!`
+  ✨ Generated from Field `Beneficiary`.`createdAt_count` of type `Int!`
   """
   createdAt_count: OrderDirection
   """
-  ✨ Generated from Field `TrustedContact`.`displayName_count` of type `Int!`
+  ✨ Generated from Field `Beneficiary`.`email_count` of type `Int!`
   """
-  displayName_count: OrderDirection
+  email_count: OrderDirection
   """
-  ✨ Generated from Field `TrustedContact`.`id_count` of type `Int!`
+  ✨ Generated from Field `Beneficiary`.`firstName_count` of type `Int!`
+  """
+  firstName_count: OrderDirection
+  """
+  ✨ Generated from Field `Beneficiary`.`id_count` of type `Int!`
   """
   id_count: OrderDirection
   """
-  ✨ Generated from Field `TrustedContact`.`sharedUntil_count` of type `Int!`
+  ✨ Generated from Field `Beneficiary`.`lastName_count` of type `Int!`
   """
-  sharedUntil_count: OrderDirection
+  lastName_count: OrderDirection
   """
-  ✨ Generated from Field `TrustedContact`.`status_count` of type `Int!`
+  ✨ Generated from Field `Beneficiary`.`phone_count` of type `Int!`
   """
-  status_count: OrderDirection
+  phone_count: OrderDirection
   """
-  ✨ Generated from Field `TrustedContact`.`userId_count` of type `Int!`
+  ✨ Generated from Field `Beneficiary`.`relationship_count` of type `Int!`
+  """
+  relationship_count: OrderDirection
+  """
+  ✨ Generated from Field `Beneficiary`.`userId_count` of type `Int!`
   """
   userId_count: OrderDirection
   """
-  ✨ Generated from Field `TrustedContact`.`vaultId_count` of type `Int!`
-  """
-  vaultId_count: OrderDirection
-  """
-  ✨ Generated from Field `TrustedContact`.`createdAt_min` of type `Timestamp`
+  ✨ Generated from Field `Beneficiary`.`createdAt_min` of type `Timestamp`
   """
   createdAt_min: OrderDirection
   """
-  ✨ Generated from Field `TrustedContact`.`sharedUntil_min` of type `Timestamp`
+  ✨ Generated from Field `Beneficiary`.`createdAt_max` of type `Timestamp`
   """
-  sharedUntil_min: OrderDirection
+  createdAt_max: OrderDirection
+}
+"""
+✨ Generated data input type for table 'DigitalAccount'. It includes all necessary fields for creating or upserting rows into table.
+"""
+input DigitalAccount_Data {
   """
-  ✨ Generated from Field `TrustedContact`.`createdAt_max` of type `Timestamp`
+  ✨ Generated from Field `DigitalAccount`.`id` of type `UUID!`
+  """
+  id: UUID
+  """
+  ✨ `_expr` server value variant of `id` (✨ Generated from Field `DigitalAccount`.`id` of type `UUID!`)
+  """
+  id_expr: UUID_Expr @fdc_forbiddenInVariables
+  """
+  ✨ Generated from Field `DigitalAccount`.`userId` of type `UUID!`
+  """
+  userId: UUID
+  """
+  ✨ `_expr` server value variant of `userId` (✨ Generated from Field `DigitalAccount`.`userId` of type `UUID!`)
+  """
+  userId_expr: UUID_Expr @fdc_forbiddenInVariables
+  """
+  ✨ Generated from Field `DigitalAccount`.`user` of type `User!`
+  """
+  user: User_Key @fdc_forbiddenInVariables
+  """
+  ✨ Generated from Field `DigitalAccount`.`accountType` of type `String!`
+  """
+  accountType: String
+  """
+  ✨ `_expr` server value variant of `accountType` (✨ Generated from Field `DigitalAccount`.`accountType` of type `String!`)
+  """
+  accountType_expr: String_Expr @fdc_forbiddenInVariables
+  """
+  ✨ Generated from Field `DigitalAccount`.`createdAt` of type `Timestamp!`
+  """
+  createdAt: Timestamp
+  """
+  ✨ `_expr` server value variant of `createdAt` (✨ Generated from Field `DigitalAccount`.`createdAt` of type `Timestamp!`)
+  """
+  createdAt_expr: Timestamp_Expr @fdc_forbiddenInVariables
+  """
+  ✨ `_time` server value variant of `createdAt` (✨ Generated from Field `DigitalAccount`.`createdAt` of type `Timestamp!`)
+  """
+  createdAt_time: Timestamp_Relative @fdc_forbiddenInVariables
+  """
+  ✨ `_update` server value variant of `createdAt` (✨ Generated from Field `DigitalAccount`.`createdAt` of type `Timestamp!`)
+  """
+  createdAt_update: [Timestamp_Update!] @fdc_forbiddenInVariables
+  """
+  ✨ Generated from Field `DigitalAccount`.`name` of type `String!`
+  """
+  name: String
+  """
+  ✨ `_expr` server value variant of `name` (✨ Generated from Field `DigitalAccount`.`name` of type `String!`)
+  """
+  name_expr: String_Expr @fdc_forbiddenInVariables
+  """
+  ✨ Generated from Field `DigitalAccount`.`notes` of type `String`
+  """
+  notes: String
+  """
+  ✨ `_expr` server value variant of `notes` (✨ Generated from Field `DigitalAccount`.`notes` of type `String`)
+  """
+  notes_expr: String_Expr @fdc_forbiddenInVariables
+  """
+  ✨ Generated from Field `DigitalAccount`.`passwordHint` of type `String`
+  """
+  passwordHint: String
+  """
+  ✨ `_expr` server value variant of `passwordHint` (✨ Generated from Field `DigitalAccount`.`passwordHint` of type `String`)
+  """
+  passwordHint_expr: String_Expr @fdc_forbiddenInVariables
+  """
+  ✨ Generated from Field `DigitalAccount`.`recoveryEmail` of type `String`
+  """
+  recoveryEmail: String
+  """
+  ✨ `_expr` server value variant of `recoveryEmail` (✨ Generated from Field `DigitalAccount`.`recoveryEmail` of type `String`)
+  """
+  recoveryEmail_expr: String_Expr @fdc_forbiddenInVariables
+  """
+  ✨ Generated from Field `DigitalAccount`.`url` of type `String`
+  """
+  url: String
+  """
+  ✨ `_expr` server value variant of `url` (✨ Generated from Field `DigitalAccount`.`url` of type `String`)
+  """
+  url_expr: String_Expr @fdc_forbiddenInVariables
+  """
+  ✨ Generated from Field `DigitalAccount`.`username` of type `String`
+  """
+  username: String
+  """
+  ✨ `_expr` server value variant of `username` (✨ Generated from Field `DigitalAccount`.`username` of type `String`)
+  """
+  username_expr: String_Expr @fdc_forbiddenInVariables
+}
+"""
+✨ Generated filter input type for table 'DigitalAccount'. This input allows filtering objects using various conditions. Use `_or`, `_and`, and `_not` to compose complex filters.
+"""
+input DigitalAccount_Filter {
+  """
+  Apply multiple filter conditions using `AND` logic.
+  """
+  _and: [DigitalAccount_Filter!]
+  """
+  Negate the result of the provided filter condition.
+  """
+  _not: DigitalAccount_Filter
+  """
+  Apply multiple filter conditions using `OR` logic.
+  """
+  _or: [DigitalAccount_Filter!]
+  """
+  ✨ Generated from Field `DigitalAccount`.`id` of type `UUID!`
+  """
+  id: UUID_Filter
+  """
+  ✨ Generated from Field `DigitalAccount`.`userId` of type `UUID!`
+  """
+  userId: UUID_Filter
+  """
+  ✨ Generated from Field `DigitalAccount`.`user` of type `User!`
+  """
+  user: User_Filter
+  """
+  ✨ Generated from Field `DigitalAccount`.`accountType` of type `String!`
+  """
+  accountType: String_Filter
+  """
+  ✨ Generated from Field `DigitalAccount`.`createdAt` of type `Timestamp!`
+  """
+  createdAt: Timestamp_Filter
+  """
+  ✨ Generated from Field `DigitalAccount`.`name` of type `String!`
+  """
+  name: String_Filter
+  """
+  ✨ Generated from Field `DigitalAccount`.`notes` of type `String`
+  """
+  notes: String_Filter
+  """
+  ✨ Generated from Field `DigitalAccount`.`passwordHint` of type `String`
+  """
+  passwordHint: String_Filter
+  """
+  ✨ Generated from Field `DigitalAccount`.`recoveryEmail` of type `String`
+  """
+  recoveryEmail: String_Filter
+  """
+  ✨ Generated from Field `DigitalAccount`.`url` of type `String`
+  """
+  url: String_Filter
+  """
+  ✨ Generated from Field `DigitalAccount`.`username` of type `String`
+  """
+  username: String_Filter
+  """
+  ✨ Generated from Field `DigitalAccount`.`accountInstructions_on_digitalAccount` of type `[AccountInstruction!]!`
+  """
+  accountInstructions_on_digitalAccount: AccountInstruction_ListFilter
+}
+"""
+✨ Generated first-row input type for table 'DigitalAccount'. This input selects the first row matching the filter criteria, ordered according to the specified conditions.
+"""
+input DigitalAccount_FirstRow {
+  """
+  Order the result by the specified fields.
+  """
+  orderBy: [DigitalAccount_Order!]
+  """
+  Filters rows based on the specified conditions.
+  """
+  where: DigitalAccount_Filter
+}
+"""
+✨ Generated having input type for table 'DigitalAccount'. This input allows you to filter groups during aggregate queries using various conditions. Use `_or`, `_and`, and `_not` to compose complex filters.
+"""
+input DigitalAccount_Having {
+  """
+  Apply multiple Having conditions using `AND` logic.
+  """
+  _and: [DigitalAccount_Having!]
+  """
+  Whether to apply DISTINCT to the aggregate function.
+  """
+  _distinct: Boolean
+  """
+  Negate the result of the provided Having condition.
+  """
+  _not: DigitalAccount_Having
+  """
+  Apply multiple Having conditions using `OR` logic.
+  """
+  _or: [DigitalAccount_Having!]
+  """
+  ✨ Generated from Field `DigitalAccount`.`_count` of type `Int!`
+  """
+  _count: Int_Filter
+  """
+  ✨ Generated from Field `DigitalAccount`.`accountType_count` of type `Int!`
+  """
+  accountType_count: Int_Filter
+  """
+  ✨ Generated from Field `DigitalAccount`.`createdAt_count` of type `Int!`
+  """
+  createdAt_count: Int_Filter
+  """
+  ✨ Generated from Field `DigitalAccount`.`id_count` of type `Int!`
+  """
+  id_count: Int_Filter
+  """
+  ✨ Generated from Field `DigitalAccount`.`name_count` of type `Int!`
+  """
+  name_count: Int_Filter
+  """
+  ✨ Generated from Field `DigitalAccount`.`notes_count` of type `Int!`
+  """
+  notes_count: Int_Filter
+  """
+  ✨ Generated from Field `DigitalAccount`.`passwordHint_count` of type `Int!`
+  """
+  passwordHint_count: Int_Filter
+  """
+  ✨ Generated from Field `DigitalAccount`.`recoveryEmail_count` of type `Int!`
+  """
+  recoveryEmail_count: Int_Filter
+  """
+  ✨ Generated from Field `DigitalAccount`.`url_count` of type `Int!`
+  """
+  url_count: Int_Filter
+  """
+  ✨ Generated from Field `DigitalAccount`.`userId_count` of type `Int!`
+  """
+  userId_count: Int_Filter
+  """
+  ✨ Generated from Field `DigitalAccount`.`username_count` of type `Int!`
+  """
+  username_count: Int_Filter
+  """
+  ✨ Generated from Field `DigitalAccount`.`createdAt_min` of type `Timestamp`
+  """
+  createdAt_min: Timestamp_Filter
+  """
+  ✨ Generated from Field `DigitalAccount`.`createdAt_max` of type `Timestamp`
+  """
+  createdAt_max: Timestamp_Filter
+}
+"""
+✨ Generated key input type for table 'DigitalAccount'. It represents the primary key fields used to uniquely identify a row in the table.
+"""
+input DigitalAccount_Key {
+  """
+  ✨ Generated from Field `DigitalAccount`.`id` of type `UUID!`
+  """
+  id: UUID
+  """
+  ✨ `_expr` server value variant of `id` (✨ Generated from Field `DigitalAccount`.`id` of type `UUID!`)
+  """
+  id_expr: UUID_Expr @fdc_forbiddenInVariables
+}
+"""
+✨ Generated list filter input type for table 'DigitalAccount'. This input applies filtering logic based on the count or existence of related objects that matches certain criteria.
+"""
+input DigitalAccount_ListFilter {
+  """
+  The desired number of objects that match the condition (defaults to at least one).
+  """
+  count: Int_Filter = {gt:0}
+  """
+  Condition of the related objects to filter for.
+  """
+  exist: DigitalAccount_Filter
+}
+"""
+✨ Generated order input type for table 'DigitalAccount'. This input defines the sorting order of rows in query results based on one or more fields.
+"""
+input DigitalAccount_Order {
+  """
+  ✨ Generated from Field `DigitalAccount`.`id` of type `UUID!`
+  """
+  id: OrderDirection
+  """
+  ✨ Generated from Field `DigitalAccount`.`userId` of type `UUID!`
+  """
+  userId: OrderDirection
+  """
+  ✨ Generated from Field `DigitalAccount`.`user` of type `User!`
+  """
+  user: User_Order
+  """
+  ✨ Generated from Field `DigitalAccount`.`accountType` of type `String!`
+  """
+  accountType: OrderDirection
+  """
+  ✨ Generated from Field `DigitalAccount`.`createdAt` of type `Timestamp!`
+  """
+  createdAt: OrderDirection
+  """
+  ✨ Generated from Field `DigitalAccount`.`name` of type `String!`
+  """
+  name: OrderDirection
+  """
+  ✨ Generated from Field `DigitalAccount`.`notes` of type `String`
+  """
+  notes: OrderDirection
+  """
+  ✨ Generated from Field `DigitalAccount`.`passwordHint` of type `String`
+  """
+  passwordHint: OrderDirection
+  """
+  ✨ Generated from Field `DigitalAccount`.`recoveryEmail` of type `String`
+  """
+  recoveryEmail: OrderDirection
+  """
+  ✨ Generated from Field `DigitalAccount`.`url` of type `String`
+  """
+  url: OrderDirection
+  """
+  ✨ Generated from Field `DigitalAccount`.`username` of type `String`
+  """
+  username: OrderDirection
+  """
+  ✨ Generated from Field `DigitalAccount`.`_count` of type `Int!`
+  """
+  _count: OrderDirection
+  """
+  ✨ Generated from Field `DigitalAccount`.`accountType_count` of type `Int!`
+  """
+  accountType_count: OrderDirection
+  """
+  ✨ Generated from Field `DigitalAccount`.`createdAt_count` of type `Int!`
+  """
+  createdAt_count: OrderDirection
+  """
+  ✨ Generated from Field `DigitalAccount`.`id_count` of type `Int!`
+  """
+  id_count: OrderDirection
+  """
+  ✨ Generated from Field `DigitalAccount`.`name_count` of type `Int!`
+  """
+  name_count: OrderDirection
+  """
+  ✨ Generated from Field `DigitalAccount`.`notes_count` of type `Int!`
+  """
+  notes_count: OrderDirection
+  """
+  ✨ Generated from Field `DigitalAccount`.`passwordHint_count` of type `Int!`
+  """
+  passwordHint_count: OrderDirection
+  """
+  ✨ Generated from Field `DigitalAccount`.`recoveryEmail_count` of type `Int!`
+  """
+  recoveryEmail_count: OrderDirection
+  """
+  ✨ Generated from Field `DigitalAccount`.`url_count` of type `Int!`
+  """
+  url_count: OrderDirection
+  """
+  ✨ Generated from Field `DigitalAccount`.`userId_count` of type `Int!`
+  """
+  userId_count: OrderDirection
+  """
+  ✨ Generated from Field `DigitalAccount`.`username_count` of type `Int!`
+  """
+  username_count: OrderDirection
+  """
+  ✨ Generated from Field `DigitalAccount`.`createdAt_min` of type `Timestamp`
+  """
+  createdAt_min: OrderDirection
+  """
+  ✨ Generated from Field `DigitalAccount`.`createdAt_max` of type `Timestamp`
+  """
+  createdAt_max: OrderDirection
+}
+"""
+✨ Generated data input type for table 'TrustedAgent'. It includes all necessary fields for creating or upserting rows into table.
+"""
+input TrustedAgent_Data {
+  """
+  ✨ Generated from Field `TrustedAgent`.`id` of type `UUID!`
+  """
+  id: UUID
+  """
+  ✨ `_expr` server value variant of `id` (✨ Generated from Field `TrustedAgent`.`id` of type `UUID!`)
+  """
+  id_expr: UUID_Expr @fdc_forbiddenInVariables
+  """
+  ✨ Generated from Field `TrustedAgent`.`userId` of type `UUID!`
+  """
+  userId: UUID
+  """
+  ✨ `_expr` server value variant of `userId` (✨ Generated from Field `TrustedAgent`.`userId` of type `UUID!`)
+  """
+  userId_expr: UUID_Expr @fdc_forbiddenInVariables
+  """
+  ✨ Generated from Field `TrustedAgent`.`user` of type `User!`
+  """
+  user: User_Key @fdc_forbiddenInVariables
+  """
+  ✨ Generated from Field `TrustedAgent`.`accessLevel` of type `String!`
+  """
+  accessLevel: String
+  """
+  ✨ `_expr` server value variant of `accessLevel` (✨ Generated from Field `TrustedAgent`.`accessLevel` of type `String!`)
+  """
+  accessLevel_expr: String_Expr @fdc_forbiddenInVariables
+  """
+  ✨ Generated from Field `TrustedAgent`.`createdAt` of type `Timestamp!`
+  """
+  createdAt: Timestamp
+  """
+  ✨ `_expr` server value variant of `createdAt` (✨ Generated from Field `TrustedAgent`.`createdAt` of type `Timestamp!`)
+  """
+  createdAt_expr: Timestamp_Expr @fdc_forbiddenInVariables
+  """
+  ✨ `_time` server value variant of `createdAt` (✨ Generated from Field `TrustedAgent`.`createdAt` of type `Timestamp!`)
+  """
+  createdAt_time: Timestamp_Relative @fdc_forbiddenInVariables
+  """
+  ✨ `_update` server value variant of `createdAt` (✨ Generated from Field `TrustedAgent`.`createdAt` of type `Timestamp!`)
+  """
+  createdAt_update: [Timestamp_Update!] @fdc_forbiddenInVariables
+  """
+  ✨ Generated from Field `TrustedAgent`.`designationDate` of type `Timestamp`
+  """
+  designationDate: Timestamp
+  """
+  ✨ `_expr` server value variant of `designationDate` (✨ Generated from Field `TrustedAgent`.`designationDate` of type `Timestamp`)
+  """
+  designationDate_expr: Timestamp_Expr @fdc_forbiddenInVariables
+  """
+  ✨ `_time` server value variant of `designationDate` (✨ Generated from Field `TrustedAgent`.`designationDate` of type `Timestamp`)
+  """
+  designationDate_time: Timestamp_Relative @fdc_forbiddenInVariables
+  """
+  ✨ `_update` server value variant of `designationDate` (✨ Generated from Field `TrustedAgent`.`designationDate` of type `Timestamp`)
+  """
+  designationDate_update: [Timestamp_Update!] @fdc_forbiddenInVariables
+  """
+  ✨ Generated from Field `TrustedAgent`.`email` of type `String!`
+  """
+  email: String
+  """
+  ✨ `_expr` server value variant of `email` (✨ Generated from Field `TrustedAgent`.`email` of type `String!`)
+  """
+  email_expr: String_Expr @fdc_forbiddenInVariables
+  """
+  ✨ Generated from Field `TrustedAgent`.`firstName` of type `String!`
+  """
+  firstName: String
+  """
+  ✨ `_expr` server value variant of `firstName` (✨ Generated from Field `TrustedAgent`.`firstName` of type `String!`)
+  """
+  firstName_expr: String_Expr @fdc_forbiddenInVariables
+  """
+  ✨ Generated from Field `TrustedAgent`.`lastName` of type `String!`
+  """
+  lastName: String
+  """
+  ✨ `_expr` server value variant of `lastName` (✨ Generated from Field `TrustedAgent`.`lastName` of type `String!`)
+  """
+  lastName_expr: String_Expr @fdc_forbiddenInVariables
+  """
+  ✨ Generated from Field `TrustedAgent`.`phone` of type `String`
+  """
+  phone: String
+  """
+  ✨ `_expr` server value variant of `phone` (✨ Generated from Field `TrustedAgent`.`phone` of type `String`)
+  """
+  phone_expr: String_Expr @fdc_forbiddenInVariables
+}
+"""
+✨ Generated filter input type for table 'TrustedAgent'. This input allows filtering objects using various conditions. Use `_or`, `_and`, and `_not` to compose complex filters.
+"""
+input TrustedAgent_Filter {
+  """
+  Apply multiple filter conditions using `AND` logic.
+  """
+  _and: [TrustedAgent_Filter!]
+  """
+  Negate the result of the provided filter condition.
+  """
+  _not: TrustedAgent_Filter
+  """
+  Apply multiple filter conditions using `OR` logic.
+  """
+  _or: [TrustedAgent_Filter!]
+  """
+  ✨ Generated from Field `TrustedAgent`.`id` of type `UUID!`
+  """
+  id: UUID_Filter
+  """
+  ✨ Generated from Field `TrustedAgent`.`userId` of type `UUID!`
+  """
+  userId: UUID_Filter
+  """
+  ✨ Generated from Field `TrustedAgent`.`user` of type `User!`
+  """
+  user: User_Filter
+  """
+  ✨ Generated from Field `TrustedAgent`.`accessLevel` of type `String!`
+  """
+  accessLevel: String_Filter
+  """
+  ✨ Generated from Field `TrustedAgent`.`createdAt` of type `Timestamp!`
+  """
+  createdAt: Timestamp_Filter
+  """
+  ✨ Generated from Field `TrustedAgent`.`designationDate` of type `Timestamp`
+  """
+  designationDate: Timestamp_Filter
+  """
+  ✨ Generated from Field `TrustedAgent`.`email` of type `String!`
+  """
+  email: String_Filter
+  """
+  ✨ Generated from Field `TrustedAgent`.`firstName` of type `String!`
+  """
+  firstName: String_Filter
+  """
+  ✨ Generated from Field `TrustedAgent`.`lastName` of type `String!`
+  """
+  lastName: String_Filter
+  """
+  ✨ Generated from Field `TrustedAgent`.`phone` of type `String`
+  """
+  phone: String_Filter
+}
+"""
+✨ Generated first-row input type for table 'TrustedAgent'. This input selects the first row matching the filter criteria, ordered according to the specified conditions.
+"""
+input TrustedAgent_FirstRow {
+  """
+  Order the result by the specified fields.
+  """
+  orderBy: [TrustedAgent_Order!]
+  """
+  Filters rows based on the specified conditions.
+  """
+  where: TrustedAgent_Filter
+}
+"""
+✨ Generated having input type for table 'TrustedAgent'. This input allows you to filter groups during aggregate queries using various conditions. Use `_or`, `_and`, and `_not` to compose complex filters.
+"""
+input TrustedAgent_Having {
+  """
+  Apply multiple Having conditions using `AND` logic.
+  """
+  _and: [TrustedAgent_Having!]
+  """
+  Whether to apply DISTINCT to the aggregate function.
+  """
+  _distinct: Boolean
+  """
+  Negate the result of the provided Having condition.
+  """
+  _not: TrustedAgent_Having
+  """
+  Apply multiple Having conditions using `OR` logic.
+  """
+  _or: [TrustedAgent_Having!]
+  """
+  ✨ Generated from Field `TrustedAgent`.`_count` of type `Int!`
+  """
+  _count: Int_Filter
+  """
+  ✨ Generated from Field `TrustedAgent`.`accessLevel_count` of type `Int!`
+  """
+  accessLevel_count: Int_Filter
+  """
+  ✨ Generated from Field `TrustedAgent`.`createdAt_count` of type `Int!`
+  """
+  createdAt_count: Int_Filter
+  """
+  ✨ Generated from Field `TrustedAgent`.`designationDate_count` of type `Int!`
+  """
+  designationDate_count: Int_Filter
+  """
+  ✨ Generated from Field `TrustedAgent`.`email_count` of type `Int!`
+  """
+  email_count: Int_Filter
+  """
+  ✨ Generated from Field `TrustedAgent`.`firstName_count` of type `Int!`
+  """
+  firstName_count: Int_Filter
+  """
+  ✨ Generated from Field `TrustedAgent`.`id_count` of type `Int!`
+  """
+  id_count: Int_Filter
+  """
+  ✨ Generated from Field `TrustedAgent`.`lastName_count` of type `Int!`
+  """
+  lastName_count: Int_Filter
+  """
+  ✨ Generated from Field `TrustedAgent`.`phone_count` of type `Int!`
+  """
+  phone_count: Int_Filter
+  """
+  ✨ Generated from Field `TrustedAgent`.`userId_count` of type `Int!`
+  """
+  userId_count: Int_Filter
+  """
+  ✨ Generated from Field `TrustedAgent`.`createdAt_min` of type `Timestamp`
+  """
+  createdAt_min: Timestamp_Filter
+  """
+  ✨ Generated from Field `TrustedAgent`.`designationDate_min` of type `Timestamp`
+  """
+  designationDate_min: Timestamp_Filter
+  """
+  ✨ Generated from Field `TrustedAgent`.`createdAt_max` of type `Timestamp`
+  """
+  createdAt_max: Timestamp_Filter
+  """
+  ✨ Generated from Field `TrustedAgent`.`designationDate_max` of type `Timestamp`
+  """
+  designationDate_max: Timestamp_Filter
+}
+"""
+✨ Generated key input type for table 'TrustedAgent'. It represents the primary key fields used to uniquely identify a row in the table.
+"""
+input TrustedAgent_Key {
+  """
+  ✨ Generated from Field `TrustedAgent`.`id` of type `UUID!`
+  """
+  id: UUID
+  """
+  ✨ `_expr` server value variant of `id` (✨ Generated from Field `TrustedAgent`.`id` of type `UUID!`)
+  """
+  id_expr: UUID_Expr @fdc_forbiddenInVariables
+}
+"""
+✨ Generated list filter input type for table 'TrustedAgent'. This input applies filtering logic based on the count or existence of related objects that matches certain criteria.
+"""
+input TrustedAgent_ListFilter {
+  """
+  The desired number of objects that match the condition (defaults to at least one).
+  """
+  count: Int_Filter = {gt:0}
+  """
+  Condition of the related objects to filter for.
+  """
+  exist: TrustedAgent_Filter
+}
+"""
+✨ Generated order input type for table 'TrustedAgent'. This input defines the sorting order of rows in query results based on one or more fields.
+"""
+input TrustedAgent_Order {
+  """
+  ✨ Generated from Field `TrustedAgent`.`id` of type `UUID!`
+  """
+  id: OrderDirection
+  """
+  ✨ Generated from Field `TrustedAgent`.`userId` of type `UUID!`
+  """
+  userId: OrderDirection
+  """
+  ✨ Generated from Field `TrustedAgent`.`user` of type `User!`
+  """
+  user: User_Order
+  """
+  ✨ Generated from Field `TrustedAgent`.`accessLevel` of type `String!`
+  """
+  accessLevel: OrderDirection
+  """
+  ✨ Generated from Field `TrustedAgent`.`createdAt` of type `Timestamp!`
+  """
+  createdAt: OrderDirection
+  """
+  ✨ Generated from Field `TrustedAgent`.`designationDate` of type `Timestamp`
+  """
+  designationDate: OrderDirection
+  """
+  ✨ Generated from Field `TrustedAgent`.`email` of type `String!`
+  """
+  email: OrderDirection
+  """
+  ✨ Generated from Field `TrustedAgent`.`firstName` of type `String!`
+  """
+  firstName: OrderDirection
+  """
+  ✨ Generated from Field `TrustedAgent`.`lastName` of type `String!`
+  """
+  lastName: OrderDirection
+  """
+  ✨ Generated from Field `TrustedAgent`.`phone` of type `String`
+  """
+  phone: OrderDirection
+  """
+  ✨ Generated from Field `TrustedAgent`.`_count` of type `Int!`
+  """
+  _count: OrderDirection
+  """
+  ✨ Generated from Field `TrustedAgent`.`accessLevel_count` of type `Int!`
+  """
+  accessLevel_count: OrderDirection
+  """
+  ✨ Generated from Field `TrustedAgent`.`createdAt_count` of type `Int!`
+  """
+  createdAt_count: OrderDirection
+  """
+  ✨ Generated from Field `TrustedAgent`.`designationDate_count` of type `Int!`
+  """
+  designationDate_count: OrderDirection
+  """
+  ✨ Generated from Field `TrustedAgent`.`email_count` of type `Int!`
+  """
+  email_count: OrderDirection
+  """
+  ✨ Generated from Field `TrustedAgent`.`firstName_count` of type `Int!`
+  """
+  firstName_count: OrderDirection
+  """
+  ✨ Generated from Field `TrustedAgent`.`id_count` of type `Int!`
+  """
+  id_count: OrderDirection
+  """
+  ✨ Generated from Field `TrustedAgent`.`lastName_count` of type `Int!`
+  """
+  lastName_count: OrderDirection
+  """
+  ✨ Generated from Field `TrustedAgent`.`phone_count` of type `Int!`
+  """
+  phone_count: OrderDirection
+  """
+  ✨ Generated from Field `TrustedAgent`.`userId_count` of type `Int!`
+  """
+  userId_count: OrderDirection
+  """
+  ✨ Generated from Field `TrustedAgent`.`createdAt_min` of type `Timestamp`
+  """
+  createdAt_min: OrderDirection
+  """
+  ✨ Generated from Field `TrustedAgent`.`designationDate_min` of type `Timestamp`
+  """
+  designationDate_min: OrderDirection
+  """
+  ✨ Generated from Field `TrustedAgent`.`createdAt_max` of type `Timestamp`
   """
   createdAt_max: OrderDirection
   """
-  ✨ Generated from Field `TrustedContact`.`sharedUntil_max` of type `Timestamp`
+  ✨ Generated from Field `TrustedAgent`.`designationDate_max` of type `Timestamp`
   """
-  sharedUntil_max: OrderDirection
+  designationDate_max: OrderDirection
 }
 """
 ✨ Generated data input type for table 'User'. It includes all necessary fields for creating or upserting rows into table.
@@ -1427,11 +1465,11 @@ input User_Data {
   """
   createdAt_update: [Timestamp_Update!] @fdc_forbiddenInVariables
   """
-  ✨ Generated from Field `User`.`displayName` of type `String`
+  ✨ Generated from Field `User`.`displayName` of type `String!`
   """
   displayName: String
   """
-  ✨ `_expr` server value variant of `displayName` (✨ Generated from Field `User`.`displayName` of type `String`)
+  ✨ `_expr` server value variant of `displayName` (✨ Generated from Field `User`.`displayName` of type `String!`)
   """
   displayName_expr: String_Expr @fdc_forbiddenInVariables
   """
@@ -1443,29 +1481,37 @@ input User_Data {
   """
   email_expr: String_Expr @fdc_forbiddenInVariables
   """
-  ✨ Generated from Field `User`.`hashedPassword` of type `String!`
+  ✨ Generated from Field `User`.`emergencyContactEmail` of type `String`
   """
-  hashedPassword: String
+  emergencyContactEmail: String
   """
-  ✨ `_expr` server value variant of `hashedPassword` (✨ Generated from Field `User`.`hashedPassword` of type `String!`)
+  ✨ `_expr` server value variant of `emergencyContactEmail` (✨ Generated from Field `User`.`emergencyContactEmail` of type `String`)
   """
-  hashedPassword_expr: String_Expr @fdc_forbiddenInVariables
+  emergencyContactEmail_expr: String_Expr @fdc_forbiddenInVariables
   """
-  ✨ Generated from Field `User`.`phoneNumber` of type `String`
+  ✨ Generated from Field `User`.`emergencyContactName` of type `String`
   """
-  phoneNumber: String
+  emergencyContactName: String
   """
-  ✨ `_expr` server value variant of `phoneNumber` (✨ Generated from Field `User`.`phoneNumber` of type `String`)
+  ✨ `_expr` server value variant of `emergencyContactName` (✨ Generated from Field `User`.`emergencyContactName` of type `String`)
   """
-  phoneNumber_expr: String_Expr @fdc_forbiddenInVariables
+  emergencyContactName_expr: String_Expr @fdc_forbiddenInVariables
   """
-  ✨ Generated from Field `User`.`recoveryEmail` of type `String`
+  ✨ Generated from Field `User`.`emergencyContactPhone` of type `String`
   """
-  recoveryEmail: String
+  emergencyContactPhone: String
   """
-  ✨ `_expr` server value variant of `recoveryEmail` (✨ Generated from Field `User`.`recoveryEmail` of type `String`)
+  ✨ `_expr` server value variant of `emergencyContactPhone` (✨ Generated from Field `User`.`emergencyContactPhone` of type `String`)
   """
-  recoveryEmail_expr: String_Expr @fdc_forbiddenInVariables
+  emergencyContactPhone_expr: String_Expr @fdc_forbiddenInVariables
+  """
+  ✨ Generated from Field `User`.`photoUrl` of type `String`
+  """
+  photoUrl: String
+  """
+  ✨ `_expr` server value variant of `photoUrl` (✨ Generated from Field `User`.`photoUrl` of type `String`)
+  """
+  photoUrl_expr: String_Expr @fdc_forbiddenInVariables
 }
 """
 ✨ Generated filter input type for table 'User'. This input allows filtering objects using various conditions. Use `_or`, `_and`, and `_not` to compose complex filters.
@@ -1492,7 +1538,7 @@ input User_Filter {
   """
   createdAt: Timestamp_Filter
   """
-  ✨ Generated from Field `User`.`displayName` of type `String`
+  ✨ Generated from Field `User`.`displayName` of type `String!`
   """
   displayName: String_Filter
   """
@@ -1500,25 +1546,33 @@ input User_Filter {
   """
   email: String_Filter
   """
-  ✨ Generated from Field `User`.`hashedPassword` of type `String!`
+  ✨ Generated from Field `User`.`emergencyContactEmail` of type `String`
   """
-  hashedPassword: String_Filter
+  emergencyContactEmail: String_Filter
   """
-  ✨ Generated from Field `User`.`phoneNumber` of type `String`
+  ✨ Generated from Field `User`.`emergencyContactName` of type `String`
   """
-  phoneNumber: String_Filter
+  emergencyContactName: String_Filter
   """
-  ✨ Generated from Field `User`.`recoveryEmail` of type `String`
+  ✨ Generated from Field `User`.`emergencyContactPhone` of type `String`
   """
-  recoveryEmail: String_Filter
+  emergencyContactPhone: String_Filter
   """
-  ✨ Generated from Field `User`.`trustedContacts_on_user` of type `[TrustedContact!]!`
+  ✨ Generated from Field `User`.`photoUrl` of type `String`
   """
-  trustedContacts_on_user: TrustedContact_ListFilter
+  photoUrl: String_Filter
   """
-  ✨ Generated from Field `User`.`vaults_on_user` of type `[Vault!]!`
+  ✨ Generated from Field `User`.`beneficiaries_on_user` of type `[Beneficiary!]!`
   """
-  vaults_on_user: Vault_ListFilter
+  beneficiaries_on_user: Beneficiary_ListFilter
+  """
+  ✨ Generated from Field `User`.`digitalAccounts_on_user` of type `[DigitalAccount!]!`
+  """
+  digitalAccounts_on_user: DigitalAccount_ListFilter
+  """
+  ✨ Generated from Field `User`.`trustedAgents_on_user` of type `[TrustedAgent!]!`
+  """
+  trustedAgents_on_user: TrustedAgent_ListFilter
 }
 """
 ✨ Generated first-row input type for table 'User'. This input selects the first row matching the filter criteria, ordered according to the specified conditions.
@@ -1570,21 +1624,25 @@ input User_Having {
   """
   email_count: Int_Filter
   """
-  ✨ Generated from Field `User`.`hashedPassword_count` of type `Int!`
+  ✨ Generated from Field `User`.`emergencyContactEmail_count` of type `Int!`
   """
-  hashedPassword_count: Int_Filter
+  emergencyContactEmail_count: Int_Filter
+  """
+  ✨ Generated from Field `User`.`emergencyContactName_count` of type `Int!`
+  """
+  emergencyContactName_count: Int_Filter
+  """
+  ✨ Generated from Field `User`.`emergencyContactPhone_count` of type `Int!`
+  """
+  emergencyContactPhone_count: Int_Filter
   """
   ✨ Generated from Field `User`.`id_count` of type `Int!`
   """
   id_count: Int_Filter
   """
-  ✨ Generated from Field `User`.`phoneNumber_count` of type `Int!`
+  ✨ Generated from Field `User`.`photoUrl_count` of type `Int!`
   """
-  phoneNumber_count: Int_Filter
-  """
-  ✨ Generated from Field `User`.`recoveryEmail_count` of type `Int!`
-  """
-  recoveryEmail_count: Int_Filter
+  photoUrl_count: Int_Filter
   """
   ✨ Generated from Field `User`.`createdAt_min` of type `Timestamp`
   """
@@ -1633,7 +1691,7 @@ input User_Order {
   """
   createdAt: OrderDirection
   """
-  ✨ Generated from Field `User`.`displayName` of type `String`
+  ✨ Generated from Field `User`.`displayName` of type `String!`
   """
   displayName: OrderDirection
   """
@@ -1641,17 +1699,21 @@ input User_Order {
   """
   email: OrderDirection
   """
-  ✨ Generated from Field `User`.`hashedPassword` of type `String!`
+  ✨ Generated from Field `User`.`emergencyContactEmail` of type `String`
   """
-  hashedPassword: OrderDirection
+  emergencyContactEmail: OrderDirection
   """
-  ✨ Generated from Field `User`.`phoneNumber` of type `String`
+  ✨ Generated from Field `User`.`emergencyContactName` of type `String`
   """
-  phoneNumber: OrderDirection
+  emergencyContactName: OrderDirection
   """
-  ✨ Generated from Field `User`.`recoveryEmail` of type `String`
+  ✨ Generated from Field `User`.`emergencyContactPhone` of type `String`
   """
-  recoveryEmail: OrderDirection
+  emergencyContactPhone: OrderDirection
+  """
+  ✨ Generated from Field `User`.`photoUrl` of type `String`
+  """
+  photoUrl: OrderDirection
   """
   ✨ Generated from Field `User`.`_count` of type `Int!`
   """
@@ -1669,21 +1731,25 @@ input User_Order {
   """
   email_count: OrderDirection
   """
-  ✨ Generated from Field `User`.`hashedPassword_count` of type `Int!`
+  ✨ Generated from Field `User`.`emergencyContactEmail_count` of type `Int!`
   """
-  hashedPassword_count: OrderDirection
+  emergencyContactEmail_count: OrderDirection
+  """
+  ✨ Generated from Field `User`.`emergencyContactName_count` of type `Int!`
+  """
+  emergencyContactName_count: OrderDirection
+  """
+  ✨ Generated from Field `User`.`emergencyContactPhone_count` of type `Int!`
+  """
+  emergencyContactPhone_count: OrderDirection
   """
   ✨ Generated from Field `User`.`id_count` of type `Int!`
   """
   id_count: OrderDirection
   """
-  ✨ Generated from Field `User`.`phoneNumber_count` of type `Int!`
+  ✨ Generated from Field `User`.`photoUrl_count` of type `Int!`
   """
-  phoneNumber_count: OrderDirection
-  """
-  ✨ Generated from Field `User`.`recoveryEmail_count` of type `Int!`
-  """
-  recoveryEmail_count: OrderDirection
+  photoUrl_count: OrderDirection
   """
   ✨ Generated from Field `User`.`createdAt_min` of type `Timestamp`
   """
@@ -1692,291 +1758,4 @@ input User_Order {
   ✨ Generated from Field `User`.`createdAt_max` of type `Timestamp`
   """
   createdAt_max: OrderDirection
-}
-"""
-✨ Generated data input type for table 'Vault'. It includes all necessary fields for creating or upserting rows into table.
-"""
-input Vault_Data {
-  """
-  ✨ Generated from Field `Vault`.`id` of type `UUID!`
-  """
-  id: UUID
-  """
-  ✨ `_expr` server value variant of `id` (✨ Generated from Field `Vault`.`id` of type `UUID!`)
-  """
-  id_expr: UUID_Expr @fdc_forbiddenInVariables
-  """
-  ✨ Generated from Field `Vault`.`userId` of type `UUID!`
-  """
-  userId: UUID
-  """
-  ✨ `_expr` server value variant of `userId` (✨ Generated from Field `Vault`.`userId` of type `UUID!`)
-  """
-  userId_expr: UUID_Expr @fdc_forbiddenInVariables
-  """
-  ✨ Generated from Field `Vault`.`user` of type `User!`
-  """
-  user: User_Key @fdc_forbiddenInVariables
-  """
-  ✨ Generated from Field `Vault`.`createdAt` of type `Timestamp!`
-  """
-  createdAt: Timestamp
-  """
-  ✨ `_expr` server value variant of `createdAt` (✨ Generated from Field `Vault`.`createdAt` of type `Timestamp!`)
-  """
-  createdAt_expr: Timestamp_Expr @fdc_forbiddenInVariables
-  """
-  ✨ `_time` server value variant of `createdAt` (✨ Generated from Field `Vault`.`createdAt` of type `Timestamp!`)
-  """
-  createdAt_time: Timestamp_Relative @fdc_forbiddenInVariables
-  """
-  ✨ `_update` server value variant of `createdAt` (✨ Generated from Field `Vault`.`createdAt` of type `Timestamp!`)
-  """
-  createdAt_update: [Timestamp_Update!] @fdc_forbiddenInVariables
-  """
-  ✨ Generated from Field `Vault`.`encryptionKeySalt` of type `String!`
-  """
-  encryptionKeySalt: String
-  """
-  ✨ `_expr` server value variant of `encryptionKeySalt` (✨ Generated from Field `Vault`.`encryptionKeySalt` of type `String!`)
-  """
-  encryptionKeySalt_expr: String_Expr @fdc_forbiddenInVariables
-  """
-  ✨ Generated from Field `Vault`.`lastAccessedAt` of type `Timestamp`
-  """
-  lastAccessedAt: Timestamp
-  """
-  ✨ `_expr` server value variant of `lastAccessedAt` (✨ Generated from Field `Vault`.`lastAccessedAt` of type `Timestamp`)
-  """
-  lastAccessedAt_expr: Timestamp_Expr @fdc_forbiddenInVariables
-  """
-  ✨ `_time` server value variant of `lastAccessedAt` (✨ Generated from Field `Vault`.`lastAccessedAt` of type `Timestamp`)
-  """
-  lastAccessedAt_time: Timestamp_Relative @fdc_forbiddenInVariables
-  """
-  ✨ `_update` server value variant of `lastAccessedAt` (✨ Generated from Field `Vault`.`lastAccessedAt` of type `Timestamp`)
-  """
-  lastAccessedAt_update: [Timestamp_Update!] @fdc_forbiddenInVariables
-}
-"""
-✨ Generated filter input type for table 'Vault'. This input allows filtering objects using various conditions. Use `_or`, `_and`, and `_not` to compose complex filters.
-"""
-input Vault_Filter {
-  """
-  Apply multiple filter conditions using `AND` logic.
-  """
-  _and: [Vault_Filter!]
-  """
-  Negate the result of the provided filter condition.
-  """
-  _not: Vault_Filter
-  """
-  Apply multiple filter conditions using `OR` logic.
-  """
-  _or: [Vault_Filter!]
-  """
-  ✨ Generated from Field `Vault`.`id` of type `UUID!`
-  """
-  id: UUID_Filter
-  """
-  ✨ Generated from Field `Vault`.`userId` of type `UUID!`
-  """
-  userId: UUID_Filter
-  """
-  ✨ Generated from Field `Vault`.`user` of type `User!`
-  """
-  user: User_Filter
-  """
-  ✨ Generated from Field `Vault`.`createdAt` of type `Timestamp!`
-  """
-  createdAt: Timestamp_Filter
-  """
-  ✨ Generated from Field `Vault`.`encryptionKeySalt` of type `String!`
-  """
-  encryptionKeySalt: String_Filter
-  """
-  ✨ Generated from Field `Vault`.`lastAccessedAt` of type `Timestamp`
-  """
-  lastAccessedAt: Timestamp_Filter
-  """
-  ✨ Generated from Field `Vault`.`assets_on_vault` of type `[Asset!]!`
-  """
-  assets_on_vault: Asset_ListFilter
-  """
-  ✨ Generated from Field `Vault`.`folders_on_vault` of type `[Folder!]!`
-  """
-  folders_on_vault: Folder_ListFilter
-  """
-  ✨ Generated from Field `Vault`.`trustedContacts_on_vault` of type `[TrustedContact!]!`
-  """
-  trustedContacts_on_vault: TrustedContact_ListFilter
-}
-"""
-✨ Generated first-row input type for table 'Vault'. This input selects the first row matching the filter criteria, ordered according to the specified conditions.
-"""
-input Vault_FirstRow {
-  """
-  Order the result by the specified fields.
-  """
-  orderBy: [Vault_Order!]
-  """
-  Filters rows based on the specified conditions.
-  """
-  where: Vault_Filter
-}
-"""
-✨ Generated having input type for table 'Vault'. This input allows you to filter groups during aggregate queries using various conditions. Use `_or`, `_and`, and `_not` to compose complex filters.
-"""
-input Vault_Having {
-  """
-  Apply multiple Having conditions using `AND` logic.
-  """
-  _and: [Vault_Having!]
-  """
-  Whether to apply DISTINCT to the aggregate function.
-  """
-  _distinct: Boolean
-  """
-  Negate the result of the provided Having condition.
-  """
-  _not: Vault_Having
-  """
-  Apply multiple Having conditions using `OR` logic.
-  """
-  _or: [Vault_Having!]
-  """
-  ✨ Generated from Field `Vault`.`_count` of type `Int!`
-  """
-  _count: Int_Filter
-  """
-  ✨ Generated from Field `Vault`.`createdAt_count` of type `Int!`
-  """
-  createdAt_count: Int_Filter
-  """
-  ✨ Generated from Field `Vault`.`encryptionKeySalt_count` of type `Int!`
-  """
-  encryptionKeySalt_count: Int_Filter
-  """
-  ✨ Generated from Field `Vault`.`id_count` of type `Int!`
-  """
-  id_count: Int_Filter
-  """
-  ✨ Generated from Field `Vault`.`lastAccessedAt_count` of type `Int!`
-  """
-  lastAccessedAt_count: Int_Filter
-  """
-  ✨ Generated from Field `Vault`.`userId_count` of type `Int!`
-  """
-  userId_count: Int_Filter
-  """
-  ✨ Generated from Field `Vault`.`createdAt_min` of type `Timestamp`
-  """
-  createdAt_min: Timestamp_Filter
-  """
-  ✨ Generated from Field `Vault`.`lastAccessedAt_min` of type `Timestamp`
-  """
-  lastAccessedAt_min: Timestamp_Filter
-  """
-  ✨ Generated from Field `Vault`.`createdAt_max` of type `Timestamp`
-  """
-  createdAt_max: Timestamp_Filter
-  """
-  ✨ Generated from Field `Vault`.`lastAccessedAt_max` of type `Timestamp`
-  """
-  lastAccessedAt_max: Timestamp_Filter
-}
-"""
-✨ Generated key input type for table 'Vault'. It represents the primary key fields used to uniquely identify a row in the table.
-"""
-input Vault_Key {
-  """
-  ✨ Generated from Field `Vault`.`id` of type `UUID!`
-  """
-  id: UUID
-  """
-  ✨ `_expr` server value variant of `id` (✨ Generated from Field `Vault`.`id` of type `UUID!`)
-  """
-  id_expr: UUID_Expr @fdc_forbiddenInVariables
-}
-"""
-✨ Generated list filter input type for table 'Vault'. This input applies filtering logic based on the count or existence of related objects that matches certain criteria.
-"""
-input Vault_ListFilter {
-  """
-  The desired number of objects that match the condition (defaults to at least one).
-  """
-  count: Int_Filter = {gt:0}
-  """
-  Condition of the related objects to filter for.
-  """
-  exist: Vault_Filter
-}
-"""
-✨ Generated order input type for table 'Vault'. This input defines the sorting order of rows in query results based on one or more fields.
-"""
-input Vault_Order {
-  """
-  ✨ Generated from Field `Vault`.`id` of type `UUID!`
-  """
-  id: OrderDirection
-  """
-  ✨ Generated from Field `Vault`.`userId` of type `UUID!`
-  """
-  userId: OrderDirection
-  """
-  ✨ Generated from Field `Vault`.`user` of type `User!`
-  """
-  user: User_Order
-  """
-  ✨ Generated from Field `Vault`.`createdAt` of type `Timestamp!`
-  """
-  createdAt: OrderDirection
-  """
-  ✨ Generated from Field `Vault`.`encryptionKeySalt` of type `String!`
-  """
-  encryptionKeySalt: OrderDirection
-  """
-  ✨ Generated from Field `Vault`.`lastAccessedAt` of type `Timestamp`
-  """
-  lastAccessedAt: OrderDirection
-  """
-  ✨ Generated from Field `Vault`.`_count` of type `Int!`
-  """
-  _count: OrderDirection
-  """
-  ✨ Generated from Field `Vault`.`createdAt_count` of type `Int!`
-  """
-  createdAt_count: OrderDirection
-  """
-  ✨ Generated from Field `Vault`.`encryptionKeySalt_count` of type `Int!`
-  """
-  encryptionKeySalt_count: OrderDirection
-  """
-  ✨ Generated from Field `Vault`.`id_count` of type `Int!`
-  """
-  id_count: OrderDirection
-  """
-  ✨ Generated from Field `Vault`.`lastAccessedAt_count` of type `Int!`
-  """
-  lastAccessedAt_count: OrderDirection
-  """
-  ✨ Generated from Field `Vault`.`userId_count` of type `Int!`
-  """
-  userId_count: OrderDirection
-  """
-  ✨ Generated from Field `Vault`.`createdAt_min` of type `Timestamp`
-  """
-  createdAt_min: OrderDirection
-  """
-  ✨ Generated from Field `Vault`.`lastAccessedAt_min` of type `Timestamp`
-  """
-  lastAccessedAt_min: OrderDirection
-  """
-  ✨ Generated from Field `Vault`.`createdAt_max` of type `Timestamp`
-  """
-  createdAt_max: OrderDirection
-  """
-  ✨ Generated from Field `Vault`.`lastAccessedAt_max` of type `Timestamp`
-  """
-  lastAccessedAt_max: OrderDirection
 }

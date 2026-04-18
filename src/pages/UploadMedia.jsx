@@ -1,173 +1,190 @@
-import { useState, useRef } from 'react';
+import { useRef, useState } from 'react';
 import { UploadCloud, FileVideo, X, CheckCircle, Loader2 } from 'lucide-react';
 import { storage, db } from '../firebase';
-import { ref, uploadBytesResumable, getDownloadURL } from 'firebase/storage';
-import { collection, addDoc } from 'firebase/firestore';
+import { ref, uploadBytesResumable } from 'firebase/storage';
+import { collection, getDocs, query, where } from 'firebase/firestore';
+
+const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+
+async function waitForBackendRecord(storagePath) {
+  const deadline = Date.now() + 120000;
+
+  while (Date.now() < deadline) {
+    const snapshot = await getDocs(
+      query(collection(db, 'mediaLibrary'), where('storagePath', '==', storagePath))
+    );
+
+    if (!snapshot.empty) {
+      return snapshot.docs[0].data();
+    }
+
+    await sleep(2500);
+  }
+
+  throw new Error('Timed out waiting for backend analysis.');
+}
+
+function summarizeVerificationState(record) {
+  const provenanceStatus = record?.provenance?.status;
+  const synthStatus = record?.synthId?.status;
+  const synthReasonCode = record?.synthId?.reasonCode;
+
+  if (provenanceStatus === 'verified') {
+    return 'upload provenance verified';
+  }
+
+  if (provenanceStatus === 'manual_review_required') {
+    return 'upload provenance needs manual review';
+  }
+
+  if (synthStatus === 'verified') {
+    return 'SynthID verified';
+  }
+
+  if (synthStatus === 'manual_verification_required') {
+    if (synthReasonCode === 'node_runtime_auto_verifier_unavailable') {
+      return 'manual SynthID review required because auto-verification is unavailable in this runtime';
+    }
+
+    return 'manual SynthID review required';
+  }
+
+  if (synthStatus === 'unsupported_image_format') {
+    return 'SynthID unsupported for this image format';
+  }
+
+  if (synthStatus === 'not_applicable' || synthStatus === 'not_supported') {
+    return 'SynthID not applicable for this asset type';
+  }
+
+  return 'provenance state recorded';
+}
 
 export default function UploadMedia() {
   const [isProcessing, setIsProcessing] = useState(false);
   const [processingStep, setProcessingStep] = useState(-1);
   const [pendingFiles, setPendingFiles] = useState([]);
-  const [isDeepfakeTest, setIsDeepfakeTest] = useState(false);
+  const [pipelineMessage, setPipelineMessage] = useState('Waiting to start...');
   const fileInputRef = useRef(null);
 
   const steps = [
-    "Uploading to Google Cloud Storage",
-    "Processing in Cloud Functions...",
-    "Injecting Invisible Watermark (Google SynthID)",
-    "Generating Provenance Metadata Audit Log"
+    'Uploading to Google Cloud Storage',
+    'Analyzing media in Cloud Functions with Vertex AI',
+    'Recording provenance and SynthID verification state',
+    'Saving the audit trail to Firestore',
   ];
 
   const handleFileSelect = (e) => {
     const files = Array.from(e.target.files);
     if (files.length === 0) return;
 
-    // Add files to state
-    const newPending = files.map(file => ({
+    const newPending = files.map((file) => ({
       file,
       name: file.name,
-      size: (file.size / (1024 * 1024)).toFixed(2) + ' MB',
+      size: `${(file.size / (1024 * 1024)).toFixed(2)} MB`,
       progress: 0,
-      status: 'pending' // pending, uploading, complete, error
+      status: 'pending',
     }));
 
-    setPendingFiles(prev => [...prev, ...newPending]);
+    setPendingFiles((prev) => [...prev, ...newPending]);
   };
 
-  const handleStartProcessing = () => {
-    if (pendingFiles.length === 0) return;
-    
+  const updateFile = (index, updates) => {
+    setPendingFiles((prev) => prev.map((item, itemIndex) => (
+      itemIndex === index ? { ...item, ...updates } : item
+    )));
+  };
+
+  const uploadSingleFile = (file, index) => new Promise((resolve, reject) => {
+    const storageRef = ref(storage, `uploads/${Date.now()}_${file.name}`);
+    const uploadTask = uploadBytesResumable(storageRef, file);
+
+    updateFile(index, { status: 'uploading' });
+
+    uploadTask.on(
+      'state_changed',
+      (snapshot) => {
+        const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+        updateFile(index, { progress: Math.round(progress) });
+      },
+      (error) => {
+        updateFile(index, { status: 'error' });
+        reject(error);
+      },
+      async () => {
+        updateFile(index, { status: 'complete', progress: 100 });
+        resolve(uploadTask.snapshot.ref.fullPath);
+      }
+    );
+  });
+
+  const handleStartProcessing = async () => {
+    if (pendingFiles.length === 0 || isProcessing) return;
+
     setIsProcessing(true);
-    setProcessingStep(0); // Uploading to GCS
+    setProcessingStep(0);
+    setPipelineMessage('Uploading files to Cloud Storage...');
 
-    // Upload files
-    pendingFiles.forEach((fileObj, index) => {
-      if (fileObj.status !== 'pending') return;
+    const filesToProcess = pendingFiles.slice();
 
-      const file = fileObj.file;
-      const storageRef = ref(storage, `uploads/${Date.now()}_${file.name}`);
-      const uploadTask = uploadBytesResumable(storageRef, file);
+    try {
+      for (let index = 0; index < filesToProcess.length; index += 1) {
+        const fileObj = filesToProcess[index];
+        if (fileObj.status !== 'pending') continue;
 
-      setPendingFiles(prev => {
-        const nxt = [...prev];
-        nxt[index].status = 'uploading';
-        return nxt;
-      });
+        const storagePath = await uploadSingleFile(fileObj.file, index);
 
-      uploadTask.on('state_changed', 
-        (snapshot) => {
-          const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-          setPendingFiles(prev => {
-            const nxt = [...prev];
-            nxt[index].progress = Math.round(progress);
-            return nxt;
-          });
-        }, 
-        (error) => {
-          console.error("Upload failed", error);
-          setPendingFiles(prev => {
-            const nxt = [...prev];
-            nxt[index].status = 'error';
-            return nxt;
-          });
-        }, 
-        async () => {
-          // Upload complete
-          setPendingFiles(prev => {
-            const nxt = [...prev];
-            nxt[index].status = 'complete';
-            nxt[index].progress = 100;
-            return nxt;
-          });
+        setProcessingStep(1);
+        setPipelineMessage(`Waiting for Vertex AI analysis on ${fileObj.name}...`);
 
-          try {
-            const downloadURL = await getDownloadURL(uploadTask.snapshot.ref);
+        const record = await waitForBackendRecord(storagePath);
 
-            // Simulate the cloud function running steps via UI for demo
-            setProcessingStep(1); // Functions triggered
-            await new Promise(r => setTimeout(r, 2000));
-            
-            setProcessingStep(2); // SynthID
-            await new Promise(r => setTimeout(r, 3500));
-            
-            // Generate mock SynthID signature
-            const synthIdSignature = `synth_${Math.random().toString(36).substring(2, 15)}_${Date.now()}`;
-            const authenticityScore = isDeepfakeTest ? 15 : Math.floor(Math.random() * (100 - 85 + 1) + 85); 
-            const finalStatus = isDeepfakeTest ? "Violation" : "Protected";
-            
-            setProcessingStep(3); // Audit log
-            await new Promise(r => setTimeout(r, 1500));
+        setProcessingStep(2);
+        setPipelineMessage(
+          `Verification recorded for ${fileObj.name}: ${summarizeVerificationState(record)}`
+        );
+        await sleep(700);
 
-            // We update/create a document in 'mediaLibrary' collection
-            const isVideo = file.type.startsWith('video/');
-            const metadata = {
-              id: synthIdSignature, 
-              filename: file.name,
-              bucketPath: uploadTask.snapshot.ref.fullPath,
-              downloadURL: downloadURL,
-              title: file.name.replace(/\.[^/.]+$/, ""), // File name without extension
-              type: isVideo ? 'Video' : 'Image',
-              uploadDate: new Date().toISOString(),
-              status: finalStatus,
-              thumbnail: isVideo ? "https://images.unsplash.com/photo-1579952363873-27f3bade9f55?q=80&w=600&auto=format&fit=crop" : downloadURL, 
-              size: fileObj.size, 
-              synthIdSignature: synthIdSignature,
-              authenticityScore: authenticityScore,
-              auditTrail: [
-                { 
-                  step: "Uploaded to Google Cloud Storage bucket",
-                  timestamp: new Date(Date.now() - 4000).toISOString(),
-                  status: "success"
-                },
-                { 
-                  step: isDeepfakeTest ? "Vertex AI Deepfake Scanner / Threat Detection" : "SynthID invisible watermark injected (Vertex AI)",
-                  timestamp: new Date(Date.now() - 2000).toISOString(),
-                  signature: isDeepfakeTest ? null : synthIdSignature,
-                  status: isDeepfakeTest ? "failed" : "success",
-                  errorDetails: isDeepfakeTest ? "Generative adversarial artifacts detected across 84% of frames. Fingerprint failed." : null
-                },
-                { 
-                  step: "Asset hash registered in BigQuery Ledger",
-                  timestamp: new Date().toISOString(),
-                  status: "success"
-                }
-              ]
-            };
+        setProcessingStep(3);
+        setPipelineMessage(
+          `Firestore updated for ${fileObj.name} with status ${record.status || 'Needs Review'}.`
+        );
+        await sleep(700);
+      }
 
-            await addDoc(collection(db, "mediaLibrary"), metadata);
-
-            setProcessingStep(4); // Fully Complete
-          } catch (err) {
-             console.error("Local pipeline error", err);
-          }
-        }
-      );
-    });
+      setProcessingStep(steps.length);
+      setPipelineMessage('All selected files have completed backend processing.');
+    } catch (error) {
+      console.error('Upload pipeline failed', error);
+      setPipelineMessage(error.message || 'Backend pipeline failed.');
+    }
   };
 
   const removeFile = (index) => {
-    setPendingFiles(prev => prev.filter((_, i) => i !== index));
+    setPendingFiles((prev) => prev.filter((_, itemIndex) => itemIndex !== index));
   };
 
   return (
     <div className="max-w-4xl mx-auto space-y-6">
       <div>
         <h1 className="text-2xl font-bold text-[var(--text-primary)]">Upload Media</h1>
-        <p className="text-sm text-[var(--text-secondary)]">Upload video files or images to start monitoring for unauthorized usage.</p>
+        <p className="text-sm text-[var(--text-secondary)]">
+          Upload video files or images to trigger the real Cloud Storage{' -> '}Cloud Functions{' -> '}Vertex AI pipeline.
+        </p>
       </div>
 
       <div className="mt-8">
-        <div 
+        <div
           className="border-2 border-dashed border-[var(--border)] rounded-2xl p-12 text-center hover:bg-[var(--surface)] transition-colors cursor-pointer group bg-[var(--background)]"
           onClick={() => fileInputRef.current?.click()}
         >
-          <input 
-            type="file" 
-            ref={fileInputRef} 
-            onChange={handleFileSelect} 
-            className="hidden" 
-            multiple 
-            accept="video/*,image/*" 
+          <input
+            type="file"
+            ref={fileInputRef}
+            onChange={handleFileSelect}
+            className="hidden"
+            multiple
+            accept="video/*,image/*"
           />
           <div className="w-20 h-20 mx-auto bg-indigo-500/10 rounded-full flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
             <UploadCloud className="w-10 h-10 text-indigo-500" />
@@ -178,27 +195,16 @@ export default function UploadMedia() {
             Select Files
           </button>
         </div>
-        
-        <div className="flex items-center gap-3 mt-4 p-4 bg-[var(--surface)] border border-[var(--border)] rounded-xl group/toggle cursor-pointer" onClick={() => setIsDeepfakeTest(!isDeepfakeTest)}>
-          <div className="relative flex items-center">
-            <input type="checkbox" id="deepfake-test" checked={isDeepfakeTest} readOnly className="sr-only" />
-            <div className={`block w-10 h-6 rounded-full transition-colors ${isDeepfakeTest ? 'bg-red-500' : 'bg-[var(--border)]'}`}></div>
-            <div className={`absolute left-1 top-1 bg-white w-4 h-4 rounded-full transition-transform ${isDeepfakeTest ? 'translate-x-4' : 'translate-x-0'}`}></div>
-          </div>
-          <label htmlFor="deepfake-test" className="text-sm font-medium text-[var(--text-primary)] cursor-pointer group-hover/toggle:text-indigo-400 transition-colors">
-            Run in <span className="text-red-400 font-bold">Malicious Tester</span> Mode (Simulate Vertex AI Deepfake Engine Alert)
-          </label>
-        </div>
       </div>
 
       <div className="mt-8">
         <h3 className="text-lg font-semibold text-[var(--text-primary)] mb-4">Pending Uploads ({pendingFiles.length})</h3>
-        
+
         {pendingFiles.length > 0 ? (
           <>
             <div className="bg-[var(--surface)] rounded-xl border border-[var(--border)] divide-y divide-[var(--border)]">
               {pendingFiles.map((file, idx) => (
-                <div key={idx} className="p-4 flex items-center justify-between">
+                <div key={`${file.name}-${idx}`} className="p-4 flex items-center justify-between">
                   <div className="flex items-center gap-4">
                     <div className="w-10 h-10 bg-[var(--background)] rounded-lg flex items-center justify-center text-[var(--text-secondary)]">
                       <FileVideo className="w-5 h-5" />
@@ -213,16 +219,16 @@ export default function UploadMedia() {
                       <span className="text-red-500 text-xs">Error</span>
                     ) : (
                       <div className="flex-1 bg-[var(--background)] rounded-full h-2">
-                        <div 
-                          className={`h-2 rounded-full transition-all duration-500 ${file.status === 'complete' ? 'bg-green-500' : 'bg-indigo-500'}`} 
+                        <div
+                          className={`h-2 rounded-full transition-all duration-500 ${file.status === 'complete' ? 'bg-green-500' : 'bg-indigo-500'}`}
                           style={{ width: `${file.progress}%` }}
-                        ></div>
+                        />
                       </div>
                     )}
                     <span className="text-xs font-medium text-[var(--text-secondary)] w-8 text-right">{file.progress}%</span>
-                    <button 
+                    <button
                       onClick={() => removeFile(idx)}
-                      disabled={file.status === 'uploading'}
+                      disabled={file.status === 'uploading' || isProcessing}
                       className="text-[var(--text-secondary)] hover:text-red-500 transition-colors disabled:opacity-50"
                     >
                       <X className="w-5 h-5" />
@@ -232,9 +238,9 @@ export default function UploadMedia() {
               ))}
             </div>
             <div className="mt-6 flex justify-end">
-              <button 
+              <button
                 onClick={handleStartProcessing}
-                disabled={pendingFiles.every(f => f.status === 'complete') || isProcessing}
+                disabled={pendingFiles.every((file) => file.status === 'complete') || isProcessing}
                 className="px-6 py-2.5 bg-indigo-600 hover:bg-indigo-700 text-white font-medium rounded-lg transition-colors shadow-sm disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 Start Processing Pipeline
@@ -255,26 +261,24 @@ export default function UploadMedia() {
               <Loader2 className="w-5 h-5 text-indigo-500 animate-spin" />
               GCP Backend Pipeline
             </h3>
-            
+
             <div className="space-y-4">
               {steps.map((step, index) => {
                 const isCompleted = processingStep > index;
                 const isCurrent = processingStep === index;
 
                 return (
-                  <div key={index} className="flex items-center gap-3">
+                  <div key={step} className="flex items-center gap-3">
                     {isCompleted ? (
                       <CheckCircle className="w-5 h-5 text-green-500 shrink-0" />
                     ) : isCurrent ? (
-                      <div className="w-5 h-5 border-2 border-indigo-500 border-t-transparent rounded-full animate-spin shrink-0"></div>
+                      <div className="w-5 h-5 border-2 border-indigo-500 border-t-transparent rounded-full animate-spin shrink-0" />
                     ) : (
-                      <div className="w-5 h-5 border-2 border-[var(--border)] rounded-full shrink-0"></div>
+                      <div className="w-5 h-5 border-2 border-[var(--border)] rounded-full shrink-0" />
                     )}
-                    <span 
+                    <span
                       className={`text-sm font-medium ${
-                        isCompleted ? 'text-green-500' 
-                        : isCurrent ? 'text-[var(--text-primary)]' 
-                        : 'text-[var(--text-secondary)] opacity-50'
+                        isCompleted ? 'text-green-500' : isCurrent ? 'text-[var(--text-primary)]' : 'text-[var(--text-secondary)] opacity-50'
                       }`}
                     >
                       {step}
@@ -284,16 +288,20 @@ export default function UploadMedia() {
               })}
             </div>
 
+            <p className="mt-6 text-sm text-[var(--text-secondary)]">{pipelineMessage}</p>
+
             {processingStep >= steps.length && (
               <div className="mt-8 animate-in fade-in zoom-in duration-300">
                 <div className="p-4 bg-green-500/10 border border-green-500/20 rounded-lg text-center">
-                  <p className="text-green-500 font-semibold mb-1">Protection Validated</p>
-                  <p className="text-xs text-green-400">Media is successfully stored and registered in Firestore.</p>
+                  <p className="text-green-500 font-semibold mb-1">Backend Processing Complete</p>
+                  <p className="text-xs text-green-400">Media is stored, analyzed, and synced to Firestore with provenance details.</p>
                 </div>
-                <button 
+                <button
                   onClick={() => {
                     setIsProcessing(false);
-                    setPendingFiles([]); // Clear queue on finish
+                    setPendingFiles([]);
+                    setProcessingStep(-1);
+                    setPipelineMessage('Waiting to start...');
                   }}
                   className="mt-4 w-full px-4 py-2 bg-[var(--background)] border border-[var(--border)] text-[var(--text-primary)] hover:bg-[var(--border)] rounded-lg font-medium transition-colors"
                 >

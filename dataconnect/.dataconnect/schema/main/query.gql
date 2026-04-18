@@ -1,8 +1,8 @@
 extend type Query {
   """
-  ✨ Look up a single `Asset` based on `id`, `key` or `first` and return selected fields (or `null` if not found).
+  ✨ Look up a single `AccountInstruction` based on `id`, `key` or `first` and return selected fields (or `null` if not found).
   """
-  asset(
+  accountInstruction(
     """
     The unique ID of the object.
     """
@@ -11,17 +11,17 @@ extend type Query {
     """
     The key used to identify the object.
     """
-    key: Asset_Key
+    key: AccountInstruction_Key
 
     """
     Fetch the first row based on the filters and ordering.
     """
-    first: Asset_FirstRow
-  ): Asset @fdc_generated(from: "Asset", purpose: QUERY_SINGLE)
+    first: AccountInstruction_FirstRow
+  ): AccountInstruction @fdc_generated(from: "AccountInstruction", purpose: QUERY_SINGLE)
   """
-  ✨ Look up a single `Folder` based on `id`, `key` or `first` and return selected fields (or `null` if not found).
+  ✨ Look up a single `Beneficiary` based on `id`, `key` or `first` and return selected fields (or `null` if not found).
   """
-  folder(
+  beneficiary(
     """
     The unique ID of the object.
     """
@@ -30,17 +30,17 @@ extend type Query {
     """
     The key used to identify the object.
     """
-    key: Folder_Key
+    key: Beneficiary_Key
 
     """
     Fetch the first row based on the filters and ordering.
     """
-    first: Folder_FirstRow
-  ): Folder @fdc_generated(from: "Folder", purpose: QUERY_SINGLE)
+    first: Beneficiary_FirstRow
+  ): Beneficiary @fdc_generated(from: "Beneficiary", purpose: QUERY_SINGLE)
   """
-  ✨ Look up a single `SharedAccess` based on `id`, `key` or `first` and return selected fields (or `null` if not found).
+  ✨ Look up a single `DigitalAccount` based on `id`, `key` or `first` and return selected fields (or `null` if not found).
   """
-  sharedAccess(
+  digitalAccount(
     """
     The unique ID of the object.
     """
@@ -49,17 +49,17 @@ extend type Query {
     """
     The key used to identify the object.
     """
-    key: SharedAccess_Key
+    key: DigitalAccount_Key
 
     """
     Fetch the first row based on the filters and ordering.
     """
-    first: SharedAccess_FirstRow
-  ): SharedAccess @fdc_generated(from: "SharedAccess", purpose: QUERY_SINGLE)
+    first: DigitalAccount_FirstRow
+  ): DigitalAccount @fdc_generated(from: "DigitalAccount", purpose: QUERY_SINGLE)
   """
-  ✨ Look up a single `TrustedContact` based on `id`, `key` or `first` and return selected fields (or `null` if not found).
+  ✨ Look up a single `TrustedAgent` based on `id`, `key` or `first` and return selected fields (or `null` if not found).
   """
-  trustedContact(
+  trustedAgent(
     """
     The unique ID of the object.
     """
@@ -68,13 +68,13 @@ extend type Query {
     """
     The key used to identify the object.
     """
-    key: TrustedContact_Key
+    key: TrustedAgent_Key
 
     """
     Fetch the first row based on the filters and ordering.
     """
-    first: TrustedContact_FirstRow
-  ): TrustedContact @fdc_generated(from: "TrustedContact", purpose: QUERY_SINGLE)
+    first: TrustedAgent_FirstRow
+  ): TrustedAgent @fdc_generated(from: "TrustedAgent", purpose: QUERY_SINGLE)
   """
   ✨ Look up a single `User` based on `id`, `key` or `first` and return selected fields (or `null` if not found).
   """
@@ -95,37 +95,18 @@ extend type Query {
     first: User_FirstRow
   ): User @fdc_generated(from: "User", purpose: QUERY_SINGLE)
   """
-  ✨ Look up a single `Vault` based on `id`, `key` or `first` and return selected fields (or `null` if not found).
+  ✨ List `AccountInstruction` objects in the table and return selected fields, optionally filtered by `where` conditions
   """
-  vault(
-    """
-    The unique ID of the object.
-    """
-    id: UUID
-
-    """
-    The key used to identify the object.
-    """
-    key: Vault_Key
-
-    """
-    Fetch the first row based on the filters and ordering.
-    """
-    first: Vault_FirstRow
-  ): Vault @fdc_generated(from: "Vault", purpose: QUERY_SINGLE)
-  """
-  ✨ List `Asset` objects in the table and return selected fields, optionally filtered by `where` conditions
-  """
-  assets(
+  accountInstructions(
     """
     Filter condition to narrow down the query results.
     """
-    where: Asset_Filter
+    where: AccountInstruction_Filter
 
     """
     Order the query results by specific fields.
     """
-    orderBy: [Asset_Order!]
+    orderBy: [AccountInstruction_Order!]
 
     """
     Number of rows to skip before starting to return the results.
@@ -145,21 +126,21 @@ extend type Query {
     """
     Filter condition to apply to the groups of aggregate queries.
     """
-    having: Asset_Having
-  ): [Asset!]! @fdc_generated(from: "Asset", purpose: QUERY_MULTIPLE)
+    having: AccountInstruction_Having
+  ): [AccountInstruction!]! @fdc_generated(from: "AccountInstruction", purpose: QUERY_MULTIPLE)
   """
-  ✨ List `Folder` objects in the table and return selected fields, optionally filtered by `where` conditions
+  ✨ List `Beneficiary` objects in the table and return selected fields, optionally filtered by `where` conditions
   """
-  folders(
+  beneficiaries(
     """
     Filter condition to narrow down the query results.
     """
-    where: Folder_Filter
+    where: Beneficiary_Filter
 
     """
     Order the query results by specific fields.
     """
-    orderBy: [Folder_Order!]
+    orderBy: [Beneficiary_Order!]
 
     """
     Number of rows to skip before starting to return the results.
@@ -179,21 +160,21 @@ extend type Query {
     """
     Filter condition to apply to the groups of aggregate queries.
     """
-    having: Folder_Having
-  ): [Folder!]! @fdc_generated(from: "Folder", purpose: QUERY_MULTIPLE)
+    having: Beneficiary_Having
+  ): [Beneficiary!]! @fdc_generated(from: "Beneficiary", purpose: QUERY_MULTIPLE)
   """
-  ✨ List `SharedAccess` objects in the table and return selected fields, optionally filtered by `where` conditions
+  ✨ List `DigitalAccount` objects in the table and return selected fields, optionally filtered by `where` conditions
   """
-  sharedAccesses(
+  digitalAccounts(
     """
     Filter condition to narrow down the query results.
     """
-    where: SharedAccess_Filter
+    where: DigitalAccount_Filter
 
     """
     Order the query results by specific fields.
     """
-    orderBy: [SharedAccess_Order!]
+    orderBy: [DigitalAccount_Order!]
 
     """
     Number of rows to skip before starting to return the results.
@@ -213,21 +194,21 @@ extend type Query {
     """
     Filter condition to apply to the groups of aggregate queries.
     """
-    having: SharedAccess_Having
-  ): [SharedAccess!]! @fdc_generated(from: "SharedAccess", purpose: QUERY_MULTIPLE)
+    having: DigitalAccount_Having
+  ): [DigitalAccount!]! @fdc_generated(from: "DigitalAccount", purpose: QUERY_MULTIPLE)
   """
-  ✨ List `TrustedContact` objects in the table and return selected fields, optionally filtered by `where` conditions
+  ✨ List `TrustedAgent` objects in the table and return selected fields, optionally filtered by `where` conditions
   """
-  trustedContacts(
+  trustedAgents(
     """
     Filter condition to narrow down the query results.
     """
-    where: TrustedContact_Filter
+    where: TrustedAgent_Filter
 
     """
     Order the query results by specific fields.
     """
-    orderBy: [TrustedContact_Order!]
+    orderBy: [TrustedAgent_Order!]
 
     """
     Number of rows to skip before starting to return the results.
@@ -247,8 +228,8 @@ extend type Query {
     """
     Filter condition to apply to the groups of aggregate queries.
     """
-    having: TrustedContact_Having
-  ): [TrustedContact!]! @fdc_generated(from: "TrustedContact", purpose: QUERY_MULTIPLE)
+    having: TrustedAgent_Having
+  ): [TrustedAgent!]! @fdc_generated(from: "TrustedAgent", purpose: QUERY_MULTIPLE)
   """
   ✨ List `User` objects in the table and return selected fields, optionally filtered by `where` conditions
   """
@@ -283,38 +264,4 @@ extend type Query {
     """
     having: User_Having
   ): [User!]! @fdc_generated(from: "User", purpose: QUERY_MULTIPLE)
-  """
-  ✨ List `Vault` objects in the table and return selected fields, optionally filtered by `where` conditions
-  """
-  vaults(
-    """
-    Filter condition to narrow down the query results.
-    """
-    where: Vault_Filter
-
-    """
-    Order the query results by specific fields.
-    """
-    orderBy: [Vault_Order!]
-
-    """
-    Number of rows to skip before starting to return the results.
-    """
-    offset: Int
-
-    """
-    Maximum number of rows to return (defaults to 100 rows).
-    """
-    limit: Int = 100
-
-    """
-    Set to true to return distinct results.
-    """
-    distinct: Boolean = false
-
-    """
-    Filter condition to apply to the groups of aggregate queries.
-    """
-    having: Vault_Having
-  ): [Vault!]! @fdc_generated(from: "Vault", purpose: QUERY_MULTIPLE)
 }

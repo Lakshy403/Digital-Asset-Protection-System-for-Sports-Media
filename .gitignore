@@ -12,6 +12,52 @@ dist
 dist-ssr
 *.local
 
+# Environment variables - NEVER commit these
+.env
+.env.local
+.env.production
+functions/.env
+
+# Firebase and local deployment artifacts
+.firebase/
+.firebaserc.local
+.codex-gcf-stage/
+.codex-gcf-stage.zip
+firebase-debug.log
+firebase-debug.*.log
+
+# Python virtual environments
+venv/
+.venv/
+functions/venv/
+digital-asset/venv/
+
+# Scratch or duplicate local app/function experiments
+digital-asset/
+digital_asset/
+digital_functions/
+.agents/
+.claude/
+skills-lock.json
+storage.files
+apphosting.emulator.yaml
+apphosting.yaml
+
+# Unused generated function scaffolds
+functions/.eslintrc.js
+functions/.firebaseignore
+functions/.gcloudignore
+functions/.gitignore
+functions/main.py
+functions/requirements.txt
+functions/src/
+functions/tsconfig.dev.json
+functions/tsconfig.json
+
+# Extra public hosting stubs
+public/404.html
+public/index.html
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

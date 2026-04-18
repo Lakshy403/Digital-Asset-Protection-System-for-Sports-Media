@@ -1,53 +1,52 @@
 type User @table {
+  displayName: String!
   email: String!
-  hashedPassword: String!
   createdAt: Timestamp!
-  displayName: String
-  recoveryEmail: String
-  phoneNumber: String
+  photoUrl: String
+  emergencyContactName: String
+  emergencyContactEmail: String
+  emergencyContactPhone: String
 }
 
-type Vault @table {
+type DigitalAccount @table {
   user: User!
-  encryptionKeySalt: String!
-  createdAt: Timestamp!
-  lastAccessedAt: Timestamp
-}
-
-type Asset @table {
-  vault: Vault!
-  assetType: String!
-  encryptedContent: String!
-  createdAt: Timestamp!
-  updatedAt: Timestamp!
-  name: String
-  description: String
-  contentType: String
-  folder: Folder
-}
-
-type Folder @table {
-  vault: Vault!
   name: String!
+  accountType: String!
   createdAt: Timestamp!
-  parentFolder: Folder
+  url: String
+  username: String
+  passwordHint: String
+  recoveryEmail: String
+  notes: String
 }
 
-type TrustedContact @table {
+type Beneficiary @table {
   user: User!
-  vault: Vault!
-  contactEmail: String!
-  status: String!
+  firstName: String!
+  lastName: String!
+  email: String!
+  relationship: String!
   createdAt: Timestamp!
-  displayName: String
-  sharedUntil: Timestamp
+  phone: String
 }
 
-type SharedAccess @table {
-  trustedContact: TrustedContact!
-  entityType: String!
-  entityId: UUID!
-  permissionLevel: String!
-  grantedAt: Timestamp
-  expiresAt: Timestamp
+type AccountInstruction @table {
+  digitalAccount: DigitalAccount!
+  beneficiary: Beneficiary
+  instructionType: String!
+  eventTrigger: String!
+  createdAt: Timestamp!
+  specificInstructions: String
+  accessGrantDuration: String
+}
+
+type TrustedAgent @table {
+  user: User!
+  firstName: String!
+  lastName: String!
+  email: String!
+  accessLevel: String!
+  createdAt: Timestamp!
+  phone: String
+  designationDate: Timestamp
 }

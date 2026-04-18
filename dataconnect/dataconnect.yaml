@@ -1,6 +1,6 @@
 specVersion: "v1"
 serviceId: "digital-asset-protection"
-location: "us-east4"
+location: "us-east1"
 schemas:
   - source: "./schema"
     datasource:

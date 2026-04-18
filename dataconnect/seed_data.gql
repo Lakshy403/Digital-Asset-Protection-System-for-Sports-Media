@@ -1,53 +1,64 @@
-mutation CreateDemoData @transaction @auth(level: PUBLIC, insecureReason: "Populating the database with seed data is safe to expose to the public.") {
-  user1: user_insert(data: {
-    email: "user1@example.com",
-    hashedPassword: "hashedpassword1",
-    createdAt: "2023-01-01T00:00:00Z",
-    displayName: "Demo User 1"
-  })
-  user2: user_insert(data: {
-    email: "user2@example.com",
-    hashedPassword: "hashedpassword2",
-    createdAt: "2023-01-01T00:00:00Z",
-    displayName: "Demo User 2"
-  })
-  vault1: vault_insert(data: {
-    userId: "550e8400-e29b-41d4-a716-446655440000", # This should be the ID of user1 from the previous insert
-    encryptionKeySalt: "salt1",
-    createdAt: "2023-01-01T00:00:00Z"
-  })
-  vault2: vault_insert(data: {
-    userId: "550e8400-e29b-41d4-a716-446655440001", # This should be the ID of user2 from the previous insert
-    encryptionKeySalt: "salt2",
-    createdAt: "2023-01-01T00:00:00Z"
-  })
-  folder1: folder_insert(data: {
-    vaultId: "550e8400-e29b-41d4-a716-446655440002", # This should be the ID of vault1
-    name: "Documents",
-    createdAt: "2023-01-01T00:00:00Z"
-  })
-  asset1: asset_insert(data: {
-    vaultId: "550e8400-e29b-41d4-a716-446655440002", # This should be the ID of vault1
-    folderId: "550e8400-e29b-41d4-a716-446655440004", # This should be the ID of folder1
-    assetType: "document",
-    encryptedContent: "encrypteddoc1",
-    createdAt: "2023-01-01T00:00:00Z",
-    updatedAt: "2023-01-01T00:00:00Z",
-    name: "Important Document"
-  })
-  trustedContact1: trustedContact_insert(data: {
-    userId: "550e8400-e29b-41d4-a716-446655440000", # This should be the ID of user1
-    vaultId: "550e8400-e29b-41d4-a716-446655440002", # This should be the ID of vault1
-    contactEmail: "trusted@example.com",
-    status: "active",
-    createdAt: "2023-01-01T00:00:00Z",
-    displayName: "Trusted Friend"
-  })
-  sharedAccess1: sharedAccess_insert(data: {
-    trustedContactId: "550e8400-e29b-41d4-a716-446655440006", # This should be the ID of trustedContact1
-    entityType: "asset",
-    entityId: "550e8400-e29b-41d4-a716-446655440005", # This should be the ID of asset1
-    permissionLevel: "read",
-    grantedAt: "2023-01-01T00:00:00Z"
-  })
+mutation CreateDemoData @transaction @auth(level: USER, insecureReason: "Seed data mutations are for development and testing purposes. They are not intended for production use.") {
+  user_insertMany(data: [
+    {
+      id: "550e8400-e29b-41d4-a716-446655440000",
+      displayName: "Alice Smith",
+      email: "alice.smith@example.com",
+      createdAt: "2023-01-01T10:00:00Z"
+    },
+    {
+      id: "550e8400-e29b-41d4-a716-446655440001",
+      displayName: "Bob Johnson",
+      email: "bob.johnson@example.com",
+      createdAt: "2023-01-02T11:00:00Z"
+    }
+  ])
+  beneficiary_insertMany(data: [
+    {
+      id: "550e8400-e29b-41d4-a716-446655440002",
+      userId: "550e8400-e29b-41d4-a716-446655440000",
+      firstName: "Charlie",
+      lastName: "Smith",
+      email: "charlie.smith@example.com",
+      relationship: "Child",
+      createdAt: "2023-01-03T12:00:00Z"
+    }
+  ])
+  digitalAccount_insertMany(data: [
+    {
+      id: "550e8400-e29b-41d4-a716-446655440003",
+      userId: "550e8400-e29b-41d4-a716-446655440000",
+      name: "My Bank Account",
+      accountType: "Checking",
+      createdAt: "2023-01-04T13:00:00Z",
+      url: "https://mybank.com",
+      username: "alicesbank",
+      passwordHint: "Favorite pet's name"
+    }
+  ])
+  accountInstruction_insertMany(data: [
+    {
+      id: "550e8400-e29b-41d4-a716-446655440004",
+      digitalAccountId: "550e8400-e29b-41d4-a716-446655440003",
+      beneficiaryId: "550e8400-e29b-41d4-a716-446655440002",
+      instructionType: "Access Grant",
+      eventTrigger: "Upon death",
+      createdAt: "2023-01-05T14:00:00Z",
+      specificInstructions: "Grant full access to Charlie Smith.",
+      accessGrantDuration: "Permanent"
+    }
+  ])
+  trustedAgent_insertMany(data: [
+    {
+      id: "550e8400-e29b-41d4-a716-446655440005",
+      userId: "550e8400-e29b-41d4-a716-446655440000",
+      firstName: "David",
+      lastName: "Green",
+      email: "david.green@example.com",
+      accessLevel: "Full Access",
+      createdAt: "2023-01-06T15:00:00Z",
+      phone: "555-123-4567",
+      designationDate: "2023-01-06T15:00:00Z"
+    }
+  ])
 }

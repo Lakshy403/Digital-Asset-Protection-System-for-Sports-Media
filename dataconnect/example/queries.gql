@@ -1,44 +1,57 @@
-query ListAllVaults @auth(level: USER, insecureReason: "This operation is safe to expose to all logged in users.") {
-  vaults(where: { userId: { eq_expr: "auth.uid" } }) {
-    id
-    createdAt
-    lastAccessedAt
-  }
-}
-
-mutation CreateFolderInVault($vaultId: UUID!, $folderName: String!) @auth(level: USER) {
-  folder_insert(
-    data: {
-      vaultId: $vaultId,
-      name: $folderName,
-      createdAt_expr: "request.time"
-    }
-  ) {
-    id
-  }
-}
-
-query GetAssetsInFolder($folderId: UUID!) @auth(level: USER) {
-  assets(where: { folderId: { eq: $folderId } }) {
+query AllDigitalAccounts @auth(level: USER, insecureReason: "This operation is safe to expose to all logged in users.") {
+  digitalAccounts {
     id
     name
-    assetType
-    contentType
+    accountType
+    url
+    username
+    passwordHint
+    recoveryEmail
+    notes
     createdAt
   }
 }
 
-mutation AddTrustedContact($contactEmail: String!, $vaultId: UUID!, $displayName: String) @auth(level: USER) {
-  trustedContact_insert(
-    data: {
-      user: { id_expr: "auth.uid" },
-      vaultId: $vaultId,
-      contactEmail: $contactEmail,
-      status: "PENDING",
-      createdAt_expr: "request.time",
-      displayName: $displayName
-    }
-  ) {
+query AllBeneficiaries @auth(level: USER, insecureReason: "This operation is safe to expose to all logged in users.") {
+  beneficiaries {
     id
+    firstName
+    lastName
+    email
+    phone
+    relationship
+    createdAt
+  }
+}
+
+query AllTrustedAgents @auth(level: USER, insecureReason: "This operation is safe to expose to all logged in users.") {
+  trustedAgents {
+    id
+    firstName
+    lastName
+    email
+    phone
+    accessLevel
+    designationDate
+    createdAt
+  }
+}
+
+query AllAccountInstructions @auth(level: USER, insecureReason: "This operation is safe to expose to all logged in users.") {
+  accountInstructions {
+    id
+    instructionType
+    eventTrigger
+    specificInstructions
+    accessGrantDuration
+    createdAt
+    digitalAccount {
+      name
+      accountType
+    }
+    beneficiary {
+      firstName
+      lastName
+    }
   }
 }
